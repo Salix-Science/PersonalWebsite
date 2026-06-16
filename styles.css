@@ -392,3 +392,31 @@
 .to-top.show{opacity:1;transform:none;pointer-events:auto}
 .to-top:hover{transform:translateY(-2px)}
 .to-top:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+
+/* ============ EMAIL DROPDOWN CONTACT FORM ============ */
+.email-form{max-width:440px;margin:18px auto 0;text-align:left;position:relative;
+  border:2px solid var(--ink);background:var(--scrap);box-shadow:5px 6px 0 var(--shadow);
+  padding:20px 18px 16px;
+  transition:background-color .35s ease,border-color .35s ease,box-shadow .35s ease}
+.email-form[hidden]{display:none}
+.email-form::before{content:"";position:absolute;width:84px;height:22px;top:-12px;left:24px;
+  background:var(--tape);transform:rotate(-4deg)}
+.ef-row{margin-bottom:12px}
+.ef-row label{display:block;font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;
+  font-weight:700;color:var(--muted);margin-bottom:5px}
+.ef-row input,.ef-row textarea{width:100%;font-family:var(--mono);font-size:.9rem;color:var(--ink);
+  background:var(--paper);border:2px solid var(--ink);padding:9px 11px;border-radius:0;
+  transition:background-color .35s ease,border-color .35s ease,color .35s ease}
+.ef-row textarea{min-height:112px;resize:vertical}
+.ef-row input:focus,.ef-row textarea:focus{outline:3px solid var(--pink);outline-offset:1px}
+.ef-row input::placeholder,.ef-row textarea::placeholder{color:var(--muted);opacity:.7}
+.ef-send{font-family:var(--mono);font-weight:700;font-size:.78rem;letter-spacing:.1em;
+  text-transform:uppercase;cursor:pointer;padding:.8em 1.3em;border:2px solid var(--ink);
+  background:var(--pink);color:var(--scrap);box-shadow:4px 4px 0 var(--shadow);
+  transition:transform .12s,box-shadow .12s}
+.ef-send:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--shadow)}
+.ef-send:disabled{opacity:.6;cursor:default;transform:none;box-shadow:4px 4px 0 var(--shadow)}
+.ef-status{margin:10px 0 0;font-size:.82rem;font-weight:700;min-height:1.2em}
+.ef-status.ok{color:#2e9e5b}
+.ef-status.err{color:var(--red)}
+.ef-hp{display:none}

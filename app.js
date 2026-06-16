@@ -59,3 +59,45 @@
   });
 })();
 
+// ---- Email dropdown contact form (Web3Forms) ----
+(function(){
+  var toggle = document.getElementById('emailToggle');
+  var form   = document.getElementById('emailForm');
+  if(!toggle || !form) return;
+  toggle.addEventListener('click', function(){
+    var willOpen = form.hasAttribute('hidden');
+    if(willOpen){ form.removeAttribute('hidden'); } else { form.setAttribute('hidden',''); }
+    toggle.setAttribute('aria-expanded', String(willOpen));
+    if(willOpen){
+      var first = form.querySelector('input:not([type=hidden]):not(.ef-hp), textarea');
+      if(first) first.focus();
+    }
+  });
+  var status = document.getElementById('emailStatus');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var btn = form.querySelector('.ef-send');
+    if(status){ status.className='ef-status'; status.textContent='Sending\u2026'; }
+    if(btn) btn.disabled = true;
+    var payload = Object.fromEntries(new FormData(form).entries());
+    fetch('https://api.web3forms.com/submit', {
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body: JSON.stringify(payload)
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(j){
+      if(j.success){
+        if(status){ status.className='ef-status ok'; status.textContent="Sent \u2014 thanks! I'll get back to you."; }
+        form.reset();
+      } else {
+        if(status){ status.className='ef-status err'; status.textContent='Couldn\u2019t send. Email me directly at willowpichardo06@gmail.com'; }
+      }
+    })
+    .catch(function(){
+      if(status){ status.className='ef-status err'; status.textContent='Network error. Email me directly at willowpichardo06@gmail.com'; }
+    })
+    .finally(function(){ if(btn) btn.disabled = false; });
+  });
+})();
+
