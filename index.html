@@ -216,12 +216,30 @@
 
       <!-- Swap the href values below for your real links -->
       <div class="links rise">
-        <a class="link" href="mailto:willowpichardo06@gmail.com">Email</a>
+        <button class="link" type="button" id="emailToggle" aria-expanded="false" aria-controls="emailForm">Email</button>
         <a class="link" href="https://github.com/Salix-Science" target="_blank" rel="noopener">GitHub</a>
         <a class="link" href="https://circuitspractice.org" target="_blank" rel="noopener">circuitspractice.org</a>
         <a class="link" href="https://www.linkedin.com/in/willow-pichardo-a209b2363/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
-
+<form id="emailForm" class="email-form" hidden>
+  <input type="hidden" name="access_key" value="b4fb7253-c1fd-4412-a8bb-616a40b1d05c">
+  <input type="hidden" name="from_name" value="willowpichardo.com">
+  <input type="checkbox" name="botcheck" class="ef-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+  <div class="ef-row">
+    <label for="ef-email">Your email</label>
+    <input id="ef-email" type="email" name="email" required placeholder="you@example.com">
+  </div>
+  <div class="ef-row">
+    <label for="ef-subject">Subject</label>
+    <input id="ef-subject" type="text" name="subject" placeholder="What's this about?">
+  </div>
+  <div class="ef-row">
+    <label for="ef-message">Message</label>
+    <textarea id="ef-message" name="message" required placeholder="Say hello…"></textarea>
+  </div>
+  <button type="submit" class="ef-send">Send message</button>
+  <p id="emailStatus" class="ef-status" role="status" aria-live="polite"></p>
+</form>
       <div class="barcode" aria-hidden="true"></div>
       <p class="colophon">Working *right now* &middot; Storrs, CT &middot; updated June 2026</p>
       <span class="badge">High-Q or go home</span>
