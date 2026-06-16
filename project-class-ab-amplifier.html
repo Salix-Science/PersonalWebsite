@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Class AB Amplifier — Willow</title>
+<meta name="description" content="Class AB Amplifier: MJL3281A / MJL1302A outputs - ~77% efficiency near peak">
+<script>
+  (function(){
+    try{
+      var s=localStorage.getItem('willow-theme');
+      var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', s||(d?'dark':'light'));
+    }catch(e){document.documentElement.setAttribute('data-theme','light');}
+  })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!--
+  PROJECT PAGE — safe to edit by hand.
+  * Replace each <p class="placeholder">...</p> block with your own write-up.
+  * Add a photo: swap a <div class="shot-ph">Add a photo</div> for
+      <img src="img/your-photo.jpg" alt="what it shows">
+    (make an "img" folder next to these files and drop pictures in).
+  * Fill the "add ..." TODO items in the At-a-glance sidebar.
+  * Title / status / tags are set in the <header> just below.
+-->
+
+<nav class="nav" aria-label="Primary">
+  <a class="me" href="index.html">WILL<b>O</b>W</a>
+  <a class="backlink" href="index.html#work">&larr; all work</a>
+  <div class="modesel" role="group" aria-label="Color mode">
+    <button class="modebtn" type="button" data-mode="light" aria-label="Light mode" title="Light mode">&#9728;</button>
+    <button class="modebtn" type="button" data-mode="dark" aria-label="Dark mode" title="Dark mode">&#9790;</button>
+  </div>
+</nav>
+
+<main>
+  <header class="proj-hero wrap">
+    <a class="proj-back" href="index.html#work">&larr; Back to all work</a>
+    <div class="proj-status">
+      <span class="stamp stamp--ship">Shipped</span>
+      <span class="proj-kicker">Hardware &middot; analog</span>
+    </div>
+    <h1 class="proj-title">Class AB Amplifier</h1>
+    <p class="proj-spec">MJL3281A / MJL1302A outputs &middot; ~77% efficiency near peak</p>
+    <div class="chips"><span class="chip">analog</span><span class="chip">thermal</span><span class="chip">ltspice</span></div>
+    
+  </header>
+
+  <div class="wrap proj-wrap">
+    <div class="proj-main">
+
+      <!-- Hero image: replace the box below with <img src="img/your-photo.jpg" alt="..."> -->
+      <figure class="proj-fig"><div class="img-ph">Hero image &mdash; add a photo</div></figure>
+
+      <section class="proj-section">
+        <span class="eyebrow">01 &middot; Overview</span>
+        <h2 class="proj-h2">Overview</h2>
+        <p>A from-scratch discrete power amp with full thermal analysis and interactive efficiency plots. Push-pull output stage, biased and measured &mdash; not simulated and hoped.</p>
+        <p class="placeholder">Add the fuller story here &mdash; the problem it solves, why you took it on, and the one-line pitch you'd give at a poster session.</p>
+      </section>
+
+      <section class="proj-section">
+        <span class="eyebrow">02 &middot; How it works</span>
+        <h2 class="proj-h2">How it works / the build</h2>
+        <p class="placeholder">Describe the design: architecture, key components, the approach. Drop in schematics or diagrams. Real numbers welcome.</p>
+      </section>
+
+      <section class="proj-section">
+        <span class="eyebrow">03 &middot; Results</span>
+        <h2 class="proj-h2">Results &amp; measurements</h2>
+        <p class="placeholder">What did you measure? Add plots, tables, or the headline figures &mdash; the honest ones, including anything that didn't hit spec.</p>
+      </section>
+
+      <section class="proj-section">
+        <span class="eyebrow">04 &middot; Notes</span>
+        <h2 class="proj-h2">Challenges &amp; what's next</h2>
+        <p class="placeholder">What fought back, what you learned, and where this goes next.</p>
+      </section>
+
+      <section class="proj-section">
+        <span class="eyebrow">05 &middot; Gallery</span>
+        <h2 class="proj-h2">Gallery</h2>
+        <div class="gallery">
+          <figure class="shot"><div class="shot-ph">Add a photo</div><figcaption>Caption&hellip;</figcaption></figure>
+          <figure class="shot"><div class="shot-ph">Add a photo</div><figcaption>Caption&hellip;</figcaption></figure>
+          <figure class="shot"><div class="shot-ph">Add a photo</div><figcaption>Caption&hellip;</figcaption></figure>
+        </div>
+      </section>
+
+    </div>
+
+    <aside class="proj-meta">
+      <h2 class="meta-h">At a glance</h2>
+      <div class="meta-row"><span class="meta-k">Status</span><span class="meta-v">Shipped</span></div>
+      <div class="meta-row"><span class="meta-k">Timeline</span><span class="meta-v meta-todo">add dates</span></div>
+      <div class="meta-row"><span class="meta-k">Role</span><span class="meta-v meta-todo">e.g. solo build</span></div>
+      <div class="meta-row"><span class="meta-k">Tools</span><span class="meta-v">analog &middot; thermal &middot; ltspice</span></div>
+      <div class="meta-row"><span class="meta-k">Links</span><span class="meta-v"><span class="meta-todo">add links</span></span></div>
+    </aside>
+  </div>
+
+  <nav class="wrap proj-nav" aria-label="More projects">
+    <a class="pn pn-prev" href="project-maskless-lithography.html"><span class="pn-dir">&larr; Previous</span><span class="pn-title">Maskless Lithography</span></a>
+    <a class="pn pn-next" href="project-printer-fleet-dashboard.html"><span class="pn-dir">Next &rarr;</span><span class="pn-title">Printer Fleet Dashboard</span></a>
+  </nav>
+
+  <footer class="proj-footer wrap">
+    <a class="proj-back" href="index.html#work">&larr; Back to all work</a>
+    <div style="margin-top:16px"><span class="badge">High-Q or go home</span></div>
+  </footer>
+</main>
+
+<button class="to-top" type="button" aria-label="Back to top" title="Back to top">&#8593;</button>
+<script src="app.js"></script>
+</body>
+</html>
