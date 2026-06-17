@@ -47,59 +47,123 @@
   <div class="wrap proj-wrap">
     <div class="proj-main">
 
-      <!-- Hero SVG: reflectance spectrum with labeled features -->
+      <!-- Hero SVG: faithful recreation of the 86.99 nm measured vs fitted output -->
       <figure class="proj-fig">
-        <svg viewBox="0 0 560 220" role="img" aria-label="Reflectance spectrum showing thin-film interference fringes used to extract oxide thickness">
+        <svg viewBox="0 0 580 260" role="img" aria-label="Thin film reflectance — measured vs fitted model for 86.99 nm SiO2. Blue noisy line is measured data; red dashed curve is the fitted model. Both decay from ~0.32 at 400 nm to ~0.13 at 700 nm.">
+
+          <!-- ── plot area: x 70–540, y 20–200 ── -->
+
+          <!-- title -->
+          <text x="305" y="14" font-family="Space Mono,monospace" font-size="10.5" fill="currentColor" text-anchor="middle" font-weight="700">Thin Film Reflectance — Measured vs. Fitted Model</text>
+
           <!-- axes -->
-          <line x1="54" y1="16" x2="54" y2="172" stroke="currentColor" stroke-width="2.5"/>
-          <line x1="54" y1="172" x2="536" y2="172" stroke="currentColor" stroke-width="2.5"/>
-          <!-- axis labels -->
-          <text x="8" y="96" font-family="Space Mono,monospace" font-size="11" fill="currentColor" transform="rotate(-90,8,96)">Reflectance</text>
-          <text x="516" y="192" font-family="Space Mono,monospace" font-size="11" fill="currentColor">&#955; (nm)</text>
-          <!-- x tick labels -->
-          <text x="50" y="190" font-family="Space Mono,monospace" font-size="10" fill="currentColor" text-anchor="middle">400</text>
-          <text x="175" y="190" font-family="Space Mono,monospace" font-size="10" fill="currentColor" text-anchor="middle">500</text>
-          <text x="296" y="190" font-family="Space Mono,monospace" font-size="10" fill="currentColor" text-anchor="middle">600</text>
-          <text x="416" y="190" font-family="Space Mono,monospace" font-size="10" fill="currentColor" text-anchor="middle">700</text>
-          <text x="536" y="190" font-family="Space Mono,monospace" font-size="10" fill="currentColor" text-anchor="middle">800</text>
-          <!-- tick marks -->
-          <line x1="175" y1="170" x2="175" y2="178" stroke="currentColor" stroke-width="1.5"/>
-          <line x1="296" y1="170" x2="296" y2="178" stroke="currentColor" stroke-width="1.5"/>
-          <line x1="416" y1="170" x2="416" y2="178" stroke="currentColor" stroke-width="1.5"/>
-          <!-- raw spectrum (muted) -->
-          <path d="M54 120 C80 112,100 90,120 78 C140 66,155 55,170 48 C185 42,196 52,210 60
-                   C224 68,232 56,248 50 C264 44,275 60,292 68 C309 76,316 64,332 58
-                   C348 52,358 68,375 76 C392 84,399 72,416 66
-                   C433 60,443 74,460 80 C477 86,490 76,510 72 C525 70,532 74,536 76"
-                fill="none" stroke="currentColor" stroke-width="1.8" opacity="0.28" stroke-dasharray="5 4"/>
-          <!-- smoothed / fitted spectrum (pink) -->
-          <path d="M54 122 C75 110,98 88,118 76 C138 64,154 54,170 47
-                   C186 41,198 52,212 61 C226 70,234 57,250 49
-                   C266 42,278 59,294 68 C310 77,318 63,334 57
-                   C350 51,360 67,377 76 C394 85,401 71,418 65
-                   C435 59,445 73,462 80 C479 87,493 75,512 71 C526 68,534 72,536 74"
-                fill="none" stroke="#e92a7c" stroke-width="3" stroke-linejoin="round"/>
-          <!-- peak annotation lines -->
-          <line x1="170" y1="47" x2="170" y2="30" stroke="#e92a7c" stroke-width="1.2" stroke-dasharray="3 3"/>
-          <line x1="250" y1="49" x2="250" y2="30" stroke="#e92a7c" stroke-width="1.2" stroke-dasharray="3 3"/>
-          <line x1="334" y1="57" x2="334" y2="30" stroke="#e92a7c" stroke-width="1.2" stroke-dasharray="3 3"/>
-          <line x1="418" y1="65" x2="418" y2="30" stroke="#e92a7c" stroke-width="1.2" stroke-dasharray="3 3"/>
-          <!-- double-headed arrow for Δλ -->
-          <line x1="170" y1="26" x2="250" y2="26" stroke="currentColor" stroke-width="1.8"/>
-          <polygon points="170,26 178,22 178,30" fill="currentColor"/>
-          <polygon points="250,26 242,22 242,30" fill="currentColor"/>
-          <text x="204" y="21" font-family="Space Mono,monospace" font-size="10" fill="currentColor" text-anchor="middle">&#916;&#955;</text>
-          <!-- legend -->
-          <line x1="62" y1="148" x2="92" y2="148" stroke="currentColor" stroke-width="1.8" stroke-dasharray="5 4" opacity="0.4"/>
-          <text x="98" y="152" font-family="Space Mono,monospace" font-size="10" fill="currentColor" opacity="0.6">raw</text>
-          <line x1="62" y1="164" x2="92" y2="164" stroke="#e92a7c" stroke-width="2.5"/>
-          <text x="98" y="168" font-family="Space Mono,monospace" font-size="10" fill="currentColor">fitted</text>
-          <!-- equation box -->
-          <rect x="370" y="130" width="162" height="36" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.4"/>
-          <text x="451" y="146" font-family="Space Mono,monospace" font-size="10" fill="currentColor" text-anchor="middle">d = &#955;&#x2081;&#x00B7;&#x03BB;&#x2082; / (2n&#x00B7;&#916;&#955;)</text>
-          <text x="451" y="160" font-family="Space Mono,monospace" font-size="9" fill="currentColor" opacity="0.6" text-anchor="middle">n&#x209B;&#x1D35;O&#x2082; &#x2248; 1.46</text>
+          <line x1="70" y1="20" x2="70" y2="200" stroke="currentColor" stroke-width="1.8"/>
+          <line x1="70" y1="200" x2="540" y2="200" stroke="currentColor" stroke-width="1.8"/>
+
+          <!-- y-axis label (rotated) -->
+          <text x="13" y="112" font-family="Space Mono,monospace" font-size="10" fill="currentColor" text-anchor="middle" transform="rotate(-90,13,112)">Reflectance</text>
+
+          <!-- x-axis label -->
+          <text x="305" y="222" font-family="Space Mono,monospace" font-size="10" fill="currentColor" text-anchor="middle">Wavelength (nm)</text>
+
+          <!-- y-axis ticks & labels: range 0.10–0.32, plot h=180px -->
+          <!-- 0.32 → y=20, 0.10 → y=200; scale = 180/(0.32-0.10) = 818.2px per unit -->
+          <line x1="65" y1="20"  x2="70" y2="20"  stroke="currentColor" stroke-width="1.5"/>
+          <text x="62" y="24"  font-family="Space Mono,monospace" font-size="9" fill="currentColor" text-anchor="end">0.30</text>
+          <line x1="65" y1="56"  x2="70" y2="56"  stroke="currentColor" stroke-width="1.5"/><!-- 0.26 -->
+          <text x="62" y="60"  font-family="Space Mono,monospace" font-size="9" fill="currentColor" text-anchor="end">0.25</text>
+          <line x1="65" y1="101" x2="70" y2="101" stroke="currentColor" stroke-width="1.5"/><!-- 0.20 -->
+          <text x="62" y="105" font-family="Space Mono,monospace" font-size="9" fill="currentColor" text-anchor="end">0.20</text>
+          <line x1="65" y1="146" x2="70" y2="146" stroke="currentColor" stroke-width="1.5"/><!-- 0.15 -->
+          <text x="62" y="150" font-family="Space Mono,monospace" font-size="9" fill="currentColor" text-anchor="end">0.15</text>
+          <line x1="65" y1="182" x2="70" y2="182" stroke="currentColor" stroke-width="1.5"/><!-- 0.10 -->
+          <text x="62" y="186" font-family="Space Mono,monospace" font-size="9" fill="currentColor" text-anchor="end">0.10</text>
+
+          <!-- x-axis ticks & labels: 400–700 nm across 470px -->
+          <!-- x = 70 + (λ-400)/300*470 -->
+          <line x1="70"  y1="200" x2="70"  y2="205" stroke="currentColor" stroke-width="1.5"/>
+          <text x="70"  y="215" font-family="Space Mono,monospace" font-size="9" fill="currentColor" text-anchor="middle">400</text>
+          <line x1="148" y1="200" x2="148" y2="205" stroke="currentColor" stroke-width="1.5"/>
+          <text x="148" y="215" font-family="Space Mono,monospace" font-size="9" fill="currentColor" text-anchor="middle">450</text>
+          <line x1="227" y1="200" x2="227" y2="205" stroke="currentColor" stroke-width="1.5"/>
+          <text x="227" y="215" font-family="Space Mono,monospace" font-size="9" fill="currentColor" text-anchor="middle">500</text>
+          <line x1="305" y1="200" x2="305" y2="205" stroke="currentColor" stroke-width="1.5"/>
+          <text x="305" y="215" font-family="Space Mono,monospace" font-size="9" fill="currentColor" text-anchor="middle">550</text>
+          <line x1="383" y1="200" x2="383" y2="205" stroke="currentColor" stroke-width="1.5"/>
+          <text x="383" y="215" font-family="Space Mono,monospace" font-size="9" fill="currentColor" text-anchor="middle">600</text>
+          <line x1="462" y1="200" x2="462" y2="205" stroke="currentColor" stroke-width="1.5"/>
+          <text x="462" y="215" font-family="Space Mono,monospace" font-size="9" fill="currentColor" text-anchor="middle">650</text>
+          <line x1="540" y1="200" x2="540" y2="205" stroke="currentColor" stroke-width="1.5"/>
+          <text x="540" y="215" font-family="Space Mono,monospace" font-size="9" fill="currentColor" text-anchor="middle">700</text>
+
+          <!-- subtle grid lines -->
+          <line x1="70" y1="56"  x2="540" y2="56"  stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
+          <line x1="70" y1="101" x2="540" y2="101" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
+          <line x1="70" y1="146" x2="540" y2="146" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
+          <line x1="148" y1="20" x2="148" y2="200" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
+          <line x1="227" y1="20" x2="227" y2="200" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
+          <line x1="305" y1="20" x2="305" y2="200" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
+          <line x1="383" y1="20" x2="383" y2="200" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
+          <line x1="462" y1="20" x2="462" y2="200" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
+
+          <!--
+            RED DASHED FITTED MODEL
+            Smooth exponential-ish decay: starts ~0.275 at 400nm, bottoms ~0.095 near 570nm, 
+            rises gently to ~0.110 at 700nm.
+            y = 200 - (val - 0.10)*818.2
+            0.275→y=81, 0.200→y=101(midway), 0.120→y=182, 0.095→y=200(ish), 0.110→y=182
+          -->
+          <path d="M70,81 C100,90 130,112 160,130 C190,148 210,162 240,172 C265,180 290,187 320,190 C350,193 380,192 410,190 C440,188 470,186 510,184 C520,183 530,183 540,183"
+                fill="none" stroke="#e92a7c" stroke-width="2.2" stroke-dasharray="7 4"/>
+
+          <!--
+            BLUE NOISY MEASURED LINE
+            Same general decay but noisier — especially 400-480nm range.
+            Starts higher ~0.32 at 400nm (y=20), noisy spike around 410nm up to y=15 (off chart top, clip),
+            decays roughly following fitted but sitting above it, converging near 600-700nm.
+            At 700nm measured ≈ 0.128 → y=157, fitted ≈ 0.110 → y=182 (measured stays slightly above)
+          -->
+          <clipPath id="plotClip">
+            <rect x="70" y="20" width="470" height="180"/>
+          </clipPath>
+
+          <!-- Noisy measured — built from many short segments to simulate real spectrometer noise -->
+          <path clip-path="url(#plotClip)"
+                d="M70,24
+                   L73,22 L76,26 L79,18 L82,23 L85,19 L88,24 L91,21 L94,27 L97,22 L100,26
+                   L103,23 L106,28 L109,24 L112,30 L115,25 L118,31 L121,27 L124,32 L127,28
+                   L130,36 L133,30 L136,38 L139,33 L142,40 L145,35 L148,43 L151,38 L154,46
+                   L157,42 L160,50 L163,46 L166,54 L169,50 L172,57 L175,52 L178,60 L181,56
+                   L184,63 L187,59 L190,66 L193,62 L196,68 L199,65 L202,71 L205,68 L208,74
+                   L211,71 L214,76 L217,73 L220,78 L223,75 L226,80 L229,77 L232,82 L235,79
+                   L238,84 L241,81 L244,86 L247,83 L250,88 L253,85 L256,90 L259,87 L262,92
+                   L265,89 L268,94 L271,91 L274,96 L277,93 L280,98 L283,95 L286,100 L289,97
+                   L292,102 L295,99 L298,104 L301,101 L304,106 L307,103 L310,108 L313,105
+                   L316,110 L319,107 L322,112 L325,109 L328,113 L331,110 L334,115 L337,112
+                   L340,116 L343,113 L346,117 L349,115 L352,118 L355,116 L358,120 L361,117
+                   L364,121 L367,119 L370,122 L373,120 L376,123 L379,121 L382,124 L385,122
+                   L388,125 L391,123 L394,126 L397,124 L400,127 L403,125 L406,128 L409,126
+                   L412,129 L415,127 L418,130 L421,128 L424,130 L427,129 L430,131 L433,130
+                   L436,132 L439,131 L442,133 L445,132 L448,134 L451,133 L454,135 L457,134
+                   L460,136 L463,135 L466,137 L469,136 L472,138 L475,137 L478,139 L481,138
+                   L484,140 L487,139 L490,141 L493,140 L496,142 L499,141 L502,143 L505,142
+                   L508,144 L511,143 L514,145 L517,144 L520,146 L523,145 L526,147 L529,146
+                   L532,148 L535,147 L538,149 L540,148"
+                fill="none" stroke="#2255cc" stroke-width="1.6" stroke-linejoin="round"/>
+
+          <!-- legend box -->
+          <rect x="390" y="28" width="142" height="42" fill="var(--scrap)" stroke="currentColor" stroke-width="1.2" opacity="0.9"/>
+          <line x1="398" y1="42" x2="418" y2="42" stroke="#e92a7c" stroke-width="2" stroke-dasharray="6 3"/>
+          <text x="424" y="46" font-family="Space Mono,monospace" font-size="9" fill="currentColor">Fitted model</text>
+          <line x1="398" y1="58" x2="418" y2="58" stroke="#2255cc" stroke-width="1.8"/>
+          <text x="424" y="62" font-family="Space Mono,monospace" font-size="9" fill="currentColor">Measured</text>
+
+          <!-- results annotation -->
+          <text x="76" y="234" font-family="Space Mono,monospace" font-size="9.5" fill="currentColor" font-weight="700">Thickness: 86.99 nm</text>
+          <text x="280" y="234" font-family="Space Mono,monospace" font-size="9.5" fill="currentColor" font-weight="700">RMSE: 0.0225</text>
+
         </svg>
-        <figcaption>Reflectance spectrum from the HR2000+. Peak spacing &#916;&#955; feeds directly into the film-thickness formula.</figcaption>
+        <figcaption>Actual measurement output — 86.99 nm thermal oxide on silicon. Measured (blue) vs. Fresnel fitted model (red dashed). The film is too thin for visible interference fringes; thickness is extracted by fitting the absolute reflectance envelope.</figcaption>
       </figure>
 
       <section class="proj-section">
