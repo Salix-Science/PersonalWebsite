@@ -48,101 +48,9 @@
   <div class="wrap proj-wrap">
     <div class="proj-main">
 
-      <!-- Hero SVG: faithful recreation of the 86.99 nm measured vs fitted output -->
       <figure class="proj-fig">
-        <svg viewBox="0 0 580 260" role="img" aria-label="Thin film reflectance — measured vs fitted model for 86.99 nm SiO2. Blue noisy line is measured data; red dashed curve is the fitted model. Both decay from ~0.32 at 400 nm to ~0.15 at 700 nm.">
-
-          <!-- title -->
-          <text x="305" y="14" font-family="Space Mono,monospace" font-size="10.5" fill="currentColor" text-anchor="middle" font-weight="700">Thin Film Reflectance — Measured vs. Fitted Model</text>
-
-          <!-- axes -->
-          <line x1="70" y1="20" x2="70" y2="200" stroke="currentColor" stroke-width="1.8"/>
-          <line x1="70" y1="200" x2="540" y2="200" stroke="currentColor" stroke-width="1.8"/>
-
-          <!-- y-axis label -->
-          <text x="13" y="112" font-family="Space Mono,monospace" font-size="10" fill="currentColor" text-anchor="middle" transform="rotate(-90,13,112)">Reflectance</text>
-
-          <!-- x-axis label -->
-          <text x="305" y="222" font-family="Space Mono,monospace" font-size="10" fill="currentColor" text-anchor="middle">Wavelength (nm)</text>
-
-          <!-- y-axis ticks -->
-          <line x1="65" y1="20"  x2="70" y2="20"  stroke="currentColor" stroke-width="1.5"/>
-          <text x="62" y="24"  font-family="Space Mono,monospace" font-size="9" fill="currentColor" text-anchor="end">0.35</text>
-          <line x1="65" y1="61"  x2="70" y2="61"  stroke="currentColor" stroke-width="1.5"/>
-          <text x="62" y="65"  font-family="Space Mono,monospace" font-size="9" fill="currentColor" text-anchor="end">0.30</text>
-          <line x1="65" y1="101" x2="70" y2="101" stroke="currentColor" stroke-width="1.5"/>
-          <text x="62" y="105" font-family="Space Mono,monospace" font-size="9" fill="currentColor" text-anchor="end">0.25</text>
-          <line x1="65" y1="142" x2="70" y2="142" stroke="currentColor" stroke-width="1.5"/>
-          <text x="62" y="146" font-family="Space Mono,monospace" font-size="9" fill="currentColor" text-anchor="end">0.20</text>
-          <line x1="65" y1="182" x2="70" y2="182" stroke="currentColor" stroke-width="1.5"/>
-          <text x="62" y="186" font-family="Space Mono,monospace" font-size="9" fill="currentColor" text-anchor="end">0.15</text>
-
-          <!-- x-axis ticks -->
-          <line x1="70"  y1="200" x2="70"  y2="205" stroke="currentColor" stroke-width="1.5"/>
-          <text x="70"  y="215" font-family="Space Mono,monospace" font-size="9" fill="currentColor" text-anchor="middle">400</text>
-          <line x1="148" y1="200" x2="148" y2="205" stroke="currentColor" stroke-width="1.5"/>
-          <text x="148" y="215" font-family="Space Mono,monospace" font-size="9" fill="currentColor" text-anchor="middle">450</text>
-          <line x1="227" y1="200" x2="227" y2="205" stroke="currentColor" stroke-width="1.5"/>
-          <text x="227" y="215" font-family="Space Mono,monospace" font-size="9" fill="currentColor" text-anchor="middle">500</text>
-          <line x1="305" y1="200" x2="305" y2="205" stroke="currentColor" stroke-width="1.5"/>
-          <text x="305" y="215" font-family="Space Mono,monospace" font-size="9" fill="currentColor" text-anchor="middle">550</text>
-          <line x1="383" y1="200" x2="383" y2="205" stroke="currentColor" stroke-width="1.5"/>
-          <text x="383" y="215" font-family="Space Mono,monospace" font-size="9" fill="currentColor" text-anchor="middle">600</text>
-          <line x1="462" y1="200" x2="462" y2="205" stroke="currentColor" stroke-width="1.5"/>
-          <text x="462" y="215" font-family="Space Mono,monospace" font-size="9" fill="currentColor" text-anchor="middle">650</text>
-          <line x1="540" y1="200" x2="540" y2="205" stroke="currentColor" stroke-width="1.5"/>
-          <text x="540" y="215" font-family="Space Mono,monospace" font-size="9" fill="currentColor" text-anchor="middle">700</text>
-
-          <!-- subtle grid lines -->
-          <line x1="70" y1="61"  x2="540" y2="61"  stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
-          <line x1="70" y1="101" x2="540" y2="101" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
-          <line x1="70" y1="142" x2="540" y2="142" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
-          <line x1="70" y1="182" x2="540" y2="182" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
-          <line x1="148" y1="20" x2="148" y2="200" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
-          <line x1="227" y1="20" x2="227" y2="200" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
-          <line x1="305" y1="20" x2="305" y2="200" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
-          <line x1="383" y1="20" x2="383" y2="200" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
-          <line x1="462" y1="20" x2="462" y2="200" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
-
-          <!-- RED DASHED fitted model: smooth decay -->
-          <path d="M70,61 C100,72 140,102 180,128 C220,150 260,162 300,168 C340,173 380,176 420,178 C460,180 500,181 540,182"
-                fill="none" stroke="#e92a7c" stroke-width="2.2" stroke-dasharray="7 4"/>
-
-          <!-- BLUE noisy measured data -->
-          <path d="M70,35 L73,42 L76,33 L79,48 L82,38 L85,52 L88,40 L91,56 L94,44 L97,61
-                   L100,50 L103,64 L106,53 L109,67 L112,57 L115,70 L118,60 L121,72 L124,63
-                   L127,75 L130,66 L133,77 L136,68 L139,79 L142,71 L145,81 L148,74 L151,84
-                   L154,77 L157,86 L160,80 L163,88 L166,83 L169,90 L172,85 L175,92 L178,87
-                   L181,93 L184,89 L187,95 L190,91 L193,96 L196,93 L199,97 L202,95 L205,99
-                   L208,96 L211,100 L214,98 L217,101 L220,99 L223,102 L226,100 L229,104
-                   L232,102 L235,105 L238,103 L241,106 L244,104 L247,107 L250,106 L253,109
-                   L256,107 L259,110 L262,109 L265,111 L268,110 L271,112 L274,111 L277,113
-                   L280,112 L283,114 L286,113 L289,115 L292,114 L295,116 L298,115 L301,117
-                   L304,116 L307,118 L310,117 L313,119 L316,118 L319,120 L322,119 L325,121
-                   L328,120 L331,122 L334,121 L337,123 L340,122 L343,124 L346,123 L349,125
-                   L352,124 L355,126 L358,125 L361,127 L364,126 L367,128 L370,127 L373,129
-                   L376,128 L379,130 L382,129 L385,131 L388,130 L391,132 L394,131 L397,133
-                   L400,132 L403,134 L406,133 L409,135 L412,134 L415,136 L418,135 L421,137
-                   L424,136 L427,138 L430,137 L433,139 L436,138 L439,140 L442,139 L445,141
-                   L448,140 L451,142 L454,141 L457,143 L460,142 L463,144 L466,143 L469,145
-                   L472,144 L475,146 L478,145 L481,147 L484,146 L487,148 L490,147 L493,149
-                   L496,148 L499,150 L502,149 L505,151 L508,150 L511,152 L514,151 L517,153
-                   L520,152 L523,154 L526,153 L529,155 L532,154 L535,156 L538,155 L540,156"
-                fill="none" stroke="#2255cc" stroke-width="1.5" stroke-linejoin="round"/>
-
-          <!-- legend -->
-          <rect x="386" y="26" width="148" height="44" fill="var(--scrap)" stroke="currentColor" stroke-width="1.2" opacity="0.92"/>
-          <line x1="394" y1="42" x2="416" y2="42" stroke="#e92a7c" stroke-width="2" stroke-dasharray="6 3"/>
-          <text x="422" y="46" font-family="Space Mono,monospace" font-size="9" fill="currentColor">Fitted model</text>
-          <line x1="394" y1="59" x2="416" y2="59" stroke="#2255cc" stroke-width="1.8"/>
-          <text x="422" y="63" font-family="Space Mono,monospace" font-size="9" fill="currentColor">Measured</text>
-
-          <!-- results annotation -->
-          <text x="76" y="234" font-family="Space Mono,monospace" font-size="10" fill="currentColor" font-weight="700">Thickness: 86.99 nm</text>
-          <text x="310" y="234" font-family="Space Mono,monospace" font-size="10" fill="currentColor" font-weight="700">RMSE: 0.0225</text>
-
-        </svg>
-        <figcaption>Best measurement result — a wafer labeled ~100 nm in the lab came back 86.99 nm with RMSE 0.0225 after averaging multiple samples to reduce ambient noise. Measured (blue) vs. Fresnel thin-film model (red dashed).</figcaption>
+        <img src="sio2-lab-setup.jpg" alt="The full measurement rig: Mitutoyo microscope with blue OceanOptics HR2000+ fiber cable routing into the eyepiece tube, gold wafer stage below the objective, and DCM motorized stage to the right.">
+        <figcaption>The full rig — Mitutoyo microscope with the OceanOptics HR2000+ fiber (blue cable) routed into the eyepiece tube. The tungsten halogen source illuminates from below; reflected light travels back up into the spectrometer.</figcaption>
       </figure>
 
       <section class="proj-section">
@@ -192,6 +100,11 @@
           Power Reflectance = |r<sub>total</sub>|<sup>2</sup>
         </p>
 
+        <figure class="proj-fig" style="margin-bottom:1.4em;">
+          <img src="sio2-fresnel-derivation.png" alt="Handwritten derivation of the Fresnel thin-film model showing beam splitting at two interfaces, the geometric series sum for r_total, and the final closed-form expression.">
+          <figcaption>Working out r<sub>total</sub> by hand — summing partial reflections Beam 1, Beam 2… as a geometric series, then collapsing to the closed form used in the optimizer.</figcaption>
+        </figure>
+
         <p>
           <strong>Wavelength-dependent indices.</strong> SiO&#x2082;'s index uses the Sellmeier equation with well-documented coefficients. Silicon's complex index (real + imaginary, accounting for absorption) is trickier — I inserted 400 tabulated data points each for the real and imaginary components and fit a linear interpolation across the visible range. Close enough for the application, and much simpler than a full dispersion model.
         </p>
@@ -233,9 +146,18 @@
         <span class="eyebrow">05 &middot; Gallery</span>
         <h2 class="proj-h2">Gallery</h2>
         <div class="gallery">
-          <figure class="shot"><div class="shot-ph">Spectrometer setup</div><figcaption>HR2000+ fiber probe mounted in the microscope eyepiece over the wafer stage.</figcaption></figure>
-          <figure class="shot"><div class="shot-ph">Program output</div><figcaption>GUI showing measured vs. fitted reflectance with live thickness and RMSE readout.</figcaption></figure>
-          <figure class="shot"><div class="shot-ph">Wafer color</div><figcaption>Thermal oxide on silicon under white light — the color is the data.</figcaption></figure>
+          <figure class="shot">
+            <img src="sio2-lab-setup.jpg" alt="Mitutoyo microscope with OceanOptics HR2000+ fiber cable, gold wafer stage, and motorized positioning stage.">
+            <figcaption>The measurement rig — Mitutoyo scope, HR2000+ (blue fiber), and motorized stage for repositioning between spots.</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="sio2-result-single.png" alt="GUI output showing measured (blue noisy) vs fitted model (red dashed) reflectance. Single frame result: 86.83 nm, RMSE 0.0341.">
+            <figcaption>Single-frame result — 86.83 nm, RMSE 0.0341. UV noise from the 50 ms integration pulls the measured curve above the model at short wavelengths.</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="sio2-result-averaged.png" alt="Same GUI after averaging multiple acquisitions. Measured curve is visibly smoother and sits much closer to the fitted model. Result: 86.99 nm, RMSE 0.0225.">
+            <figcaption>After averaging — 86.99 nm, RMSE 0.0225. The UV shoulder settles down and the fit is visibly tighter across the full 400–700 nm window.</figcaption>
+          </figure>
         </div>
       </section>
 
@@ -250,7 +172,7 @@
       <div class="meta-row"><span class="meta-k">Instrument</span><span class="meta-v">OceanOptics HR2000+</span></div>
       <div class="meta-row"><span class="meta-k">Tools</span><span class="meta-v">Python &middot; scipy &middot; Fresnel model &middot; Sellmeier</span></div>
       <div class="meta-row"><span class="meta-k">Best result</span><span class="meta-v">86.99 nm &middot; RMSE 0.0225</span></div>
-      <div class="meta-row"><span class="meta-k">Links</span><span class="meta-v"><span class="meta-todo"><a href="https://docs.google.com/document/d/1cTT_bAoo_6ZGi4BXcy5A9vj5EaCYOQLa0lxuqrX5-NQ/edit?usp=sharing">Report</a>s</span></span></div>
+      <div class="meta-row"><span class="meta-k">Links</span><span class="meta-v"><span class="meta-todo">report in progress</span></span></div>
     </aside>
   </div>
 
