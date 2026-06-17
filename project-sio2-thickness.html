@@ -91,9 +91,7 @@
     <div class="chips">
       <span class="chip">python</span>
       <span class="chip">spectroscopy</span>
-      <span class="chip">fresnel equations</span>
       <span class="chip">semiconductor</span>
-      <span class="chip">IMS lab</span>
     </div>
   </header>
 
@@ -102,20 +100,20 @@
 
       <figure class="proj-fig">
         <img src="sio2-lab-setup.jpg" alt="The full measurement rig: Mitutoyo microscope with blue OceanOptics HR2000+ fiber cable routing into the eyepiece tube, gold wafer stage below the objective, and DCM motorized stage to the right." style="display:block;width:100%;height:auto;max-height:420px;object-fit:cover;object-position:center top;">
-        <figcaption>The full rig — Mitutoyo microscope with the OceanOptics HR2000+ fiber (blue cable) routed into the eyepiece tube. The tungsten halogen source illuminates from below; reflected light travels back up into the spectrometer.</figcaption>
+        <figcaption>The setup: Mitutoyo microscope with the OceanOptics HR2000+ fiber (blue cable) routed into the eyepiece tube. The tungsten halogen source is connected through a waveguide to the microscope; reflected light travels back up into the spectrometer.</figcaption>
       </figure>
 
       <section class="proj-section">
         <span class="eyebrow">01 &middot; Overview</span>
         <h2 class="proj-h2">Overview</h2>
         <p>
-          When a Silicon wafer grows an oxide layer it picks up a visible color — the same thin-film interference you see in a soap bubble. The color encodes the thickness. I built a Python tool to decode it: feed in a reflectance spectrum from an OceanOptics HR2000+, get back a SiO&#x2082; thickness in nanometers.
+          When a Silicon wafer grows an oxide layer it picks up a visible color. This thin-film interference can be seen in more common things like soap bubbles. The color for Silicon Oxide however, encodes its thickness. I built a Python tool to decode it by measuring the reflectance spectrum using an OceanOptics HR2000+ and get back a SiO&#x2082; thickness in nanometers.
         </p>
         <p>
-          This runs in Prof. Gokirmak's semiconductor fabrication lab at UConn's Institute of Materials Science. Oxide thickness governs dielectric characteristics, anti-contamination, masking capability, and isolation potential — and measuring it with any physical contact instrument on a nanometer-scale film is essentially impossible without damaging the structure. Optical, non-destructive is the right call.
+          This runs in Prof. Gokirmak's semiconductor fabrication lab to ensure proper characterization of wafers. Oxide thickness governs dielectric characteristics, anti-contamination, masking capability, and isolation potential. Being able measuring it with any physical contact instrument on a nanometer-scale film is essentially impossible without damaging the structure. This is an optical, non destructive means of measuring the wafer with high accuracy.
         </p>
         <p>
-          The tool targets thin films in the 1–200 nm range, where the oxide is too thin to produce repeating interference fringes. That rules out the Fast Fourier Transform approach used for thicker films. Instead, thickness is extracted by fitting a Fresnel reflection model to the absolute reflectance envelope using bounded least-squares optimization.
+          The tool targets thin films in the 1–200 nm range, where the oxide is too thin to produce repeating interference fringes. That rules out the Fast Fourier Transform approach used for thicker films. Instead, thickness is extracted by fitting a Fresnel reflection model to the absolute reflectance measurements using bounded least-squares optimization.
         </p>
       </section>
 
@@ -124,7 +122,7 @@
         <h2 class="proj-h2">How it works / the build</h2>
 
         <p>
-          The spectrometer's optical fiber sits in a specialized 3D-printed mount that positions it in the center of a microscope eyepiece tube. A tungsten halogen source illuminates the sample; the HR2000+ captures the reflected spectrum to within 0.2 nm resolution.
+          The spectrometer's optical fiber sits in a specialized 3D-printed mount that positions it in the center of a microscope eyepiece tube. A tungsten halogen source illuminates the sample and the HR2000+ captures the reflected spectrum to within 0.2 nm resolution.
         </p>
 
         <p>
@@ -139,11 +137,11 @@
         </p>
 
         <p>
-          Dark measurements — taken with the bulb on but the microscope closed — are subtracted from both sample and reference first. Like zeroing a scale before weighing. Skipping this step ruins the result.
+          Dark measurements — taken with the bulb on but the microscope closed — are subtracted from both sample and reference first. Like zeroing a scale before weighing. Skipping this step can ruin the result.
         </p>
 
         <p>
-          <strong>The Fresnel model.</strong> With clean reflectance in hand, I treat the SiO&#x2082; as a thin film on a semi-infinite silicon substrate. Silicon's high absorption means light never reaches the back face, so only two interfaces matter: air–oxide and oxide–silicon. Summing the partial reflections via Fresnel equations gives the total amplitude reflectance coefficient r<sub>total</sub>, which depends only on known wavelength &#955; and unknown oxide thickness d:
+          <strong>The Fresnel model.</strong> With clean, measured reflectance, I treat the SiO&#x2082; as a thin film on a semi-infinite silicon substrate. Silicon's high absorption means light never reaches the back face, so only two interfaces matter: air–oxide and oxide–silicon. Summing the partial reflections via Fresnel equations gives the total amplitude reflectance coefficient r<sub>total</sub>, which depends only on known wavelength &#955; and unknown oxide thickness d:
         </p>
 
         <p style="font-family:var(--mono);font-size:.88rem;background:var(--scrap);border:2px solid var(--ink);padding:14px 16px;display:inline-block;max-width:100%;margin-bottom:1em;line-height:1.9;">
@@ -154,7 +152,7 @@
 
         <figure class="proj-fig" style="margin-bottom:1.4em;">
           <img src="sio2-fresnel-derivation.png" alt="Handwritten derivation of the Fresnel thin-film model showing beam splitting at two interfaces, the geometric series sum for r_total, and the final closed-form expression." style="display:block;width:100%;height:auto;max-height:380px;object-fit:contain;">
-          <figcaption>Working out r<sub>total</sub> by hand — summing partial reflections Beam 1, Beam 2… as a geometric series, then collapsing to the closed form used in the optimizer.</figcaption>
+          <figcaption>Working out r<sub>total</sub> by hand. Total sum of partial reflections Beam 1, Beam 2… as a geometric series, then collapsing to the closed form used in the optimizer.</figcaption>
         </figure>
 
         <p>
