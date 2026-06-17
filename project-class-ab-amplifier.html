@@ -15,18 +15,87 @@
   })();
 </script>
 <link rel="stylesheet" href="styles.css">
+<style>
+  /* ---- video grid ---- */
+  .video-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+    gap:18px;
+    margin-top:18px;
+  }
+  .vid-card{
+    background:var(--scrap);
+    border:2px solid var(--ink);
+    box-shadow:4px 5px 0 var(--shadow);
+    padding:10px 10px 6px;
+    transition:background-color .35s ease,border-color .35s ease,box-shadow .35s ease;
+  }
+  .vid-card video{
+    display:block;
+    width:100%;
+    height:auto;
+    border:1.5px solid var(--line);
+    background:#000;
+  }
+  .vid-card figcaption{
+    font-size:.74rem;
+    color:var(--muted);
+    margin-top:.45em;
+  }
+  /* ---- result graphs ---- */
+  .results-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+    gap:18px;
+    margin-top:18px;
+  }
+  .result-fig{
+    margin:0;
+    background:var(--scrap);
+    border:2px solid var(--ink);
+    box-shadow:4px 5px 0 var(--shadow);
+    padding:10px 10px 6px;
+    transition:background-color .35s ease,border-color .35s ease,box-shadow .35s ease;
+  }
+  .result-fig img{
+    display:block;
+    width:100%;
+    height:auto;
+    border:1.5px solid var(--line);
+  }
+  .result-fig figcaption{
+    font-size:.74rem;
+    color:var(--muted);
+    margin-top:.45em;
+  }
+  /* ---- key stats strip ---- */
+  .stat-strip{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+    margin:18px 0 4px;
+  }
+  .stat{
+    background:var(--ink);
+    color:var(--paper);
+    padding:.5em 1em;
+    font-family:var(--mono);
+    font-size:.82rem;
+    font-weight:700;
+    transition:background-color .35s ease,color .35s ease;
+  }
+  .stat span{
+    display:block;
+    font-size:.6rem;
+    font-weight:400;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    opacity:.7;
+    margin-bottom:.15em;
+  }
+</style>
 </head>
 <body>
-
-<!--
-  PROJECT PAGE — safe to edit by hand.
-  * Replace each <p class="placeholder">...</p> block with your own write-up.
-  * Add a photo: swap a <div class="shot-ph">Add a photo</div> for
-      <img src="img/your-photo.jpg" alt="what it shows">
-    (make an "img" folder next to these files and drop pictures in).
-  * Fill the "add ..." TODO items in the At-a-glance sidebar.
-  * Title / status / tags are set in the <header> just below.
--->
 
 <nav class="nav" aria-label="Primary">
   <a class="me" href="index.html">WILL<b>O</b>W</a>
@@ -47,51 +116,125 @@
     <h1 class="proj-title">Class AB Amplifier</h1>
     <p class="proj-spec">MJL3281A / MJL1302A outputs &middot; ~77% efficiency near peak</p>
     <div class="chips"><span class="chip">analog</span><span class="chip">audio</span><span class="chip">ltspice</span></div>
-    
   </header>
 
   <div class="wrap proj-wrap">
     <div class="proj-main">
 
-      <!-- Hero image: replace the box below with <img src="img/your-photo.jpg" alt="..."> -->
-      <figure class="proj-fig"><div class="img-ph">Hero image &mdash; add a photo</div></figure>
+      <!-- Hero: efficiency graph as the lead visual -->
+      <figure class="proj-fig">
+        <img src="img/Graph3.png" alt="Efficiency curve: peak output 8.70 W at 77.3% efficiency on an 8 Ω load driven from 30 V">
+        <figcaption>Efficiency vs. output power &mdash; peaks at 77.3 % near full drive on an 8 Ω load at 30 V supply.</figcaption>
+      </figure>
 
+      <!-- 01 Overview -->
       <section class="proj-section">
         <span class="eyebrow">01 &middot; Overview</span>
         <h2 class="proj-h2">Overview</h2>
-        <p>This power-amp was heavily based off of Rod Elliot's P217 amplifier design, but instead i hand measured the Vbe values of my transistors, measured the drops of my diodes,
-          and kinda just... threw stuff together that made it respond better. I built this for my final project in ECE 3201 in Spring 2026. This was a great experience helping me
-        understand how amplifiers work, and I look forward to building another amplifier, hopefully on my own next time.</p>
-        <p class="placeholder">Rod Elliot is actually goated (at way more than just audio too!) &mdash; please check him out at <a href="https://sound-au.com/index.html">Elliot Sound Products</a></p>
+        <p>This power amp was built as the ECE 3201 final project in Spring 2026, in collaboration with Karen He. The goal: a portable speaker loud enough for outdoor use (beach, picnic) without breaking the bank &mdash; total BOM landed around $40.</p>
+        <p>The design started from Rod Elliot's <a href="https://sound-au.com/project217.htm">P217</a> schematic, but I hand-measured the V<sub>be</sub> values of my actual transistors and diode forward drops, then tweaked component values until the real-world response matched the sim. It was a fantastic exercise in understanding the gap between a schematic and a working board.</p>
+        <p>Rod Elliot is genuinely one of the best resources on the web for audio electronics &mdash; <a href="https://sound-au.com/index.html">Elliot Sound Products</a> is worth a bookmark whether or not you're building amps.</p>
       </section>
 
+      <!-- 02 Build -->
       <section class="proj-section">
         <span class="eyebrow">02 &middot; How it works</span>
         <h2 class="proj-h2">How it works / the build</h2>
-        <p class="placeholder">Since a majority of this build relied on Rod Elliots design, I will not include a full schematic (which is readily available in the links provided)
-        and I will instead paraphrase the build, and describe what changes I made and how it improved the circuit.</p>
-        <p>Fill in later...</p>
+        <p>Since the design follows Rod Elliot's P217 closely, I won't reproduce the full schematic here &mdash; it's freely available at the link in the sidebar. Instead, here's the architecture and the tweaks that mattered.</p>
+        <p>The topology is a standard complementary push-pull Class AB output stage. A 2N3906 PNP input stage feeds a VAS (voltage amplification stage) built around 2N2222 transistors. A diode string (1N4007 × 6) sets the bias voltage across the output stage, with a trimpot (R14) to dial in the quiescent current and minimize crossover distortion without cooking the transistors.</p>
+        <p>The output transistors are the <strong>MJL3281A</strong> (NPN) and <strong>MJL1302A</strong> (PNP) &mdash; rated for high current and needed here because the 8 Ω woofer demands ~1.65 A at full power, well beyond what the smaller 2N-series transistors in our parts kit could survive. Both are mounted to a 150×100×18 mm aluminium heatsink to keep junction temps in range.</p>
+        <p>The speaker is a <strong>4PF-8 4″ surround woofer</strong> with a resonant frequency around 137 Hz and a usable range of 100 Hz–10 kHz. For this project that's the right band, though a future version with a dedicated subwoofer (20–200 Hz) and tweeter (2–20 kHz) would fill out the frequency response considerably.</p>
+        <p>Key circuit values: R6 = 12 kΩ (supply rail), R7 = R8 = 1.8 kΩ (VAS collectors), R9 = 82.5 Ω (bias), R11 = 8 Ω (load), R15 = 20 kΩ (feedback), with 47 µF supply bypass caps and a 4700 µF output capacitor. The input is AC-coupled through a 330 µF cap.</p>
       </section>
 
+      <!-- 03 Results -->
       <section class="proj-section">
         <span class="eyebrow">03 &middot; Results</span>
         <h2 class="proj-h2">Results &amp; measurements</h2>
-        <p class="placeholder">What did you measure? Add plots, tables, or the headline figures &mdash; the honest ones, including anything that didn't hit spec.</p>
+
+        <div class="stat-strip">
+          <div class="stat"><span>Peak output</span>8.70 W</div>
+          <div class="stat"><span>Peak efficiency</span>77.3 %</div>
+          <div class="stat"><span>Load</span>8 Ω</div>
+          <div class="stat"><span>Supply</span>30 V</div>
+          <div class="stat"><span>Idle dissipation</span>0.90 W</div>
+          <div class="stat"><span>Max dissipation</span>4.49 W</div>
+        </div>
+
+        <p>Efficiency climbs steeply with output power, which is exactly the Class AB behaviour you want &mdash; low dissipation at idle, high efficiency near clip. The theoretical maximum for a Class AB stage driving a resistive load from a dual rail is around 78 %; we hit 77.3 %, so the bias tuning worked out well.</p>
+
+        <div class="results-grid">
+          <figure class="result-fig">
+            <img src="img/Graph3.png" alt="Efficiency curve showing peak at 77.3% near 8.70 W output">
+            <figcaption>Efficiency (%) and output power vs. drive level &mdash; approaches theoretical 78 % max near clip.</figcaption>
+          </figure>
+          <figure class="result-fig">
+            <img src="img/Graph1.png" alt="Stacked bar chart of power dissipated, output, and supply power at each Vpp level">
+            <figcaption>Power budget at each drive level: red = dissipated, blue = delivered to load, green = supply draw.</figcaption>
+          </figure>
+          <figure class="result-fig">
+            <img src="img/Graph2.png" alt="Oscilloscope FFT showing a clean 2.5 kHz fundamental with low harmonic floor">
+            <figcaption>FFT of the output at 2.5 kHz &mdash; dominant fundamental, low harmonic floor confirms low distortion.</figcaption>
+          </figure>
+        </div>
       </section>
 
+      <!-- 04 Notes -->
       <section class="proj-section">
         <span class="eyebrow">04 &middot; Notes</span>
         <h2 class="proj-h2">Challenges &amp; what's next</h2>
-        <p class="placeholder">What fought back, what you learned, and where this goes next.</p>
+        <p>The trickiest part was setting the quiescent bias. Too low and you hear crossover distortion; too high and the output stage runs hot and wastes power at idle. I iterated on the diode string count and the trimpot setting while watching idle dissipation on the bench supply until I found a stable point.</p>
+        <p>Hand-measuring V<sub>be</sub> for each transistor was slower than just trusting the datasheet typical, but it paid off &mdash; the simulated and measured waveforms matched much more closely than they did with nominal values.</p>
+        <p>If I built this again from scratch (and I plan to), I'd start with a proper PCB instead of breadboard/protoboard, add a soft-start relay to prevent the speaker pop on power-up, and add a crossover network to pair the woofer with a tweeter. A three-way enclosure with proper port tuning would push the bass extension noticeably lower than the 137 Hz woofer resonance allows in free air.</p>
       </section>
 
+      <!-- 05 Demo Videos -->
       <section class="proj-section">
-        <span class="eyebrow">05 &middot; Gallery</span>
+        <span class="eyebrow">05 &middot; Demo</span>
+        <h2 class="proj-h2">Demo videos</h2>
+        <p>Three bench clips: the amp responding to a swept sine, the bias point measured at idle, and the FFT of a 2.5 kHz tone.</p>
+        <div class="video-grid">
+          <figure class="vid-card">
+            <video controls preload="metadata">
+              <source src="img/Vid1.mov" type="video/mp4">
+              Your browser doesn't support video. <a href="img/Vid1.mov">Download Vid1.mov</a>
+            </video>
+            <figcaption>Output waveform responding to music input &mdash; scope CH1/CH2 overlaid.</figcaption>
+          </figure>
+          <figure class="vid-card">
+            <video controls preload="metadata">
+              <source src="img/Vid2.mov" type="video/mp4">
+              Your browser doesn't support video. <a href="img/Vid2.mov">Download Vid2.mov</a>
+            </video>
+            <figcaption>Idle bias measurement &mdash; 42 Hz resonance visible, 839 mV quiescent output.</figcaption>
+          </figure>
+          <figure class="vid-card">
+            <video controls preload="metadata">
+              <source src="img/Vid3.mov" type="video/mp4">
+              Your browser doesn't support video. <a href="img/Vid3.mov">Download Vid3.mov</a>
+            </video>
+            <figcaption>FFT at 2.5 kHz &mdash; clean fundamental, harmonic floor well below noise.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- 06 Gallery -->
+      <section class="proj-section">
+        <span class="eyebrow">06 &middot; Gallery</span>
         <h2 class="proj-h2">Gallery</h2>
         <div class="gallery">
-          <figure class="shot"><div class="shot-ph">Add a photo</div><figcaption>Caption&hellip;</figcaption></figure>
-          <figure class="shot"><div class="shot-ph">Add a photo</div><figcaption>Caption&hellip;</figcaption></figure>
-          <figure class="shot"><div class="shot-ph">Add a photo</div><figcaption>Caption&hellip;</figcaption></figure>
+          <figure class="shot">
+            <img src="img/Graph3.png" alt="Efficiency vs output power curve">
+            <figcaption>Efficiency curve &mdash; 77.3% peak</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="img/Graph1.png" alt="Power budget bar chart at each Vpp">
+            <figcaption>Power budget by drive level</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="img/Graph2.png" alt="Oscilloscope FFT at 2.5 kHz">
+            <figcaption>FFT &mdash; 2.5 kHz fundamental</figcaption>
+          </figure>
         </div>
       </section>
 
@@ -99,12 +242,14 @@
 
     <aside class="proj-meta">
       <h2 class="meta-h">At a glance</h2>
-      <div class="meta-row"><span class="meta-k">Status</span><span class="meta-v">Shipped</span></div>
-      <div class="meta-row"><span class="meta-k">Timeline</span><span class="meta-v meta-todo">April 2026-May 2026</span></div>
-      <div class="meta-row"><span class="meta-k">Role</span><span class="meta-v meta-todo">Schematic Reader & Tinkerer</span></div>
-      <div class="meta-row"><span class="meta-k">Tools</span><span class="meta-v">analog &middot; audio &middot; ltspice</span></div>
-      <div class="meta-row"><span class="meta-k">Links</span><span class="meta-v"><span class="meta-todo"><a href="https://sound-au.com/project217.htm">https://sound-au.com/project217.htm</a>
-</span></span></div>
+      <div class="meta-row"><span class="meta-k">Status</span><span class="meta-v">Complete</span></div>
+      <div class="meta-row"><span class="meta-k">Timeline</span><span class="meta-v">April 2026 – May 2026</span></div>
+      <div class="meta-row"><span class="meta-k">Role</span><span class="meta-v">Co-designer &amp; builder (w/ Karen He)</span></div>
+      <div class="meta-row"><span class="meta-k">Class</span><span class="meta-v">ECE 3201 &mdash; Spring 2026</span></div>
+      <div class="meta-row"><span class="meta-k">Tools</span><span class="meta-v">LTspice &middot; bench PSU &middot; TBS1064 oscilloscope &middot; hand measurements</span></div>
+      <div class="meta-row"><span class="meta-k">Output transistors</span><span class="meta-v">MJL3281A (NPN) &middot; MJL1302A (PNP)</span></div>
+      <div class="meta-row"><span class="meta-k">Speaker</span><span class="meta-v">4PF-8 4″ woofer &mdash; 8 Ω</span></div>
+      <div class="meta-row"><span class="meta-k">Links</span><span class="meta-v"><a href="https://sound-au.com/project217.htm" target="_blank" rel="noopener">Rod Elliot P217</a></span></div>
     </aside>
   </div>
 
