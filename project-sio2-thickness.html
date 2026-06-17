@@ -15,6 +15,58 @@
   })();
 </script>
 <link rel="stylesheet" href="styles.css">
+<style>
+  /* ── lightbox ── */
+  .lb-trigger { cursor: zoom-in; }
+
+  #lightbox {
+    position: fixed; inset: 0; z-index: 200;
+    background: rgba(23,20,17,.92);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 16px; padding: 24px;
+    opacity: 0; pointer-events: none;
+    transition: opacity .22s ease;
+  }
+  #lightbox.open { opacity: 1; pointer-events: auto; }
+
+  #lb-img {
+    max-width: min(92vw, 1100px);
+    max-height: 80vh;
+    width: auto; height: auto;
+    object-fit: contain;
+    border: 2px solid var(--ink);
+    box-shadow: 8px 10px 0 var(--pink);
+    transform: scale(.94);
+    transition: transform .25s ease;
+  }
+  #lightbox.open #lb-img { transform: scale(1); }
+
+  #lb-caption {
+    font-family: var(--mono);
+    font-size: .82rem;
+    color: var(--ink);
+    background: var(--paper);
+    border: 2px solid var(--ink);
+    padding: .55em 1em;
+    max-width: min(92vw, 680px);
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  #lb-close {
+    position: fixed; top: 16px; right: 18px;
+    font-family: var(--mono); font-size: 1rem; font-weight: 700;
+    letter-spacing: .08em; text-transform: uppercase;
+    background: var(--pink); color: var(--scrap);
+    border: 2px solid var(--ink);
+    padding: .4em .8em; cursor: pointer;
+    box-shadow: 3px 3px 0 var(--ink);
+    transition: transform .1s, box-shadow .1s;
+  }
+  #lb-close:hover { transform: translate(-2px,-2px); box-shadow: 5px 5px 0 var(--ink); }
+  #lb-close:focus-visible { outline: 3px solid var(--paper); outline-offset: 2px; }
+</style>
 </head>
 <body>
 
@@ -188,6 +240,69 @@
 </main>
 
 <button class="to-top" type="button" aria-label="Back to top" title="Back to top">&#8593;</button>
+
+<!-- ── lightbox overlay ── -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button id="lb-close" aria-label="Close image viewer">&#x2715; Close</button>
+  <img id="lb-img" src="" alt="">
+  <p id="lb-caption"></p>
+</div>
+
 <script src="app.js"></script>
+<script>
+(function(){
+  var lb      = document.getElementById('lightbox');
+  var lbImg   = document.getElementById('lb-img');
+  var lbCap   = document.getElementById('lb-caption');
+  var lbClose = document.getElementById('lb-close');
+  var prevFocus = null;
+
+  function open(img) {
+    prevFocus = document.activeElement;
+    lbImg.src = img.src;
+    lbImg.alt = img.alt;
+    // grab caption from the nearest <figcaption>
+    var fig = img.closest('figure');
+    var cap = fig ? fig.querySelector('figcaption') : null;
+    lbCap.innerHTML = cap ? cap.innerHTML : '';
+    lbCap.style.display = cap ? '' : 'none';
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    lbClose.focus();
+  }
+
+  function close() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+    // wait for fade-out before clearing src so image doesn't snap away
+    setTimeout(function(){ lbImg.src = ''; }, 230);
+    if(prevFocus) prevFocus.focus();
+  }
+
+  // make every <img> inside a <figure> clickable
+  document.querySelectorAll('figure img').forEach(function(img){
+    img.classList.add('lb-trigger');
+    img.setAttribute('tabindex', '0');
+    img.setAttribute('role', 'button');
+    img.setAttribute('aria-label', 'View full size');
+    img.addEventListener('click', function(){ open(img); });
+    img.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); open(img); }
+    });
+  });
+
+  lbClose.addEventListener('click', close);
+
+  // click outside image = close
+  lb.addEventListener('click', function(e){
+    if(e.target === lb) close();
+  });
+
+  // Esc = close
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && lb.classList.contains('open')) close();
+  });
+})();
+</script>
 </body>
 </html>
