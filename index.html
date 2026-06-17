@@ -30,6 +30,94 @@
   [data-theme="dark"] .about-portrait .p-light{display:none}
   [data-theme="dark"] .about-portrait .p-dark{display:block}
   .about-col{display:grid;gap:24px;align-items:start}
+
+  /* ===== WRITING SECTION ===== */
+  .writing-list{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:0;
+    margin-top:30px;
+    border-top:3px solid var(--ink);
+  }
+  .writing-entry{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:4px;
+    padding:22px 0 20px;
+    border-bottom:1.5px dashed var(--line);
+    position:relative;
+    transition:background-color .15s;
+  }
+  @media(min-width:600px){
+    .writing-entry{
+      grid-template-columns:160px 1fr;
+      gap:0 24px;
+      align-items:start;
+    }
+    .we-meta{padding-top:3px}
+  }
+  .we-meta{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+    margin-bottom:6px;
+  }
+  @media(min-width:600px){.we-meta{margin-bottom:0}}
+  .we-tag{
+    display:inline-block;
+    font-size:.62rem;
+    font-weight:700;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    border:1.5px solid var(--ink);
+    padding:.25em .5em;
+    align-self:flex-start;
+    transition:border-color .35s ease,color .35s ease;
+  }
+  .we-date{
+    font-size:.7rem;
+    color:var(--muted);
+    letter-spacing:.06em;
+  }
+  .we-title{
+    font-family:var(--display);
+    font-weight:400;
+    font-size:1.2rem;
+    line-height:1.08;
+    margin-bottom:.3em;
+    transition:color .15s;
+  }
+  .writing-entry:hover .we-title{color:var(--pink)}
+  .we-desc{
+    font-size:.9rem;
+    color:var(--muted-strong);
+    max-width:58ch;
+    margin-bottom:.5em;
+  }
+  .we-desc.placeholder{
+    border-left:3px dashed var(--pink);
+    background:color-mix(in srgb,var(--pink) 7%,transparent);
+    padding:8px 12px;
+    font-style:italic;
+    color:var(--muted);
+  }
+  .we-read{
+    display:inline-flex;
+    align-items:center;
+    gap:.35em;
+    font-family:var(--mono);
+    font-weight:700;
+    font-size:.7rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    text-decoration:none;
+    color:var(--ink);
+    border-bottom:2px solid var(--pink);
+    padding-bottom:1px;
+    align-self:flex-start;
+    transition:color .15s;
+  }
+  a.we-read:hover{color:var(--pink)}
 </style>
 </head>
 <body>
@@ -42,6 +130,7 @@
     <a class="tab" href="#research">research</a>
     <a class="tab" href="#work">work</a>
     <a class="tab" href="#teaching">teaching</a>
+    <a class="tab" href="#writing">writing</a>
     <a class="tab" href="#contact">contact</a>
   </div>
   <div class="modesel" role="group" aria-label="Color mode">
@@ -130,45 +219,17 @@
           <h3 class="lab-title">Measuring films by their color</h3>
           <p>I built a python program to measure SiO&#8322; thickness on silicon with an OceanOptics HR2000+. Report in progress.</p>
           <figure>
-            <svg viewBox="0 0 360 168" role="img" aria-label="Thin-film reflectance: noisy measured spectrum decaying from 0.32 to 0.13, with smooth fitted model below it">
-              <!-- axes -->
-              <line x1="34" y1="16" x2="34" y2="140" stroke="currentColor" stroke-width="2"/>
-              <line x1="34" y1="140" x2="344" y2="140" stroke="currentColor" stroke-width="2"/>
-              <!-- axis labels -->
-              <text x="8" y="22" font-family="Space Mono, monospace" font-size="10" fill="currentColor">R</text>
-              <text x="322" y="156" font-family="Space Mono, monospace" font-size="10" fill="currentColor">&#955;</text>
-              <!-- x tick labels -->
-              <text x="34"  y="154" font-family="Space Mono, monospace" font-size="8" fill="currentColor" text-anchor="middle">400</text>
-              <text x="189" y="154" font-family="Space Mono, monospace" font-size="8" fill="currentColor" text-anchor="middle">550</text>
-              <text x="344" y="154" font-family="Space Mono, monospace" font-size="8" fill="currentColor" text-anchor="middle">700</text>
-              <!-- red dashed fitted model: smooth decay -->
-              <path d="M34,42 C60,52 90,72 120,90 C150,107 175,118 210,124 C240,129 275,130 310,129 C325,129 336,130 344,131"
-                    fill="none" stroke="#e92a7c" stroke-width="2.2" stroke-dasharray="6 3"/>
-              <!-- blue noisy measured: same decay but noisier, sitting above fitted -->
-              <clipPath id="idxClip"><rect x="34" y="16" width="310" height="124"/></clipPath>
-              <path clip-path="url(#idxClip)"
-                    d="M34,28 L37,25 L40,30 L43,22 L46,27 L49,23 L52,29 L55,25 L58,32 L61,27
-                       L64,35 L67,30 L70,38 L73,33 L76,42 L79,37 L82,46 L85,41 L88,50 L91,46
-                       L94,55 L97,51 L100,59 L103,55 L106,64 L109,60 L112,68 L115,64 L118,72
-                       L121,68 L124,76 L127,72 L130,80 L133,76 L136,84 L139,80 L142,87 L145,83
-                       L148,90 L151,87 L154,93 L157,90 L160,96 L163,93 L166,99 L169,96 L172,101
-                       L175,99 L178,103 L181,101 L184,105 L187,103 L190,107 L193,105 L196,109
-                       L199,107 L202,111 L205,109 L208,112 L211,110 L214,114 L217,112 L220,115
-                       L223,113 L226,116 L229,114 L232,117 L235,115 L238,118 L241,116 L244,119
-                       L247,117 L250,120 L253,118 L256,121 L259,119 L262,122 L265,120 L268,123
-                       L271,121 L274,123 L277,122 L280,124 L283,122 L286,125 L289,123 L292,125
-                       L295,124 L298,126 L301,124 L304,127 L307,125 L310,127 L313,126 L316,128
-                       L319,127 L322,129 L325,128 L328,129 L331,128 L334,130 L337,129 L340,131 L344,130"
-                    fill="none" stroke="#2255cc" stroke-width="1.5" stroke-linejoin="round"/>
-              <!-- legend -->
-              <line x1="186" y1="30" x2="206" y2="30" stroke="#e92a7c" stroke-width="1.8" stroke-dasharray="5 3"/>
-              <text x="210" y="34" font-family="Space Mono, monospace" font-size="8" fill="currentColor">fitted</text>
-              <line x1="186" y1="44" x2="206" y2="44" stroke="#2255cc" stroke-width="1.5"/>
-              <text x="210" y="48" font-family="Space Mono, monospace" font-size="8" fill="currentColor">measured</text>
+            <svg viewBox="0 0 360 168" role="img" aria-label="Reflectance spectrum showing thin-film interference fringes">
+              <line x1="34" y1="20" x2="34" y2="140" stroke="currentColor" stroke-width="2.5"/>
+              <line x1="34" y1="140" x2="344" y2="140" stroke="currentColor" stroke-width="2.5"/>
+              <text x="6" y="30" font-family="Space Mono, monospace" font-size="12" fill="currentColor">R</text>
+              <text x="320" y="158" font-family="Space Mono, monospace" font-size="12" fill="currentColor">&#955;</text>
+              <path d="M34 60 C 64 24, 94 24, 124 70 S 184 132, 214 80 S 274 30, 304 92 S 334 120, 344 104"
+                    fill="none" stroke="#e92a7c" stroke-width="3"/>
+              <text x="120" y="36" font-family="Space Mono, monospace" font-size="11" fill="currentColor">interference fringes</text>
             </svg>
-            <figcaption>86.99 nm oxide &mdash; thickness from fitting the reflectance envelope</figcaption>
+            <figcaption>oxide thickness falls out of the fringe spacing</figcaption>
           </figure>
-          <a class="card-open" href="project-sio2-thickness.html" style="margin-top:14px">Full write-up &rarr;</a>
         </article>
       </div>
     </div>
@@ -249,6 +310,50 @@
         <h3>TA, ECE 2001 &mdash; and my passion for teaching</h3>
         <p>I propose repeatable, intuition building practice sets into shifting the way students learn. I also make videos to guide my students when the patches get rough. All this lives free to the public at <a href="https://circuitspractice.org" target="_blank" rel="noopener">circuitspractice.org</a> and <a href="https://www.youtube.com/@SalixScience" target="_blank" rel="noopener">YouTube</a>.</p>
       </div>
+    </div>
+  </section>
+
+  <!-- ===== WRITING ===== -->
+  <section class="band" id="writing">
+    <div class="wrap">
+      <span class="eyebrow rise">Words</span>
+      <h2 class="band-title rise">What I <em>write</em></h2>
+      <p class="band-sub rise">Lab reports, technical notes, and whatever else ends up on paper.</p>
+
+      <div class="writing-list">
+
+        <!-- ── PLACEHOLDER ENTRIES — swap these for real pieces ── -->
+        <article class="writing-entry rise">
+          <div class="we-meta">
+            <span class="we-tag">lab report</span>
+            <span class="we-date">add date</span>
+          </div>
+          <h3 class="we-title">Add a title</h3>
+          <p class="we-desc placeholder">Paste a one- or two-sentence description of this piece here.</p>
+          <span class="we-read">add a link or file &rarr;</span>
+        </article>
+
+        <article class="writing-entry rise">
+          <div class="we-meta">
+            <span class="we-tag">essay</span>
+            <span class="we-date">add date</span>
+          </div>
+          <h3 class="we-title">Add a title</h3>
+          <p class="we-desc placeholder">Paste a one- or two-sentence description of this piece here.</p>
+          <span class="we-read">add a link or file &rarr;</span>
+        </article>
+
+        <article class="writing-entry rise">
+          <div class="we-meta">
+            <span class="we-tag">technical note</span>
+            <span class="we-date">add date</span>
+          </div>
+          <h3 class="we-title">Add a title</h3>
+          <p class="we-desc placeholder">Paste a one- or two-sentence description of this piece here.</p>
+          <span class="we-read">add a link or file &rarr;</span>
+        </article>
+
+      </div><!-- /.writing-list -->
     </div>
   </section>
 
