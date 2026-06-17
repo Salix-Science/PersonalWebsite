@@ -20,6 +20,14 @@
 </script>
 
 <link rel="stylesheet" href="styles.css">
+<style>
+  /* portrait in the About section */
+  .about-layout{display:grid;grid-template-columns:1fr;gap:28px;align-items:start}
+  @media(min-width:780px){.about-layout{grid-template-columns:300px 1fr}}
+  .about-portrait{margin:0}
+  .about-portrait img{display:block;width:100%;height:auto;transform:rotate(-1.1deg)}
+  .about-col{display:grid;gap:24px;align-items:start}
+</style>
 </head>
 <body>
 
@@ -64,15 +72,20 @@
     <div class="wrap">
       <span class="eyebrow rise">The short version</span>
       <h2 class="band-title rise">Who's <em>building</em> this</h2>
-      <div class="about-grid">
-        <div>
-          <p class="rise">I'm a UCONN electrical engineering student, working in two research labs and as a Circuits TA. I also have- lets see... 8 projects in progeess... </p>
-          <p class="rise">I love tackling new challenges (maybe a little too many), but the pursuit of learning always keeps me busy. Have something for me or just looking?</p>
+      <div class="about-layout">
+        <figure class="about-portrait rise">
+          <img src="willow-portrait.png" alt="Halftone portrait of Willow Pichardo" loading="lazy">
+        </figure>
+        <div class="about-col">
+          <div>
+            <p class="rise">I'm a UCONN electrical engineering student, working in two research labs and as a Circuits TA. I also have- lets see... 8 projects in progeess... </p>
+            <p class="rise">I love tackling new challenges (maybe a little too many), but the pursuit of learning always keeps me busy. Have something for me or just looking?</p>
+          </div>
+          <aside class="sticky-note rise">
+            <span class="lbl">For the record</span>
+            These projects <i>will</i> get done. The problem is that I want to learn anything and everything. My professor worries I'll be a master of none, but I bet I can be a master of some if I keep the way I'm going.
+          </aside>
         </div>
-        <aside class="sticky-note rise">
-          <span class="lbl">For the record</span>
-          These projects <i>will</i> get done. The problem is that I want to learn anything and everything. My professor worries I'll be a master of none, but I bet I can be a master of some if I keep the way I'm going.
-        </aside>
       </div>
     </div>
   </section>
