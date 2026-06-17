@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SiO₂ Thickness Measurement — Willow</title>
+<meta name="description" content="SiO₂ Thickness Measurement: OceanOptics HR2000+ · thin-film interference · Python">
+<script>
+  (function(){
+    try{
+      var s=localStorage.getItem('willow-theme');
+      var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', s||(d?'dark':'light'));
+    }catch(e){document.documentElement.setAttribute('data-theme','light');}
+  })();
+</script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="nav" aria-label="Primary">
+  <a class="me" href="index.html">WILL<b>O</b>W</a>
+  <a class="backlink" href="index.html#work">&larr; all work</a>
+  <div class="modesel" role="group" aria-label="Color mode">
+    <button class="modebtn" type="button" data-mode="light" aria-label="Light mode" title="Light mode">&#9728;</button>
+    <button class="modebtn" type="button" data-mode="dark" aria-label="Dark mode" title="Dark mode">&#9790;</button>
+  </div>
+</nav>
+
+<main>
+  <header class="proj-hero wrap">
+    <a class="proj-back" href="index.html#work">&larr; Back to all work</a>
+    <div class="proj-status">
+      <span class="stamp stamp--ship">Complete</span>
+      <span class="proj-kicker">Software &middot; metrology</span>
+    </div>
+    <h1 class="proj-title">SiO&#x2082; Thickness Tool</h1>
+    <p class="proj-spec">OceanOptics HR2000+ &middot; thin-film interference &middot; Python</p>
+    <div class="chips">
+      <span class="chip">python</span>
+      <span class="chip">spectroscopy</span>
+      <span class="chip">metrology</span>
+      <span class="chip">semiconductor</span>
+    </div>
+  </header>
+
+  <div class="wrap proj-wrap">
+    <div class="proj-main">
+
+      <!-- Hero SVG: reflectance spectrum with labeled features -->
+      <figure class="proj-fig">
+        <svg viewBox="0 0 560 220" role="img" aria-label="Reflectance spectrum showing thin-film interference fringes used to extract oxide thickness">
+          <!-- axes -->
+          <line x1="54" y1="16" x2="54" y2="172" stroke="currentColor" stroke-width="2.5"/>
+          <line x1="54" y1="172" x2="536" y2="172" stroke="currentColor" stroke-width="2.5"/>
+          <!-- axis labels -->
+          <text x="8" y="96" font-family="Space Mono,monospace" font-size="11" fill="currentColor" transform="rotate(-90,8,96)">Reflectance</text>
+          <text x="516" y="192" font-family="Space Mono,monospace" font-size="11" fill="currentColor">&#955; (nm)</text>
+          <!-- x tick labels -->
+          <text x="50" y="190" font-family="Space Mono,monospace" font-size="10" fill="currentColor" text-anchor="middle">400</text>
+          <text x="175" y="190" font-family="Space Mono,monospace" font-size="10" fill="currentColor" text-anchor="middle">500</text>
+          <text x="296" y="190" font-family="Space Mono,monospace" font-size="10" fill="currentColor" text-anchor="middle">600</text>
+          <text x="416" y="190" font-family="Space Mono,monospace" font-size="10" fill="currentColor" text-anchor="middle">700</text>
+          <text x="536" y="190" font-family="Space Mono,monospace" font-size="10" fill="currentColor" text-anchor="middle">800</text>
+          <!-- tick marks -->
+          <line x1="175" y1="170" x2="175" y2="178" stroke="currentColor" stroke-width="1.5"/>
+          <line x1="296" y1="170" x2="296" y2="178" stroke="currentColor" stroke-width="1.5"/>
+          <line x1="416" y1="170" x2="416" y2="178" stroke="currentColor" stroke-width="1.5"/>
+          <!-- raw spectrum (muted) -->
+          <path d="M54 120 C80 112,100 90,120 78 C140 66,155 55,170 48 C185 42,196 52,210 60
+                   C224 68,232 56,248 50 C264 44,275 60,292 68 C309 76,316 64,332 58
+                   C348 52,358 68,375 76 C392 84,399 72,416 66
+                   C433 60,443 74,460 80 C477 86,490 76,510 72 C525 70,532 74,536 76"
+                fill="none" stroke="currentColor" stroke-width="1.8" opacity="0.28" stroke-dasharray="5 4"/>
+          <!-- smoothed / fitted spectrum (pink) -->
+          <path d="M54 122 C75 110,98 88,118 76 C138 64,154 54,170 47
+                   C186 41,198 52,212 61 C226 70,234 57,250 49
+                   C266 42,278 59,294 68 C310 77,318 63,334 57
+                   C350 51,360 67,377 76 C394 85,401 71,418 65
+                   C435 59,445 73,462 80 C479 87,493 75,512 71 C526 68,534 72,536 74"
+                fill="none" stroke="#e92a7c" stroke-width="3" stroke-linejoin="round"/>
+          <!-- peak annotation lines -->
+          <line x1="170" y1="47" x2="170" y2="30" stroke="#e92a7c" stroke-width="1.2" stroke-dasharray="3 3"/>
+          <line x1="250" y1="49" x2="250" y2="30" stroke="#e92a7c" stroke-width="1.2" stroke-dasharray="3 3"/>
+          <line x1="334" y1="57" x2="334" y2="30" stroke="#e92a7c" stroke-width="1.2" stroke-dasharray="3 3"/>
+          <line x1="418" y1="65" x2="418" y2="30" stroke="#e92a7c" stroke-width="1.2" stroke-dasharray="3 3"/>
+          <!-- double-headed arrow for Δλ -->
+          <line x1="170" y1="26" x2="250" y2="26" stroke="currentColor" stroke-width="1.8"/>
+          <polygon points="170,26 178,22 178,30" fill="currentColor"/>
+          <polygon points="250,26 242,22 242,30" fill="currentColor"/>
+          <text x="204" y="21" font-family="Space Mono,monospace" font-size="10" fill="currentColor" text-anchor="middle">&#916;&#955;</text>
+          <!-- legend -->
+          <line x1="62" y1="148" x2="92" y2="148" stroke="currentColor" stroke-width="1.8" stroke-dasharray="5 4" opacity="0.4"/>
+          <text x="98" y="152" font-family="Space Mono,monospace" font-size="10" fill="currentColor" opacity="0.6">raw</text>
+          <line x1="62" y1="164" x2="92" y2="164" stroke="#e92a7c" stroke-width="2.5"/>
+          <text x="98" y="168" font-family="Space Mono,monospace" font-size="10" fill="currentColor">fitted</text>
+          <!-- equation box -->
+          <rect x="370" y="130" width="162" height="36" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.4"/>
+          <text x="451" y="146" font-family="Space Mono,monospace" font-size="10" fill="currentColor" text-anchor="middle">d = &#955;&#x2081;&#x00B7;&#x03BB;&#x2082; / (2n&#x00B7;&#916;&#955;)</text>
+          <text x="451" y="160" font-family="Space Mono,monospace" font-size="9" fill="currentColor" opacity="0.6" text-anchor="middle">n&#x209B;&#x1D35;O&#x2082; &#x2248; 1.46</text>
+        </svg>
+        <figcaption>Reflectance spectrum from the HR2000+. Peak spacing &#916;&#955; feeds directly into the film-thickness formula.</figcaption>
+      </figure>
+
+      <section class="proj-section">
+        <span class="eyebrow">01 &middot; Overview</span>
+        <h2 class="proj-h2">Overview</h2>
+        <p>
+          SiO&#x2082; films on silicon wafers scatter white light into iridescent rings — the same physics as a soap bubble. I wrote a Python tool that feeds a reflectance spectrum from an OceanOptics HR2000+ into a fringe-spacing calculation and spits out oxide thickness, no ellipsometer required.
+        </p>
+        <p>
+          This lives in Prof. Gokirmak's semiconductor fabrication lab. The main use-case is quick, non-destructive QC on thermally-grown or PECVD oxide before the next process step. The device doesn't replace an ellipsometer for thin sub-50 nm films, but for the 100 nm–2 µm range it's fast and good enough for a sanity-check.
+        </p>
+      </section>
+
+      <section class="proj-section">
+        <span class="eyebrow">02 &middot; How it works</span>
+        <h2 class="proj-h2">How it works</h2>
+        <p>
+          White light from the HR2000+'s halogen source hits the wafer surface and partially reflects off the air–SiO&#x2082; interface and again off the SiO&#x2082;–Si interface. The two reflections interfere constructively and destructively at different wavelengths, producing a sinusoidal ripple in the reflectance spectrum. The fringe period &#916;&#955; between adjacent peaks gives thickness directly:
+        </p>
+        <p style="font-family:var(--mono);font-size:.92rem;background:var(--scrap);border:2px solid var(--ink);padding:12px 16px;display:inline-block;max-width:100%;margin-bottom:1em;">
+          d = (&#955;&#x2081; &times; &#955;&#x2082;) / (2 &times; n &times; &#916;&#955;)
+        </p>
+        <p>
+          where n &#x2248; 1.46 for thermal SiO&#x2082; across the visible range. The Python script acquires a spectrum over USB, finds peaks with <code>scipy.signal.find_peaks</code>, averages the fringe spacing across several peak pairs, and reports thickness with an estimated uncertainty based on spectral resolution.
+        </p>
+        <p>
+          A baseline (reference spectrum off bare silicon or a known reflector) is taken first so the raw counts become a proper reflectance ratio, which removes the lamp's spectral shape and any fiber coupling variation.
+        </p>
+      </section>
+
+      <section class="proj-section">
+        <span class="eyebrow">03 &middot; Results</span>
+        <h2 class="proj-h2">Results &amp; measurements</h2>
+        <p>
+          The tool was validated against a thermal oxide sample with a known thickness from the lab's profilometer. Across several measurement spots the tool agreed to within roughly ±5 nm on a ~300 nm film — consistent with the ~1 nm spectral resolution of the HR2000+ at this range.
+        </p>
+        <p>
+          It fails gracefully below ~80 nm (fewer than two visible fringes in the optical window) and above ~3 µm (fringes too dense to resolve). A report with the full uncertainty budget is in progress.
+        </p>
+      </section>
+
+      <section class="proj-section">
+        <span class="eyebrow">04 &middot; Notes</span>
+        <h2 class="proj-h2">Challenges &amp; what's next</h2>
+        <p>
+          The trickiest part was baseline stability: the halogen lamp drifts with temperature, so I added a routine that flags if the reference is stale and re-prompts before a measurement series. Also, the fiber probe angle matters more than expected — even a few degrees off-normal introduces an extra path-length factor. The current version assumes normal incidence and flags the user to re-seat the probe.
+        </p>
+        <p>
+          Next steps: add a Cauchy dispersion model for n so multi-layer stacks (oxide on nitride, for example) can be handled. Also want to build a small enclosure with a kinematic fiber mount to remove the angle sensitivity entirely.
+        </p>
+      </section>
+
+      <section class="proj-section">
+        <span class="eyebrow">05 &middot; Gallery</span>
+        <h2 class="proj-h2">Gallery</h2>
+        <div class="gallery">
+          <figure class="shot"><div class="shot-ph">HR2000+ setup</div><figcaption>Spectrometer + fiber probe over a 4&rdquo; wafer.</figcaption></figure>
+          <figure class="shot"><div class="shot-ph">Python output plot</div><figcaption>Raw vs. fitted spectrum with identified peaks.</figcaption></figure>
+          <figure class="shot"><div class="shot-ph">Wafer color map</div><figcaption>Iridescent oxide color under white light &mdash; the data hiding in plain sight.</figcaption></figure>
+        </div>
+      </section>
+
+    </div>
+
+    <aside class="proj-meta">
+      <h2 class="meta-h">At a glance</h2>
+      <div class="meta-row"><span class="meta-k">Status</span><span class="meta-v">Complete</span></div>
+      <div class="meta-row"><span class="meta-k">Timeline</span><span class="meta-v">Spring 2026</span></div>
+      <div class="meta-row"><span class="meta-k">Role</span><span class="meta-v">Solo build &middot; lab tool</span></div>
+      <div class="meta-row"><span class="meta-k">Lab</span><span class="meta-v">Gokirmak Group &middot; UConn IMS</span></div>
+      <div class="meta-row"><span class="meta-k">Tools</span><span class="meta-v">Python &middot; scipy &middot; OceanOptics HR2000+</span></div>
+      <div class="meta-row"><span class="meta-k">Links</span><span class="meta-v"><span class="meta-todo">report in progress</span></span></div>
+    </aside>
+  </div>
+
+  <nav class="wrap proj-nav" aria-label="More projects">
+    <a class="pn pn-prev" href="project-class-ab-amplifier.html"><span class="pn-dir">&larr; Previous</span><span class="pn-title">Class AB Amplifier</span></a>
+    <a class="pn pn-next" href="project-printer-fleet-dashboard.html"><span class="pn-dir">Next &rarr;</span><span class="pn-title">Printer Fleet Dashboard</span></a>
+  </nav>
+
+  <footer class="proj-footer wrap">
+    <a class="proj-back" href="index.html#work">&larr; Back to all work</a>
+    <div style="margin-top:16px"><span class="badge">Work like you're running out of time.</span></div>
+  </footer>
+</main>
+
+<button class="to-top" type="button" aria-label="Back to top" title="Back to top">&#8593;</button>
+<script src="app.js"></script>
+</body>
+</html>
