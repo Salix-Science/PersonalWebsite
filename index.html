@@ -26,6 +26,9 @@
   @media(min-width:780px){.about-layout{grid-template-columns:300px 1fr}}
   .about-portrait{margin:0}
   .about-portrait img{display:block;width:100%;height:auto;transform:rotate(-1.1deg)}
+  .about-portrait .p-dark{display:none}
+  [data-theme="dark"] .about-portrait .p-light{display:none}
+  [data-theme="dark"] .about-portrait .p-dark{display:block}
   .about-col{display:grid;gap:24px;align-items:start}
 </style>
 </head>
@@ -74,7 +77,8 @@
       <h2 class="band-title rise">Who's <em>building</em> this</h2>
       <div class="about-layout">
         <figure class="about-portrait rise">
-          <img src="willow-portrait.png" alt="Halftone portrait of Willow Pichardo" loading="lazy">
+          <img class="p-light" src="willow-portrait.png" alt="Halftone portrait of Willow Pichardo" loading="lazy">
+          <img class="p-dark" src="willow-portrait-dark.png" alt="Halftone portrait of Willow Pichardo" loading="lazy">
         </figure>
         <div class="about-col">
           <div>
