@@ -88,7 +88,7 @@
         <article class="lab rise">
           <span class="lab-kicker">Prof. Wang &middot; integrated photonics</span>
           <h3 class="lab-title">Microrings that resonate</h3>
-          <p>Microring and microdisk resonators for dense wavelength-division multiplexing. I implemented the Novick transfer-matrix model straight from the paper in MATLAB, came up to speed on Bogaerts as a sophomore, and &mdash; early on &mdash; caught the wrong simulation tool being pointed at the problem.</p>
+          <p>Microring and microdisk resonators for dense wavelength-division multiplexing. I implemented Novick's transfer-matrix model in Python. I am now working towards designing systems in ANSYS Lumerical to address AI power dissipation bottlenecks.</p>
           <figure>
             <svg viewBox="0 0 360 168" role="img" aria-label="Schematic of an add-drop microring resonator with input, through, and drop ports">
               <line x1="18" y1="38" x2="342" y2="38" stroke="currentColor" stroke-width="3"/>
@@ -134,7 +134,7 @@
     <div class="wrap">
       <span class="eyebrow rise">Selected builds</span>
       <h2 class="band-title rise">The <em>work</em></h2>
-      <p class="band-sub rise">Gokirmak reminds me to focus on finishing things... I'm sure ill get there eventually.</p>
+      <p class="band-sub rise">Gokirmak reminds me to focus on finishing things... I'm sure I'll get there eventually.</p>
 
       <div class="grid">
         <article class="card rise">
@@ -142,16 +142,16 @@
           <h3 class="card-title">Class AB Amplifier</h3>
           <p class="card-spec">MJL3281A / MJL1302A outputs &middot; ~77% efficiency near peak</p>
           <p class="card-body">A discrete power amp tweaked slightly from Rod Elliot's P217 with thermal analysis and efficiency plots. Push-pull output stage, biased and measured.</p>
-          <div class="chips"><span class="chip">analog</span><span class="chip">thermal</span><span class="chip">ltspice</span></div>
+          <div class="chips"><span class="chip">analog</span><span class="chip">audio</span><span class="chip">ltspice</span></div>
           <a class="card-open" href="project-class-ab-amplifier.html">Open project &rarr;</a>
         </article>
 
         <article class="card rise">
-          <span class="stamp stamp--ship">Shipped</span>
+          <span class="stamp stamp--wip">In Progress</span>
           <h3 class="card-title">Printer Fleet Dashboard</h3>
-          <p class="card-spec">18 machines &middot; MQTT + PrusaLink &rarr; Firebase</p>
+          <p class="card-spec">18 machines &middot Live Updates &middot PrusaLink &rarr; Firebase</p>
           <p class="card-body">Full-stack monitoring for a fleet of Bambu and Prusa printers, including a subnet auto-discovery script so new machines announce themselves instead of being added by hand.</p>
-          <div class="chips"><span class="chip">python</span><span class="chip">mqtt</span><span class="chip">firebase</span></div>
+          <div class="chips"><span class="chip">python</span><span class="chip">css</span><span class="chip">firebase</span></div>
           <a class="card-open" href="project-printer-fleet-dashboard.html">Open project &rarr;</a>
         </article>
 
@@ -170,7 +170,7 @@
           <h3 class="card-title">Flying-Probe PCB Tester</h3>
           <p class="card-spec">CoreXY frame &middot; AD5933 impedance front end</p>
           <p class="card-body">A bed-of-nails alternative: probes on a CoreXY motion system measuring impedance point-to-point, so a bare board gets tested without machining a custom fixture for it.</p>
-          <div class="chips"><span class="chip">motion control</span><span class="chip">impedance</span></div>
+          <div class="chips"><span class="chip">motion control</span><span class="chip">measurement</span><span class="chip">python</span></div>
           <a class="card-open" href="project-flying-probe-tester.html">Open project &rarr;</a>
         </article>
 
@@ -178,9 +178,9 @@
           <span class="stamp stamp--wip">In progress</span>
           <h3 class="card-title">Laser-Doped Diode</h3>
           <p class="card-spec">laser doping of silicon &rarr; p-n junction</p>
-          <p class="card-body">Driving dopant into silicon with a laser to form a working junction, on UConn's Institute of Materials Science equipment. Success criterion: one honest rectifying IV curve.</p>
+          <p class="card-body">Driving dopant into silicon with a laser to form a working junction using close to hobbyist equipment. Success criterion: one honest rectifying IV curve.</p>
           <figure class="card-fig"><svg viewBox="0 0 200 110" role="img" aria-label="Diode current-voltage characteristic curve"><line x1="20" y1="55" x2="186" y2="55" stroke="currentColor" stroke-width="2"/><line x1="103" y1="14" x2="103" y2="100" stroke="currentColor" stroke-width="2"/><path d="M30 53 L100 52 Q150 50 160 18" fill="none" stroke="#e92a7c" stroke-width="3"/><path d="M30 57 L100 58" fill="none" stroke="#e92a7c" stroke-width="3"/><text x="150" y="50" font-family="Space Mono, monospace" font-size="10" fill="currentColor">I</text><text x="172" y="68" font-family="Space Mono, monospace" font-size="10" fill="currentColor">V</text></svg><figcaption>the goal, drawn optimistically</figcaption></figure>
-          <div class="chips"><span class="chip">semiconductor</span><span class="chip">IMS lab</span></div>
+          <div class="chips"><span class="chip">semiconductor</span><span class="chip">DIY</span></div>
           <a class="card-open" href="project-laser-doped-diode.html">Open project &rarr;</a>
         </article>
 
@@ -188,8 +188,8 @@
           <span class="stamp stamp--wip">In progress</span>
           <h3 class="card-title">Maskless Lithography</h3>
           <p class="card-spec">DMD projection &middot; Elegoo Mars 4 as UV source</p>
-          <p class="card-body">Homemade photolithography: a resin printer repurposed as a UV exposure unit already gave a clean first exposure in dry-film resist. Next up, DMD-based maskless projection and a laser scanner built from a gutted MakerBot.</p>
-          <div class="chips"><span class="chip">photolith</span><span class="chip">optics</span><span class="chip">dmd</span></div>
+          <p class="card-body">Homemade photolithography: a resin printer repurposed as a UV exposure unit already gave a clean first exposure in dry-film resist. Next up, a UV laser photolithography device built from a gutted MakerBot 3D Printer.</p>
+          <div class="chips"><span class="chip">photolithography</span><span class="chip">optics</span><span class="chip">DIY</span></div>
           <a class="card-open" href="project-maskless-lithography.html">Open project &rarr;</a>
         </article>
       </div>
@@ -201,8 +201,8 @@
     <div class="wrap">
       <div class="teach rise">
         <span class="eyebrow">In the classroom</span>
-        <h3>TA, ECE 2001 &mdash; and the course's resident pedagogy pest</h3>
-        <p>I bring retrieval practice and cognitive-load theory into how the labs actually run, wrote the bench-skills lab practical, and pitched an RL-filter audio crossover as a project students want to finish instead of endure. The public, evidence-based version of all this lives at <a href="https://circuitspractice.org" target="_blank" rel="noopener">circuitspractice.org</a>.</p>
+        <h3>TA, ECE 2001 &mdash; the best class</h3>
+        <p>I propose repeatable, intuition building practice sets into shifting the way students learn. I also make videos to guide my students when the patches get rough. All this lives free to the public at <a href="https://circuitspractice.org" target="_blank" rel="noopener">circuitspractice.org</a> and <a href="https://www.youtube.com/@SalixScience" target="_blank" rel="noopener">YouTube</a>.</p>
       </div>
     </div>
   </section>
@@ -212,9 +212,8 @@
     <div class="wrap">
       <span class="eyebrow rise">Say hello</span>
       <h2 class="band-title rise">Let's <em>talk</em></h2>
-      <p class="band-sub rise" style="margin:0 auto">Research, collaborations, or someone who needs a machine that doesn't exist yet.</p>
+      <p class="band-sub rise" style="margin:0 auto">Research, collaborations, or someone who needs a problem solved.</p>
 
-      <!-- Swap the href values below for your real links -->
       <div class="links rise">
         <button class="link" type="button" id="emailToggle" aria-expanded="false" aria-controls="emailForm">Email</button>
         <a class="link" href="https://github.com/Salix-Science" target="_blank" rel="noopener">GitHub</a>
@@ -242,7 +241,7 @@
 </form>
       <div class="barcode" aria-hidden="true"></div>
       <p class="colophon">Working *right now* &middot; Storrs, CT &middot; updated June 2026</p>
-      <span class="badge">High-Q or go home</span>
+      <span class="badge">Work like you're running out of time.</span>
     </div>
   </section>
 
