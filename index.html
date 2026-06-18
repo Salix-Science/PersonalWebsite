@@ -227,91 +227,127 @@
               - Red dashed: smooth Fresnel model fit (same overall shape, slightly lower at long λ)
               - Result: Thickness 90.36 nm, RMSE 0.0097
             -->
-            <svg viewBox="0 0 360 210" role="img" aria-label="Thin-film reflectance: noisy blue measured trace decaying from 0.32 at 400 nm to 0.09 at 560 nm then rising to 0.11 at 700 nm; smooth red dashed Fresnel model fit; thickness 90.36 nm RMSE 0.0097">
-              <!-- plot area: x 44–344, y 18–158  (R 0.08 top=158, 0.34 top=18) -->
-              <!-- y scale: 0.08=158, 0.34=18 → range 0.26 over 140px → 1 unit = 538.5px, so Δ0.01 = 5.38px -->
-              <!-- x scale: 400nm=44, 700nm=344 → 300nm over 300px → 1nm = 1px -->
+            <svg viewBox="0 0 360 210" role="img" aria-label="Thin-film reflectance measured vs fitted model, 90.36 nm thickness">
+              <!--
+                Coordinate system:
+                  x: 44 = 400nm, 344 = 700nm  →  1px per nm
+                  y: R=0.08 → y=158, R=0.34 → y=18  →  y = 158 - (R-0.08)/0.26*140
+                  R=0.34→18  0.32→29  0.30→40  0.28→51  0.26→62  0.24→74
+                  R=0.22→85  0.20→96  0.18→107 0.16→118 0.14→129 0.12→140 0.10→151 0.085→159
+              -->
 
               <!-- axes -->
               <line x1="44" y1="18" x2="44" y2="158" stroke="currentColor" stroke-width="2"/>
               <line x1="44" y1="158" x2="344" y2="158" stroke="currentColor" stroke-width="2"/>
 
-              <!-- y-axis ticks & labels: 0.10, 0.15, 0.20, 0.25, 0.30 -->
-              <!-- y(R) = 158 - (R - 0.08)/0.26 * 140 -->
-              <!-- R=0.10 → 147.2, R=0.15 → 120.4, R=0.20 → 93.5, R=0.25 → 66.9, R=0.30 → 40.0 -->
-              <line x1="41" y1="147" x2="44" y2="147" stroke="currentColor" stroke-width="1.5"/>
-              <text x="4" y="151" font-family="Space Mono, monospace" font-size="8" fill="currentColor">0.10</text>
-              <line x1="41" y1="120" x2="44" y2="120" stroke="currentColor" stroke-width="1.5"/>
-              <text x="4" y="124" font-family="Space Mono, monospace" font-size="8" fill="currentColor">0.15</text>
-              <line x1="41" y1="93" x2="44" y2="93" stroke="currentColor" stroke-width="1.5"/>
-              <text x="4" y="97" font-family="Space Mono, monospace" font-size="8" fill="currentColor">0.20</text>
-              <line x1="41" y1="67" x2="44" y2="67" stroke="currentColor" stroke-width="1.5"/>
-              <text x="4" y="71" font-family="Space Mono, monospace" font-size="8" fill="currentColor">0.25</text>
-              <line x1="41" y1="40" x2="44" y2="40" stroke="currentColor" stroke-width="1.5"/>
-              <text x="4" y="44" font-family="Space Mono, monospace" font-size="8" fill="currentColor">0.30</text>
+              <!-- y ticks -->
+              <line x1="41" y1="151" x2="44" y2="151" stroke="currentColor" stroke-width="1.2"/>
+              <text x="3" y="155" font-family="Space Mono,monospace" font-size="8" fill="currentColor">0.10</text>
+              <line x1="41" y1="129" x2="44" y2="129" stroke="currentColor" stroke-width="1.2"/>
+              <text x="3" y="133" font-family="Space Mono,monospace" font-size="8" fill="currentColor">0.14</text>
+              <line x1="41" y1="107" x2="44" y2="107" stroke="currentColor" stroke-width="1.2"/>
+              <text x="3" y="111" font-family="Space Mono,monospace" font-size="8" fill="currentColor">0.18</text>
+              <line x1="41" y1="85" x2="44" y2="85" stroke="currentColor" stroke-width="1.2"/>
+              <text x="3" y="89" font-family="Space Mono,monospace" font-size="8" fill="currentColor">0.22</text>
+              <line x1="41" y1="62" x2="44" y2="62" stroke="currentColor" stroke-width="1.2"/>
+              <text x="3" y="66" font-family="Space Mono,monospace" font-size="8" fill="currentColor">0.26</text>
+              <line x1="41" y1="40" x2="44" y2="40" stroke="currentColor" stroke-width="1.2"/>
+              <text x="3" y="44" font-family="Space Mono,monospace" font-size="8" fill="currentColor">0.30</text>
 
-              <!-- x-axis ticks & labels: 400, 450, 500, 550, 600, 650, 700 -->
-              <!-- x(λ) = 44 + (λ - 400) -->
-              <line x1="44"  y1="158" x2="44"  y2="161" stroke="currentColor" stroke-width="1.5"/>
-              <text x="37"  y="170" font-family="Space Mono, monospace" font-size="8" fill="currentColor">400</text>
-              <line x1="94"  y1="158" x2="94"  y2="161" stroke="currentColor" stroke-width="1.5"/>
-              <text x="87"  y="170" font-family="Space Mono, monospace" font-size="8" fill="currentColor">450</text>
-              <line x1="144" y1="158" x2="144" y2="161" stroke="currentColor" stroke-width="1.5"/>
-              <text x="137" y="170" font-family="Space Mono, monospace" font-size="8" fill="currentColor">500</text>
-              <line x1="194" y1="158" x2="194" y2="161" stroke="currentColor" stroke-width="1.5"/>
-              <text x="187" y="170" font-family="Space Mono, monospace" font-size="8" fill="currentColor">550</text>
-              <line x1="244" y1="158" x2="244" y2="161" stroke="currentColor" stroke-width="1.5"/>
-              <text x="237" y="170" font-family="Space Mono, monospace" font-size="8" fill="currentColor">600</text>
-              <line x1="294" y1="158" x2="294" y2="161" stroke="currentColor" stroke-width="1.5"/>
-              <text x="287" y="170" font-family="Space Mono, monospace" font-size="8" fill="currentColor">650</text>
-              <line x1="344" y1="158" x2="344" y2="161" stroke="currentColor" stroke-width="1.5"/>
-              <text x="337" y="170" font-family="Space Mono, monospace" font-size="8" fill="currentColor">700</text>
+              <!-- x ticks: 400=44, 450=94, 500=144, 550=194, 600=244, 650=294, 700=344 -->
+              <line x1="44"  y1="158" x2="44"  y2="162" stroke="currentColor" stroke-width="1.2"/>
+              <text x="37"  y="171" font-family="Space Mono,monospace" font-size="8" fill="currentColor">400</text>
+              <line x1="94"  y1="158" x2="94"  y2="162" stroke="currentColor" stroke-width="1.2"/>
+              <text x="87"  y="171" font-family="Space Mono,monospace" font-size="8" fill="currentColor">450</text>
+              <line x1="144" y1="158" x2="144" y2="162" stroke="currentColor" stroke-width="1.2"/>
+              <text x="137" y="171" font-family="Space Mono,monospace" font-size="8" fill="currentColor">500</text>
+              <line x1="194" y1="158" x2="194" y2="162" stroke="currentColor" stroke-width="1.2"/>
+              <text x="187" y="171" font-family="Space Mono,monospace" font-size="8" fill="currentColor">550</text>
+              <line x1="244" y1="158" x2="244" y2="162" stroke="currentColor" stroke-width="1.2"/>
+              <text x="237" y="171" font-family="Space Mono,monospace" font-size="8" fill="currentColor">600</text>
+              <line x1="294" y1="158" x2="294" y2="162" stroke="currentColor" stroke-width="1.2"/>
+              <text x="287" y="171" font-family="Space Mono,monospace" font-size="8" fill="currentColor">650</text>
+              <line x1="344" y1="158" x2="344" y2="162" stroke="currentColor" stroke-width="1.2"/>
+              <text x="337" y="171" font-family="Space Mono,monospace" font-size="8" fill="currentColor">700</text>
+              <text x="155" y="183" font-family="Space Mono,monospace" font-size="8" fill="currentColor">Wavelength (nm)</text>
 
-              <!-- axis labels -->
-              <text x="160" y="182" font-family="Space Mono, monospace" font-size="9" fill="currentColor">Wavelength (nm)</text>
-              <text x="0" y="100" font-family="Space Mono, monospace" font-size="9" fill="currentColor" transform="rotate(-90,8,95)">R</text>
+              <!--
+                RED DASHED — smooth Fresnel model
+                Key points read from graph:
+                  400nm → R≈0.265 → y=61
+                  420nm → R≈0.250 → y=69
+                  440nm → R≈0.228 → y=81
+                  460nm → R≈0.200 → y=96
+                  480nm → R≈0.170 → y=112
+                  500nm → R≈0.145 → y=123
+                  520nm → R≈0.122 → y=135
+                  540nm → R≈0.105 → y=144
+                  560nm → R≈0.093 → y=151
+                  580nm → R≈0.087 → y=155
+                  600nm → R≈0.086 → y=156
+                  630nm → R≈0.089 → y=154
+                  660nm → R≈0.094 → y=151
+                  700nm → R≈0.103 → y=145
+              -->
+              <path d="M44 61 C 64 65, 74 72, 84 81 C 104 97, 124 115, 144 127 C 164 138, 184 147, 194 151 C 204 155, 224 157, 244 156 C 264 155, 284 152, 304 149 C 324 146, 334 145, 344 143"
+                fill="none" stroke="#e92a7c" stroke-width="2.2" stroke-dasharray="6 3.5"/>
 
-              <!-- RED DASHED: smooth Fresnel model fit -->
-              <!-- starts ~0.275 at 400nm (y=51), decays smoothly to ~0.085 at 560nm (y=148), gentle rise to ~0.095 at 700nm (y=142) -->
-              <path d="M44 51 C 70 60, 90 80, 110 103 S 150 138, 160 148 C 175 152, 200 149, 230 146 S 300 143, 344 142"
-                fill="none" stroke="#e92a7c" stroke-width="2" stroke-dasharray="6 3.5"/>
-
-              <!-- BLUE SOLID: noisy measured trace -->
-              <!-- spike cluster 400–435nm peaking to ~0.325 (y=26), then tracks similar decay path with noise -->
-              <!-- main decay: 400nm R≈0.245(y=69), spike to 0.325(y=26) near 410nm, back down, noisy descent -->
-              <path d="
-                M44 69
-                L46 60 L48 52 L50 36 L52 26 L54 32 L56 42 L58 36 L60 28 L62 38 L64 48 L66 42 L68 36 L70 44 L72 52
-                L74 58 L76 64 L78 68 L80 71 L82 74 L84 77 L86 80 L88 82 L90 85 L92 87 L94 90
-                L96 92 L98 94 L100 96 L102 97 L104 99 L106 100 L108 102 L110 103 L112 105 L114 106
-                L116 107 L118 108 L120 109 L122 110 L124 111 L126 112 L128 113 L130 114 L132 115
-                L134 116 L136 117 L138 118 L140 119 L142 120 L144 121 L146 122 L148 123 L150 124
-                L152 126 L154 127 L156 128 L158 130 L160 131 L162 132 L164 133 L166 134 L168 135
-                L170 136 L172 137 L174 138 L176 139 L178 139 L180 140 L182 141 L184 141 L186 142
-                L188 142 L190 143 L192 143 L194 144 L196 144 L198 144 L200 145 L202 145 L204 145
-                L206 145 L208 145 L210 145 L212 145 L214 145 L216 145 L218 146 L220 146 L222 146
-                L224 146 L226 146 L228 146 L230 146 L232 146 L234 146 L236 146 L238 146 L240 146
-                L242 146 L244 146 L246 146 L248 145 L250 145 L252 145 L254 144 L256 144 L258 144
-                L260 144 L262 143 L264 143 L266 143 L268 143 L270 143 L272 143 L274 143 L276 143
-                L278 143 L280 142 L282 142 L284 142 L286 142 L288 142 L290 142 L292 142 L294 142
-                L296 142 L298 142 L300 142 L302 142 L304 142 L306 142 L308 142 L310 142 L312 142
-                L314 142 L316 142 L318 142 L320 142 L322 142 L324 142 L326 142 L328 142 L330 142
-                L332 142 L334 142 L336 142 L338 141 L340 141 L342 141 L344 141"
-                fill="none" stroke="#4a90d9" stroke-width="1.6"/>
-
-              <!-- add some HF noise texture on the blue line in the 400-500 range via a separate jittery path -->
-              <path d="M74 56 L76 62 L78 66 L80 70 L82 72 L84 76 L86 79 L88 81 L90 84 L92 86 L94 89 L96 90 L98 93 L100 94 L102 96 L104 98 L106 99 L108 101 L110 102 L112 104 L114 105 L116 107 L118 107 L120 108 L122 110 L124 110 L126 111"
-                fill="none" stroke="#4a90d9" stroke-width="1.6" opacity="0.5"/>
+              <!--
+                BLUE SOLID — noisy measured trace
+                Key envelope read from graph:
+                  400nm → R≈0.240 → y=74  (starting point)
+                  407nm → R≈0.305 → y=41  (first big spike)
+                  412nm → R≈0.325 → y=29  (peak spike)
+                  416nm → R≈0.290 → y=48  (down)
+                  420nm → R≈0.265 → y=61  (partial recovery)
+                  425nm → R≈0.280 → y=53  (secondary spike)
+                  430nm → R≈0.265 → y=61
+                  435nm → R≈0.248 → y=70  (spikes dying out)
+                  440nm → R≈0.228 → y=81
+                  445nm → R≈0.215 → y=88
+                  450nm → R≈0.200 → y=96
+                  455nm → R≈0.190 → y=102
+                  460nm → R≈0.180 → y=107
+                  470nm → R≈0.163 → y=116 (with noise wiggles ±0.008)
+                  480nm → R≈0.148 → y=124
+                  490nm → R≈0.135 → y=131
+                  500nm → R≈0.124 → y=137
+                  510nm → R≈0.116 → y=142
+                  520nm → R≈0.110 → y=145
+                  530nm → R≈0.105 → y=148
+                  540nm → R≈0.101 → y=150
+                  550nm → R≈0.099 → y=151
+                  560nm → R≈0.097 → y=152
+                  570nm → R≈0.096 → y=153
+                  580nm → R≈0.096 → y=153
+                  590nm → R≈0.097 → y=152
+                  600nm → R≈0.098 → y=151
+                  620nm → R≈0.100 → y=150
+                  640nm → R≈0.102 → y=149
+                  660nm → R≈0.105 → y=148
+                  680nm → R≈0.108 → y=146
+                  700nm → R≈0.113 → y=143
+                Noise amplitude: ±3px in 400–460nm zone, ±1.5px elsewhere
+              -->
+              <!-- smooth backbone of measured curve -->
+              <path d="M44 74 L51 41 L56 29 L60 48 L64 61 L69 53 L74 61 L79 70 L84 81 L89 88 L94 96 L99 102 L104 107 L114 116 L124 124 L134 131 L144 137 L154 142 L164 145 L174 148 L184 150 L194 151 L204 152 L214 153 L224 153 L234 153 L244 152 L254 151 L264 150 L274 149 L284 148 L294 147 L304 146 L314 145 L324 144 L334 143 L344 143"
+                fill="none" stroke="#4a90d9" stroke-width="1.8"/>
+              <!-- noise layer 400–465nm: small rapid jitter overlaid -->
+              <path d="M44 76 L46 70 L48 65 L50 43 L52 31 L54 38 L56 28 L58 35 L60 50 L62 44 L64 58 L66 54 L68 62 L70 57 L72 63 L74 60 L76 67 L78 63 L80 70 L82 74 L84 79 L86 84 L88 87 L90 93 L92 90 L94 97 L96 100 L98 103 L100 106 L102 104 L104 108 L106 111 L108 109 L110 113 L112 115 L114 117 L116 115 L118 118 L120 121"
+                fill="none" stroke="#4a90d9" stroke-width="1.5"/>
+              <!-- light noise 465–700nm -->
+              <path d="M120 121 L124 125 L126 123 L128 126 L130 128 L132 127 L134 130 L136 132 L138 131 L140 133 L142 135 L144 136 L146 138 L148 137 L150 139 L152 141 L154 142 L156 143 L158 142 L160 144 L162 145 L164 145 L166 146 L168 147 L170 147 L172 148 L174 148 L176 149 L178 149 L180 150 L182 150 L184 151 L186 151 L188 151 L190 152 L192 152 L194 152 L196 153 L198 153 L200 153 L202 153 L204 153 L206 153 L208 153 L210 152 L212 152 L214 153 L216 152 L218 152 L220 152 L222 151 L224 151 L226 151 L228 151 L230 151 L232 151 L234 151 L236 151 L238 150 L240 150 L242 150 L244 150 L246 150 L248 149 L250 149 L252 149 L254 149 L256 149 L258 149 L260 148 L262 148 L264 148 L266 148 L268 148 L270 148 L272 147 L274 147 L276 147 L278 147 L280 147 L282 147 L284 147 L286 146 L288 146 L290 146 L292 146 L294 146 L296 145 L298 145 L300 145 L302 145 L304 145 L306 144 L308 144 L310 144 L312 144 L314 144 L316 144 L318 143 L320 143 L322 143 L324 143 L326 143 L328 143 L330 143 L332 143 L334 143 L336 143 L338 143 L340 143 L342 143 L344 143"
+                fill="none" stroke="#4a90d9" stroke-width="1.5"/>
 
               <!-- legend -->
-              <rect x="230" y="20" width="110" height="32" fill="var(--scrap)" stroke="currentColor" stroke-width="1" opacity="0.85"/>
-              <line x1="236" y1="30" x2="254" y2="30" stroke="#e92a7c" stroke-width="2" stroke-dasharray="5 3"/>
-              <text x="258" y="34" font-family="Space Mono, monospace" font-size="8" fill="currentColor">Fitted model</text>
-              <line x1="236" y1="44" x2="254" y2="44" stroke="#4a90d9" stroke-width="1.8"/>
-              <text x="258" y="48" font-family="Space Mono, monospace" font-size="8" fill="currentColor">Measured</text>
+              <rect x="216" y="20" width="122" height="34" fill="var(--scrap)" stroke="currentColor" stroke-width="1" opacity="0.9"/>
+              <line x1="222" y1="31" x2="242" y2="31" stroke="#e92a7c" stroke-width="2" stroke-dasharray="5 3"/>
+              <text x="246" y="35" font-family="Space Mono,monospace" font-size="8" fill="currentColor">Fitted model</text>
+              <line x1="222" y1="45" x2="242" y2="45" stroke="#4a90d9" stroke-width="1.8"/>
+              <text x="246" y="49" font-family="Space Mono,monospace" font-size="8" fill="currentColor">Measured</text>
 
-              <!-- result annotation -->
-              <text x="44" y="198" font-family="Space Mono, monospace" font-size="9" fill="currentColor">Thickness: 90.36 nm &nbsp;&middot;&nbsp; RMSE: 0.0097</text>
+              <!-- annotation -->
+              <text x="44" y="198" font-family="Space Mono,monospace" font-size="9" fill="currentColor">Thickness: 90.36 nm · RMSE: 0.0097</text>
             </svg>
             <figcaption>oxide thickness falls out of the fringe spacing &mdash; 90.36 nm measured</figcaption>
           </figure>
