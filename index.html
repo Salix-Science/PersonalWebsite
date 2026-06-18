@@ -219,17 +219,33 @@
           <h3 class="lab-title">Measuring films by their color</h3>
           <p>I built a python program to measure SiO&#8322; thickness on silicon with an OceanOptics HR2000+. Report in progress.</p>
           <figure>
-            <svg viewBox="0 0 360 168" role="img" aria-label="Reflectance spectrum showing thin-film interference fringes">
-              <line x1="34" y1="20" x2="34" y2="140" stroke="currentColor" stroke-width="2.5"/>
-              <line x1="34" y1="140" x2="344" y2="140" stroke="currentColor" stroke-width="2.5"/>
-              <text x="6" y="30" font-family="Space Mono, monospace" font-size="12" fill="currentColor">R</text>
-              <text x="320" y="158" font-family="Space Mono, monospace" font-size="12" fill="currentColor">&#955;</text>
-              <path d="M34 60 C 64 24, 94 24, 124 70 S 184 132, 214 80 S 274 30, 304 92 S 334 120, 344 104"
-                    fill="none" stroke="#e92a7c" stroke-width="3"/>
-              <text x="120" y="36" font-family="Space Mono, monospace" font-size="11" fill="currentColor">interference fringes</text>
+            <svg viewBox="0 0 360 200" role="img" aria-label="Reflectance spectrum: noisy measured data in blue, smooth fitted model in red dashed, annotated with thickness 86.99 nm and RMSE 0.0225">
+              <!-- axes -->
+              <line x1="34" y1="20" x2="34" y2="155" stroke="currentColor" stroke-width="2.5"/>
+              <line x1="34" y1="155" x2="344" y2="155" stroke="currentColor" stroke-width="2.5"/>
+              <text x="6" y="30" font-family="Space Mono, monospace" font-size="11" fill="currentColor">R</text>
+              <text x="320" y="172" font-family="Space Mono, monospace" font-size="11" fill="currentColor">&#955; (nm)</text>
+              <text x="38" y="172" font-family="Space Mono, monospace" font-size="9" fill="currentColor">400</text>
+              <text x="175" y="172" font-family="Space Mono, monospace" font-size="9" fill="currentColor">600</text>
+              <text x="302" y="172" font-family="Space Mono, monospace" font-size="9" fill="currentColor">800</text>
+              <!-- noisy measured line (blue) -->
+              <path d="M34 95 L44 88 L50 101 L56 79 L62 92 L68 105 L74 83 L80 70 L86 88 L92 96 L98 75 L104 62 L110 78 L116 90 L122 68 L128 54 L134 70 L140 82 L146 60 L152 74 L158 88 L164 65 L170 50 L176 64 L182 78 L188 57 L194 72 L200 86 L206 64 L212 50 L218 66 L224 80 L230 60 L236 74 L242 88 L248 66 L254 52 L260 68 L266 82 L272 60 L278 76 L284 90 L290 68 L296 54 L302 70 L308 84 L314 62 L320 78 L326 92 L332 70 L338 84 L344 72"
+                fill="none" stroke="#4a90d9" stroke-width="1.8" opacity="0.75"/>
+              <!-- smooth fitted model (red dashed) -->
+              <path d="M34 92 C 80 58, 120 58, 160 92 S 240 126, 280 92 S 320 58, 344 80"
+                fill="none" stroke="#e92a7c" stroke-width="2.5" stroke-dasharray="7 4"/>
+              <!-- annotation box -->
+              <rect x="62" y="182" width="236" height="14" rx="1" fill="none"/>
+              <text x="64" y="193" font-family="Space Mono, monospace" font-size="9" fill="currentColor">Thickness: 86.99 nm &nbsp;&middot;&nbsp; RMSE: 0.0225</text>
+              <!-- legend -->
+              <line x1="36" y1="10" x2="56" y2="10" stroke="#4a90d9" stroke-width="1.8" opacity="0.75"/>
+              <text x="60" y="14" font-family="Space Mono, monospace" font-size="8" fill="currentColor">measured</text>
+              <line x1="128" y1="10" x2="148" y2="10" stroke="#e92a7c" stroke-width="2.5" stroke-dasharray="5 3"/>
+              <text x="152" y="14" font-family="Space Mono, monospace" font-size="8" fill="currentColor">model fit</text>
             </svg>
-            <figcaption>oxide thickness falls out of the fringe spacing</figcaption>
+            <figcaption>oxide thickness falls out of the fringe spacing &mdash; 86.99 nm measured</figcaption>
           </figure>
+          <a class="card-open" href="project-sio2-thickness.html" style="margin-top:14px;display:inline-flex;align-items:center;gap:.4em;font-weight:700;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-bottom:2px solid var(--pink);padding-bottom:1px;">Full write-up &rarr;</a>
         </article>
       </div>
     </div>
@@ -288,6 +304,15 @@
           <figure class="card-fig"><svg viewBox="0 0 200 110" role="img" aria-label="Diode current-voltage characteristic curve"><line x1="20" y1="55" x2="186" y2="55" stroke="currentColor" stroke-width="2"/><line x1="103" y1="14" x2="103" y2="100" stroke="currentColor" stroke-width="2"/><path d="M30 53 L100 52 Q150 50 160 18" fill="none" stroke="#e92a7c" stroke-width="3"/><path d="M30 57 L100 58" fill="none" stroke="#e92a7c" stroke-width="3"/><text x="150" y="50" font-family="Space Mono, monospace" font-size="10" fill="currentColor">I</text><text x="172" y="68" font-family="Space Mono, monospace" font-size="10" fill="currentColor">V</text></svg><figcaption>the goal, drawn optimistically</figcaption></figure>
           <div class="chips"><span class="chip">semiconductor</span><span class="chip">DIY</span></div>
           <a class="card-open" href="project-laser-doped-diode.html">Open project &rarr;</a>
+        </article>
+
+        <article class="card rise">
+          <span class="stamp stamp--ship">Complete</span>
+          <h3 class="card-title">SiO&#8322; Thickness Metrology</h3>
+          <p class="card-spec">OceanOptics HR2000+ &middot; 86.99 nm &middot; RMSE 0.0225</p>
+          <p class="card-body">Thin-film reflectance spectroscopy rig using bare-silicon normalization and Fresnel-model fitting to extract SiO&#8322; thickness from interference fringes.</p>
+          <div class="chips"><span class="chip">python</span><span class="chip">optics</span><span class="chip">metrology</span></div>
+          <a class="card-open" href="project-sio2-thickness.html">Full write-up &rarr;</a>
         </article>
 
         <article class="card rise">
