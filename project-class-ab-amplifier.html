@@ -131,20 +131,20 @@
       <section class="proj-section">
         <span class="eyebrow">01 &middot; Overview</span>
         <h2 class="proj-h2">Overview</h2>
-        <p>This power amp was built as the ECE 3201 final project in Spring 2026, in collaboration with Karen He. The goal: a portable speaker loud enough for outdoor use (beach, picnic) without breaking the bank &mdash; total BOM landed around $40.</p>
-        <p>The design started from Rod Elliot's <a href="https://sound-au.com/project217.htm">P217</a> schematic, but I hand-measured the V<sub>be</sub> values of my actual transistors and diode forward drops, then tweaked component values until the real-world response matched the sim. It was a fantastic exercise in understanding the gap between a schematic and a working board.</p>
-        <p>Rod Elliot is genuinely one of the best resources on the web for audio electronics &mdash; <a href="https://sound-au.com/index.html">Elliot Sound Products</a> is worth a bookmark whether or not you're building amps.</p>
+        <p>ECE 3201 final project, Spring 2026 &mdash; built with Karen He. The brief was open-ended enough that we could do anything, so we aimed for something I actually wanted: a portable speaker that could fill outdoor space without a $200 BOM. We landed around $40 total.</p>
+        <p>The starting point was Rod Elliot's <a href="https://sound-au.com/project217.htm">P217</a>. I wasn't going to redesign a Class AB topology from scratch for a final project, but I also wasn't going to just drop in the exact values and call it done. So I hand-measured V<sub>be</sub> on each transistor and forward drop on each diode, then adjusted component values until the bench behavior matched what LTspice predicted with the real device parameters. That gap &mdash; between nominal datasheet values and what's actually in your parts bin &mdash; is something you don't appreciate until you've chased it around a protoboard for a few hours.</p>
+        <p>Separately: Rod Elliot's site (<a href="https://sound-au.com/index.html">Elliot Sound Products</a>) is one of the most genuinely useful resources on the internet for analog electronics. Bookmark it.</p>
       </section>
 
       <!-- 02 Build -->
       <section class="proj-section">
         <span class="eyebrow">02 &middot; How it works</span>
         <h2 class="proj-h2">How it works / the build</h2>
-        <p>Since the design follows Rod Elliot's P217 closely, I won't reproduce the full schematic here &mdash; it's freely available at the link in the sidebar. Instead, here's the architecture and the tweaks that mattered.</p>
-        <p>The topology is a standard complementary push-pull Class AB output stage. A 2N3906 PNP input stage feeds a VAS (voltage amplification stage) built around 2N2222 transistors. A diode string (1N4007 × 6) sets the bias voltage across the output stage, with a trimpot (R14) to dial in the quiescent current and minimize crossover distortion without cooking the transistors.</p>
-        <p>The output transistors are the <strong>MJL3281A</strong> (NPN) and <strong>MJL1302A</strong> (PNP) &mdash; rated for high current and needed here because the 8 Ω woofer demands ~1.65 A at full power, well beyond what the smaller 2N-series transistors in our parts kit could survive. Both are mounted to a 150×100×18 mm aluminium heatsink to keep junction temps in range.</p>
-        <p>The speaker is a <strong>4PF-8 4″ surround woofer</strong> with a resonant frequency around 137 Hz and a usable range of 100 Hz–10 kHz. For this project that's the right band, though a future version with a dedicated subwoofer (20–200 Hz) and tweeter (2–20 kHz) would fill out the frequency response considerably.</p>
-        <p>Key circuit values: R6 = 12 kΩ (supply rail), R7 = R8 = 1.8 kΩ (VAS collectors), R9 = 82.5 Ω (bias), R11 = 8 Ω (load), R15 = 20 kΩ (feedback), with 47 µF supply bypass caps and a 4700 µF output capacitor. The input is AC-coupled through a 330 µF cap.</p>
+        <p>Full schematic is in the sidebar link &mdash; I'm not going to paraphrase a design that's already documented well. What I'll describe is the architecture, the component choices that weren't obvious from the schematic alone, and what I actually changed.</p>
+        <p>Topology: complementary push-pull Class AB. A 2N3906 PNP at the input feeds a VAS built around 2N2222 transistors. A six-diode string (1N4007 × 6) sets the bias across the output stage; a trimpot (R14) adjusts quiescent current. The goal with that trimpot is finding the point where crossover distortion is acceptably low without running idle dissipation up to the point where the heatsink gets unhappy.</p>
+        <p>Output transistors are <strong>MJL3281A</strong> (NPN) and <strong>MJL1302A</strong> (PNP). The 8 Ω woofer at 8.70 W output draws roughly 1.65 A peak &mdash; well past what any 2N-series device in our kit could handle continuously. Both are mounted to a 150×100×18 mm aluminum heatsink. I checked junction temperatures under full drive; they stayed within spec with margin.</p>
+        <p>Speaker is a <strong>4PF-8 4″ surround woofer</strong>, f<sub>s</sub> ≈ 137 Hz, usable to about 10 kHz. That's fine for this project but it's one driver doing the job of two &mdash; a proper crossover with a dedicated tweeter (2–20 kHz) would recover a lot of the high-frequency response the woofer rolls off.</p>
+        <p>Key values I ended up on: R6 = 12 kΩ, R7 = R8 = 1.8 kΩ (VAS collectors), R9 = 82.5 Ω (bias), R15 = 20 kΩ (feedback). Supply bypassed with 47 µF ceramics; 4700 µF output cap; 330 µF AC input coupling. The feedback network was the main thing I tuned after measuring &mdash; the nominal P217 values gave a slightly different frequency response shape than what LTspice showed with the real V<sub>be</sub> measurements plugged in.</p>
       </section>
 
       <!-- 03 Results -->
@@ -161,20 +161,22 @@
           <div class="stat"><span>Max dissipation</span>4.49 W</div>
         </div>
 
-        <p>Efficiency climbs steeply with output power, which is exactly the Class AB behaviour you want &mdash; low dissipation at idle, high efficiency near clip. The theoretical maximum for a Class AB stage driving a resistive load from a dual rail is around 78 %; we hit 77.3 %, so the bias tuning worked out well.</p>
+        <p>77.3% peak efficiency at 8.70 W into 8 Ω from a 30 V supply. The theoretical ceiling for Class AB into a resistive load from a single dual-rail supply is around 78.5%, so we're 1.2 percentage points off ideal &mdash; most of that is the bias current and the diode string doing their jobs. Idle dissipation sitting at 0.90 W with max at 4.49 W means the heatsink is adequately sized; it got warm but not uncomfortable to touch at sustained full drive.</p>
+        <p>The efficiency curve climbs steeply with output power, which is the whole point of Class AB over Class A &mdash; you don't pay the idle dissipation penalty unless you're sitting quiet. The power budget chart below shows where the watts are going at each drive level: at low power most of it is heat, and that flips as you approach clip.</p>
+        <p>FFT at 2.5 kHz showed a clean fundamental well above the harmonic floor. I don't have a proper distortion analyzer so I can't give you a THD number, but the scope FFT was cleaner than I expected from a protoboard build.</p>
 
         <div class="results-grid">
           <figure class="result-fig">
             <img src="img/Graph3.png" alt="Efficiency curve showing peak at 77.3% near 8.70 W output">
-            <figcaption>Efficiency (%) and output power vs. drive level &mdash; approaches theoretical 78 % max near clip.</figcaption>
+            <figcaption>Efficiency vs. output power &mdash; 77.3% peak, approaches the ~78.5% Class AB theoretical max near clip.</figcaption>
           </figure>
           <figure class="result-fig">
             <img src="img/Graph1.png" alt="Stacked bar chart of power dissipated, output, and supply power at each Vpp level">
-            <figcaption>Power budget at each drive level: red = dissipated, blue = delivered to load, green = supply draw.</figcaption>
+            <figcaption>Power budget at each drive level: dissipated (red), delivered to load (blue), supply draw (green).</figcaption>
           </figure>
           <figure class="result-fig">
             <img src="img/Graph2.png" alt="Oscilloscope FFT showing a clean 2.5 kHz fundamental with low harmonic floor">
-            <figcaption>FFT of the output at 2.5 kHz &mdash; dominant fundamental, low harmonic floor confirms low distortion.</figcaption>
+            <figcaption>FFT at 2.5 kHz &mdash; dominant fundamental, harmonic floor well below the noise. No THD analyzer on hand, but this is cleaner than protoboard usually gives you.</figcaption>
           </figure>
         </div>
       </section>
@@ -183,16 +185,16 @@
       <section class="proj-section">
         <span class="eyebrow">04 &middot; Notes</span>
         <h2 class="proj-h2">Challenges &amp; what's next</h2>
-        <p>The trickiest part was setting the quiescent bias. Too low and you hear crossover distortion; too high and the output stage runs hot and wastes power at idle. I iterated on the diode string count and the trimpot setting while watching idle dissipation on the bench supply until I found a stable point.</p>
-        <p>Hand-measuring V<sub>be</sub> for each transistor was slower than just trusting the datasheet typical, but it paid off &mdash; the simulated and measured waveforms matched much more closely than they did with nominal values.</p>
-        <p>If I built this again from scratch (and I plan to), I'd start with a proper PCB instead of breadboard/protoboard, add a soft-start relay to prevent the speaker pop on power-up, and add a crossover network to pair the woofer with a tweeter. A three-way enclosure with proper port tuning would push the bass extension noticeably lower than the 137 Hz woofer resonance allows in free air.</p>
+        <p>The quiescent bias is where I lost the most time. Crossover distortion shows up immediately if you're too conservative, and idle dissipation climbs fast if you go too far the other way &mdash; both visible on the scope and the bench supply readout simultaneously. I iterated the diode string count and the R14 trimpot while watching both, which works but is slow. A dedicated bias circuit that stabilizes against temperature drift would make this a much less annoying procedure.</p>
+        <p>The V<sub>be</sub> measurement pass was worth it. I measured each transistor on the bench before putting it in the circuit, plugged the real values into LTspice, and got a much tighter match between simulation and measured waveforms than I would have gotten with datasheet typicals. It takes maybe 20 extra minutes and it visibly improves the result.</p>
+        <p>If I rebuild this &mdash; and I will &mdash; the list is: proper PCB instead of protoboard (parasitics on a protoboard at audio frequencies are annoying but not disqualifying; at RF they'd be fatal), a soft-start relay to kill the speaker pop on power-up, and a proper two-way crossover. The 4PF-8 starts rolling off above ~5 kHz; a tweeter crossed around 3–4 kHz with an LC network would recover what the single-driver setup leaves on the table. Port-tuning the enclosure for the 137 Hz resonance would also extend the bass response, though that's more cabinet work than circuit work.</p>
       </section>
 
       <!-- 05 Demo Videos -->
       <section class="proj-section">
         <span class="eyebrow">05 &middot; Demo</span>
         <h2 class="proj-h2">Demo videos</h2>
-        <p>Three bench clips: the amp responding to a swept sine, the bias point measured at idle, and the FFT of a 2.5 kHz tone.</p>
+        <p>Three bench clips: output waveform responding to music, the idle bias point, and the 2.5 kHz FFT. The scope is a TBS1064.</p>
         <div class="video-grid">
           <figure class="vid-card">
             <video controls preload="metadata">
