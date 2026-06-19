@@ -34,9 +34,7 @@
   /* ===== WRITING SECTION ===== */
 
   /* filter pills */
-  .writing-filters{
-    display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 28px;
-  }
+  .writing-filters{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 28px}
   .wf-btn{
     font-family:var(--mono);font-weight:700;font-size:.65rem;letter-spacing:.14em;
     text-transform:uppercase;cursor:pointer;padding:.42em .75em;
@@ -48,16 +46,11 @@
   .wf-btn.active{background:var(--ink);color:var(--paper)}
   [data-theme="dark"] .wf-btn.active{background:var(--pink);color:var(--scrap);border-color:var(--pink)}
 
-  /* writing card grid — matches .grid but single column on small */
-  .writing-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:22px;
-    margin-top:0;
-  }
+  /* writing card grid */
+  .writing-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:0}
   @media(max-width:600px){.writing-grid{grid-template-columns:1fr}}
 
-  /* individual writing card — inherits .card but with its own oddbits */
+  /* writing card — same feel as .card */
   .writing-card{
     background:var(--scrap);border:2px solid var(--ink);padding:20px 18px 18px;
     box-shadow:5px 6px 0 var(--shadow);position:relative;display:flex;flex-direction:column;
@@ -66,9 +59,8 @@
   .writing-card:nth-child(odd){transform:rotate(-.4deg)}
   .writing-card:nth-child(even){transform:rotate(.4deg)}
   .writing-card:hover{transform:translateY(-4px) rotate(0deg);box-shadow:7px 9px 0 var(--shadow)}
-  .writing-card[hidden]{display:none}
+  .writing-card[hidden]{display:none!important}
 
-  /* tag pill inside card */
   .we-tag{
     display:inline-block;align-self:flex-start;
     font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
@@ -76,28 +68,25 @@
     transform:rotate(-2.5deg);margin-bottom:10px;
     transition:border-color .35s ease,color .35s ease;
   }
-  .we-tag--essay{color:var(--pink);border-color:var(--pink)}
+  .we-tag--poem{color:var(--pink);border-color:var(--pink)}
   .we-tag--story{color:var(--red);border-color:var(--red)}
-  .we-tag--lab{border-style:dashed}
+  .we-tag--essay{border-style:dashed}
 
+  .we-warning{
+    display:inline-block;align-self:flex-start;
+    font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    background:var(--red);color:#fff;padding:.2em .45em;
+    margin-bottom:8px;
+  }
   .we-date{font-size:.7rem;color:var(--muted);letter-spacing:.06em;margin-bottom:6px}
-
   .we-title{
     font-family:var(--display);font-weight:400;font-size:1.18rem;line-height:1.08;
     margin-bottom:.35em;transition:color .15s;
   }
   .writing-card:hover .we-title{color:var(--pink)}
+  .we-desc{font-size:.88rem;color:var(--muted-strong);flex:1;margin-bottom:.8em}
 
-  .we-desc{
-    font-size:.88rem;color:var(--muted-strong);flex:1;margin-bottom:.8em;
-  }
-  .we-desc.placeholder{
-    border-left:3px dashed var(--pink);
-    background:color-mix(in srgb,var(--pink) 7%,transparent);
-    padding:8px 12px;font-style:italic;color:var(--muted);
-  }
-
-  /* "Open writing →" button — same as card-open */
+  /* "Open writing →" button */
   .we-open{
     margin-top:auto;font-weight:700;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
     text-decoration:none;display:inline-flex;gap:.4em;align-items:center;align-self:flex-start;
@@ -107,9 +96,7 @@
   .we-open:hover{color:var(--pink);border-color:var(--pink)}
 
   /* load-more row */
-  .writing-more{
-    display:flex;justify-content:center;margin-top:28px;
-  }
+  .writing-more{display:flex;justify-content:center;margin-top:28px}
   .writing-more[hidden]{display:none}
 </style>
 </head>
@@ -447,71 +434,80 @@
       <!-- filter pills -->
       <div class="writing-filters rise" role="group" aria-label="Filter by type">
         <button class="wf-btn active" data-filter="all">All</button>
-        <button class="wf-btn" data-filter="lab report">Lab report</button>
-        <button class="wf-btn" data-filter="essay">Essay</button>
-        <button class="wf-btn" data-filter="technical note">Technical note</button>
+        <button class="wf-btn" data-filter="poem">Poem</button>
         <button class="wf-btn" data-filter="story">Story</button>
+        <button class="wf-btn" data-filter="essay">Essay</button>
       </div>
 
-      <!-- card grid — add data-type matching a filter button's data-filter value -->
       <div class="writing-grid" id="writingGrid">
 
-        <!-- ── PLACEHOLDER ENTRIES — replace with real pieces ── -->
-        <!-- To add a new entry: copy an <article> block, set data-type to one of:
-             "lab report" | "essay" | "technical note" | "story"
-             Then update we-tag, we-date, we-title, we-desc, and href on we-open. -->
-
-        <article class="writing-card rise" data-type="lab report">
-          <span class="we-tag we-tag--lab">Lab report</span>
-          <span class="we-date">add date</span>
-          <h3 class="we-title">Add a title</h3>
-          <p class="we-desc placeholder">Paste a one- or two-sentence description of this piece here.</p>
-          <a class="we-open" href="writing-template.html">Open writing &rarr;</a>
+        <article class="writing-card rise" data-type="poem">
+          <span class="we-tag we-tag--poem">Poem</span>
+          <span class="we-warning">&#9888; Graphic themes</span>
+          <h3 class="we-title">Walls Crumble</h3>
+          <p class="we-desc">A short, stark poem about the weight of irreversible choices — the moment of reckoning when warnings go unheeded.</p>
+          <a class="we-open" href="writing-walls-crumble.html">Open writing &rarr;</a>
         </article>
 
-        <article class="writing-card rise" data-type="essay">
-          <span class="we-tag we-tag--essay">Essay</span>
-          <span class="we-date">add date</span>
-          <h3 class="we-title">Add a title</h3>
-          <p class="we-desc placeholder">Paste a one- or two-sentence description of this piece here.</p>
-          <a class="we-open" href="writing-template.html">Open writing &rarr;</a>
-        </article>
-
-        <article class="writing-card rise" data-type="technical note">
-          <span class="we-tag">Technical note</span>
-          <span class="we-date">add date</span>
-          <h3 class="we-title">Add a title</h3>
-          <p class="we-desc placeholder">Paste a one- or two-sentence description of this piece here.</p>
-          <a class="we-open" href="writing-template.html">Open writing &rarr;</a>
+        <article class="writing-card rise" data-type="poem">
+          <span class="we-tag we-tag--poem">Poem</span>
+          <h3 class="we-title">The Right Idea at the Wrong Time</h3>
+          <p class="we-desc">On sitting with a truth you once buried, and the patience it takes to let it finally surface.</p>
+          <a class="we-open" href="writing-right-idea.html">Open writing &rarr;</a>
         </article>
 
         <article class="writing-card rise" data-type="story">
           <span class="we-tag we-tag--story">Story</span>
-          <span class="we-date">add date</span>
-          <h3 class="we-title">Add a title</h3>
-          <p class="we-desc placeholder">Paste a one- or two-sentence description of this piece here.</p>
-          <a class="we-open" href="writing-template.html">Open writing &rarr;</a>
+          <span class="we-warning">&#9888; Graphic themes</span>
+          <h3 class="we-title">The Monster of the Slums</h3>
+          <p class="we-desc">A man trapped in poverty stares across a lake at a life he cannot reach — until he decides to cross it and confronts a monster that was never what he thought.</p>
+          <a class="we-open" href="writing-monster-slums.html">Open writing &rarr;</a>
+        </article>
+
+        <article class="writing-card rise" data-type="poem">
+          <span class="we-tag we-tag--poem">Poem</span>
+          <h3 class="we-title">Moving On</h3>
+          <p class="we-desc">An earnest poem about freeing yourself from self-deprecation — the storm doesn't stop, but you become someone who can weather it.</p>
+          <a class="we-open" href="writing-moving-on.html">Open writing &rarr;</a>
+        </article>
+
+        <article class="writing-card rise" data-type="poem">
+          <span class="we-tag we-tag--poem">Poem</span>
+          <h3 class="we-title">Floating Away</h3>
+          <p class="we-desc">Quiet and heavy — about the feeling of swelling grief, hiding in plain sight, and the pull toward disappearing entirely.</p>
+          <a class="we-open" href="writing-floating-away.html">Open writing &rarr;</a>
+        </article>
+
+        <article class="writing-card rise" data-type="poem">
+          <span class="we-tag we-tag--poem">Poem</span>
+          <h3 class="we-title">I Think I Think Too Much</h3>
+          <p class="we-desc">An ouroboros of overthinking — the more you try to correct a thought, the deeper the spiral goes.</p>
+          <a class="we-open" href="writing-think-too-much.html">Open writing &rarr;</a>
+        </article>
+
+        <article class="writing-card rise" data-type="poem">
+          <span class="we-tag we-tag--poem">Poem</span>
+          <h3 class="we-title">In the Chains of the Hidden Devil</h3>
+          <p class="we-desc">A sonnet about finally seeing the true shape of something that held you captive — and the long wait before you can break free.</p>
+          <a class="we-open" href="writing-hidden-devil.html">Open writing &rarr;</a>
         </article>
 
         <article class="writing-card rise" data-type="essay">
           <span class="we-tag we-tag--essay">Essay</span>
-          <span class="we-date">add date</span>
-          <h3 class="we-title">Add a title</h3>
-          <p class="we-desc placeholder">Paste a one- or two-sentence description of this piece here.</p>
-          <a class="we-open" href="writing-template.html">Open writing &rarr;</a>
+          <h3 class="we-title">Common Sense</h3>
+          <p class="we-desc">A full political treatise — written in high school — arguing for a constitutional democracy to replace the oligarchy running the Ridgefield Science Olympiad team.</p>
+          <a class="we-open" href="writing-common-sense.html">Open writing &rarr;</a>
         </article>
 
-        <article class="writing-card rise" data-type="technical note">
-          <span class="we-tag">Technical note</span>
-          <span class="we-date">add date</span>
-          <h3 class="we-title">Add a title</h3>
-          <p class="we-desc placeholder">Paste a one- or two-sentence description of this piece here.</p>
-          <a class="we-open" href="writing-template.html">Open writing &rarr;</a>
+        <article class="writing-card rise" data-type="story">
+          <span class="we-tag we-tag--story">Story</span>
+          <h3 class="we-title">Against the Cold</h3>
+          <p class="we-desc">A long narrative poem: a figure on a desolate shore must brave freezing water to reach their shadow-self, guided by a mythic woman who teaches them what it means to belong to themselves.</p>
+          <a class="we-open" href="writing-against-cold.html">Open writing &rarr;</a>
         </article>
 
       </div><!-- /.writing-grid -->
 
-      <!-- load more — hidden when ≤3 visible or all already shown -->
       <div class="writing-more rise" id="writingMore">
         <button class="btn" type="button" id="writingMoreBtn">Load more &darr;</button>
       </div>
@@ -564,61 +560,41 @@
 <script>
 // ---- Writing: filter + load more ----
 (function(){
-  var PAGE = 3; // cards visible before "load more"
+  var PAGE = 6;
   var grid = document.getElementById('writingGrid');
   var moreWrap = document.getElementById('writingMore');
   var moreBtn  = document.getElementById('writingMoreBtn');
   if(!grid) return;
-
   var activeFilter = 'all';
   var allCards = Array.prototype.slice.call(grid.querySelectorAll('.writing-card'));
-
   function getVisible(){
     return allCards.filter(function(c){
       return activeFilter === 'all' || c.dataset.type === activeFilter;
     });
   }
-
+  var shown = {};
+  function shownFor(f){ return shown[f] || PAGE; }
   function render(showCount){
     var visible = getVisible();
     allCards.forEach(function(c){ c.setAttribute('hidden',''); });
-    visible.forEach(function(c, i){
-      if(i < showCount) c.removeAttribute('hidden');
-    });
-    // show/hide load-more button
-    if(visible.length > showCount){
-      moreWrap.removeAttribute('hidden');
-    } else {
-      moreWrap.setAttribute('hidden','');
-    }
+    visible.forEach(function(c,i){ if(i < showCount) c.removeAttribute('hidden'); });
+    if(visible.length > showCount){ moreWrap.removeAttribute('hidden'); }
+    else { moreWrap.setAttribute('hidden',''); }
   }
-
-  // track how many are currently shown per filter
-  var shown = {};
-  function shownFor(f){ return shown[f] || PAGE; }
-
-  // filter buttons
   var filterBtns = Array.prototype.slice.call(document.querySelectorAll('.wf-btn'));
   filterBtns.forEach(function(btn){
+    btn.setAttribute('aria-pressed', btn.classList.contains('active') ? 'true' : 'false');
     btn.addEventListener('click', function(){
       filterBtns.forEach(function(b){ b.classList.remove('active'); b.setAttribute('aria-pressed','false'); });
-      btn.classList.add('active');
-      btn.setAttribute('aria-pressed','true');
+      btn.classList.add('active'); btn.setAttribute('aria-pressed','true');
       activeFilter = btn.dataset.filter;
       render(shownFor(activeFilter));
     });
-    btn.setAttribute('aria-pressed', btn.classList.contains('active') ? 'true' : 'false');
   });
-
-  // load more
-  if(moreBtn){
-    moreBtn.addEventListener('click', function(){
-      shown[activeFilter] = shownFor(activeFilter) + PAGE;
-      render(shownFor(activeFilter));
-    });
-  }
-
-  // initial render
+  if(moreBtn){ moreBtn.addEventListener('click', function(){
+    shown[activeFilter] = shownFor(activeFilter) + PAGE;
+    render(shownFor(activeFilter));
+  }); }
   render(shownFor('all'));
 })();
 </script>
