@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Walls Crumble — Willow</title>
+<meta name="description" content="A short, stark poem about the weight of irreversible choices.">
+<script>
+  (function(){
+    try{
+      var s=localStorage.getItem('willow-theme');
+      var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', s||(d?'dark':'light'));
+    }catch(e){document.documentElement.setAttribute('data-theme','light');}
+  })();
+</script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="nav" aria-label="Primary">
+  <a class="me" href="index.html">WILL<b>O</b>W</a>
+  <a class="backlink" href="index.html#writing">&larr; all writing</a>
+  <div class="modesel" role="group" aria-label="Color mode">
+    <button class="modebtn" type="button" data-mode="light" aria-label="Light mode" title="Light mode">&#9728;</button>
+    <button class="modebtn" type="button" data-mode="dark" aria-label="Dark mode" title="Dark mode">&#9790;</button>
+  </div>
+</nav>
+
+<main>
+  <header class="proj-hero wrap">
+    <a class="proj-back" href="index.html#writing">&larr; Back to all writing</a>
+    <div class="proj-status">
+      <span class="stamp stamp--ship">Complete</span>
+      <span class="proj-kicker">Poem &middot; original</span>
+    </div>
+    <h1 class="proj-title">Walls Crumble</h1>
+    <p class="proj-spec">Short poem</p>
+    <div class="chips"><span class="chip">poem</span><span class="chip">reflection</span></div>
+        <p style="margin-top:10px;font-weight:700;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--red);">&#9888; Graphic themes — brief reference to gun violence</p>
+  </header>
+
+  <div class="wrap proj-wrap">
+    <div class="proj-main">
+            <section class="proj-section">
+        <span class="eyebrow">The piece</span>
+        <h2 class="proj-h2">Full text</h2>
+        <div style="font-family:var(--serif);font-size:1.05rem;line-height:1.9;max-width:48ch;white-space:pre-line;">
+Walls crumble
+as I mumble
+&ldquo;What have I done?&rdquo;
+The ring from a gun
+no longer can I run
+As I accept the situation I forced upon myself
+I was warned
+Yet now I am forlorn
+Over the choices I wish I had not made.
+        </div>
+      </section>
+    </div>
+
+    <aside class="proj-meta">
+      <h2 class="meta-h">At a glance</h2>
+      <div class="meta-row"><span class="meta-k">Type</span><span class="meta-v">Poem</span></div>
+      
+            <div class="meta-row"><span class="meta-k">Length</span><span class="meta-v">~50 words</span></div>
+            <div class="meta-row"><span class="meta-k">Venue</span><span class="meta-v">Personal</span></div>
+            <div class="meta-row"><span class="meta-k">Content note</span><span class="meta-v" style="color:var(--red);font-size:.82rem;">Brief reference to gun violence</span></div>
+    </aside>
+  </div>
+
+  <nav class="wrap proj-nav" aria-label="More writing">
+    <a class="pn pn-prev" href="writing-against-cold.html"><span class="pn-dir">&larr; Previous</span><span class="pn-title">Against the Cold</span></a>
+    <a class="pn pn-next" href="writing-right-idea.html"><span class="pn-dir">Next &rarr;</span><span class="pn-title">The Right Idea at the Wrong Time</span></a>
+  </nav>
+
+  <footer class="proj-footer wrap">
+    <a class="proj-back" href="index.html#writing">&larr; Back to all writing</a>
+    <div style="margin-top:16px"><span class="badge">Work like you're running out of time.</span></div>
+  </footer>
+</main>
+
+<button class="to-top" type="button" aria-label="Back to top" title="Back to top">&#8593;</button>
+<script src="app.js"></script>
+</body>
+</html>

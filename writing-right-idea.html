@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Right Idea at the Wrong Time — Willow</title>
+<meta name="description" content="On sitting with a truth you once buried, and the patience it takes to let it finally surface.">
+<script>
+  (function(){
+    try{
+      var s=localStorage.getItem('willow-theme');
+      var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', s||(d?'dark':'light'));
+    }catch(e){document.documentElement.setAttribute('data-theme','light');}
+  })();
+</script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="nav" aria-label="Primary">
+  <a class="me" href="index.html">WILL<b>O</b>W</a>
+  <a class="backlink" href="index.html#writing">&larr; all writing</a>
+  <div class="modesel" role="group" aria-label="Color mode">
+    <button class="modebtn" type="button" data-mode="light" aria-label="Light mode" title="Light mode">&#9728;</button>
+    <button class="modebtn" type="button" data-mode="dark" aria-label="Dark mode" title="Dark mode">&#9790;</button>
+  </div>
+</nav>
+
+<main>
+  <header class="proj-hero wrap">
+    <a class="proj-back" href="index.html#writing">&larr; Back to all writing</a>
+    <div class="proj-status">
+      <span class="stamp stamp--ship">Complete</span>
+      <span class="proj-kicker">Poem &middot; original</span>
+    </div>
+    <h1 class="proj-title">The Right Idea at the Wrong Time</h1>
+    <p class="proj-spec">Short poem</p>
+    <div class="chips"><span class="chip">poem</span><span class="chip">patience</span><span class="chip">identity</span></div>
+    
+  </header>
+
+  <div class="wrap proj-wrap">
+    <div class="proj-main">
+            <section class="proj-section">
+        <span class="eyebrow">The piece</span>
+        <h2 class="proj-h2">Full text</h2>
+        <div style="font-family:var(--serif);font-size:1.05rem;line-height:1.9;max-width:48ch;white-space:pre-line;">
+Years ago
+You gave me advice.
+Words at which I failed
+To understand:
+A right idea, a wrong time.
+
+For I once had an idea
+In which I quickly cast away
+Banished it to the depths
+And did best to forget
+Though I never did.
+
+And so now I pace and ponder
+Feet tapping against the floor
+And I fear I made the mistake
+of trying to burn the truth from my core
+
+And now I think of you&mdash;
+your adage proven true
+And now I sit, patiently
+As that old idea brews
+        </div>
+      </section>
+    </div>
+
+    <aside class="proj-meta">
+      <h2 class="meta-h">At a glance</h2>
+      <div class="meta-row"><span class="meta-k">Type</span><span class="meta-v">Poem</span></div>
+      
+            <div class="meta-row"><span class="meta-k">Length</span><span class="meta-v">~100 words</span></div>
+            <div class="meta-row"><span class="meta-k">Venue</span><span class="meta-v">Personal</span></div>
+      
+    </aside>
+  </div>
+
+  <nav class="wrap proj-nav" aria-label="More writing">
+    <a class="pn pn-prev" href="writing-walls-crumble.html"><span class="pn-dir">&larr; Previous</span><span class="pn-title">Walls Crumble</span></a>
+    <a class="pn pn-next" href="writing-monster-slums.html"><span class="pn-dir">Next &rarr;</span><span class="pn-title">The Monster of the Slums</span></a>
+  </nav>
+
+  <footer class="proj-footer wrap">
+    <a class="proj-back" href="index.html#writing">&larr; Back to all writing</a>
+    <div style="margin-top:16px"><span class="badge">Work like you're running out of time.</span></div>
+  </footer>
+</main>
+
+<button class="to-top" type="button" aria-label="Back to top" title="Back to top">&#8593;</button>
+<script src="app.js"></script>
+</body>
+</html>
