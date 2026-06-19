@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Writing Title — Willow</title>
+<meta name="description" content="Short description of this piece.">
+<script>
+  (function(){
+    try{
+      var s=localStorage.getItem('willow-theme');
+      var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', s||(d?'dark':'light'));
+    }catch(e){document.documentElement.setAttribute('data-theme','light');}
+  })();
+</script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!--
+  WRITING PAGE — safe to edit by hand.
+  * Replace <p class="placeholder">…</p> blocks with your actual text.
+  * Set the title, tag, date, and kicker in the <header> below.
+  * The "At a glance" sidebar holds word count, publication venue, etc.
+  * To link a PDF: set href on the .btn--solid below to your file path.
+  * Prev / next navigation at the bottom — update hrefs and titles.
+-->
+
+<nav class="nav" aria-label="Primary">
+  <a class="me" href="index.html">WILL<b>O</b>W</a>
+  <a class="backlink" href="index.html#writing">&larr; all writing</a>
+  <div class="modesel" role="group" aria-label="Color mode">
+    <button class="modebtn" type="button" data-mode="light" aria-label="Light mode" title="Light mode">&#9728;</button>
+    <button class="modebtn" type="button" data-mode="dark" aria-label="Dark mode" title="Dark mode">&#9790;</button>
+  </div>
+</nav>
+
+<main>
+  <header class="proj-hero wrap">
+    <a class="proj-back" href="index.html#writing">&larr; Back to all writing</a>
+    <div class="proj-status">
+      <!-- Change stamp class: stamp--ship (published), stamp--wip (draft), stamp--live (live) -->
+      <span class="stamp stamp--ship">Published</span>
+      <!-- kicker: type · venue, e.g. "Essay · personal" or "Lab report · ECE 3201" -->
+      <span class="proj-kicker">Essay &middot; personal</span>
+    </div>
+    <h1 class="proj-title">Writing Title</h1>
+    <!-- subheader: word count · date, or whatever metadata fits -->
+    <p class="proj-spec">~1,200 words &middot; June 2026</p>
+    <div class="chips">
+      <span class="chip">essay</span>
+      <span class="chip">topic</span>
+    </div>
+    <!-- Optional: link to PDF or external publication -->
+    <!-- <div class="proj-links"><a class="btn btn--solid" href="writing/your-file.pdf" target="_blank" rel="noopener">Read PDF &#8599;</a></div> -->
+  </header>
+
+  <div class="wrap proj-wrap">
+    <div class="proj-main">
+
+      <section class="proj-section">
+        <span class="eyebrow">01 &middot; Opening</span>
+        <h2 class="proj-h2">Opening</h2>
+        <p class="placeholder">Replace this with your opening paragraph — the hook, the scene, the claim you're making. Aim for something that pulls the reader in by the second sentence.</p>
+      </section>
+
+      <section class="proj-section">
+        <span class="eyebrow">02 &middot; Body</span>
+        <h2 class="proj-h2">Body</h2>
+        <p class="placeholder">The main argument, narrative, or findings. Add as many &lt;p&gt; tags as you need — they'll space themselves automatically. If this is a lab report, put your methods and results here with real numbers.</p>
+        <p class="placeholder">Second paragraph, continued...</p>
+      </section>
+
+      <section class="proj-section">
+        <span class="eyebrow">03 &middot; Conclusion</span>
+        <h2 class="proj-h2">Conclusion</h2>
+        <p class="placeholder">Where you land: what changed, what it means, what comes next. A strong closer is often shorter than you think it needs to be.</p>
+      </section>
+
+    </div>
+
+    <aside class="proj-meta">
+      <h2 class="meta-h">At a glance</h2>
+      <div class="meta-row"><span class="meta-k">Type</span><span class="meta-v">Essay</span></div>
+      <div class="meta-row"><span class="meta-k">Date</span><span class="meta-v meta-todo">add date</span></div>
+      <div class="meta-row"><span class="meta-k">Words</span><span class="meta-v meta-todo">add count</span></div>
+      <div class="meta-row"><span class="meta-k">Venue</span><span class="meta-v meta-todo">e.g. personal / ECE 3201</span></div>
+      <div class="meta-row"><span class="meta-k">Tags</span><span class="meta-v">essay &middot; topic</span></div>
+      <div class="meta-row"><span class="meta-k">Links</span><span class="meta-v"><span class="meta-todo">add PDF or external link</span></span></div>
+    </aside>
+  </div>
+
+  <nav class="wrap proj-nav" aria-label="More writing">
+    <a class="pn pn-prev" href="writing-template.html"><span class="pn-dir">&larr; Previous</span><span class="pn-title">Previous piece title</span></a>
+    <a class="pn pn-next" href="writing-template.html"><span class="pn-dir">Next &rarr;</span><span class="pn-title">Next piece title</span></a>
+  </nav>
+
+  <footer class="proj-footer wrap">
+    <a class="proj-back" href="index.html#writing">&larr; Back to all writing</a>
+    <div style="margin-top:16px"><span class="badge">Work like you're running out of time.</span></div>
+  </footer>
+</main>
+
+<button class="to-top" type="button" aria-label="Back to top" title="Back to top">&#8593;</button>
+<script src="app.js"></script>
+</body>
+</html>
