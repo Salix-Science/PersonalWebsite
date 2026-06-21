@@ -170,6 +170,38 @@
   border-left:3px solid var(--pink);padding-left:12px;margin-top:12px;
 }
 
+/* Snapshots grid */
+.snap-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:18px;
+  margin-top:22px;
+}
+.snap{
+  margin:0;
+  display:flex;flex-direction:column;
+}
+.snap:nth-child(odd){transform:rotate(-.6deg)}
+.snap:nth-child(even){transform:rotate(.5deg)}
+.snap img{
+  display:block;width:100%;height:200px;object-fit:cover;
+  border:3px solid var(--ink);
+  box-shadow:4px 5px 0 var(--shadow);
+  transition:border-color .35s ease, box-shadow .35s ease;
+}
+.snap-ph{
+  display:grid;place-items:center;text-align:center;
+  height:200px;
+  border:2px dashed var(--line);color:var(--muted);
+  font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;
+  background:repeating-linear-gradient(45deg,transparent 0 10px,color-mix(in srgb,var(--ink) 5%,transparent) 10px 11px);
+}
+.snap figcaption{
+  font-size:.74rem;color:var(--muted);
+  margin-top:.5em;padding:0 2px;
+  font-style:italic;
+}
+
 /* Contact strip at bottom */
 .bio-contact-strip{
   background:var(--ink);color:var(--paper);
@@ -385,6 +417,52 @@
       <p style="max-width:60ch">I think a lot of intro circuits instruction teaches students to execute procedures they don't understand. They can apply KVL correctly and have no idea what a voltage actually is. That bothers me.</p>
       <p style="max-width:60ch;margin-top:.8em">My approach: build intuition first, formalism second. That means repeatable practice sets designed around understanding, not rote application, with enough worked examples that a student can trace exactly where their reasoning went wrong.</p>
       <p style="max-width:60ch;margin-top:.8em">All of it lives free at <a href="https://circuitspractice.org" target="_blank" rel="noopener" style="color:var(--pink);border-bottom:2px solid var(--pink);text-decoration:none;font-weight:700">circuitspractice.org</a> and on <a href="https://www.youtube.com/@SalixScience" target="_blank" rel="noopener" style="color:var(--pink);border-bottom:2px solid var(--pink);text-decoration:none;font-weight:700">YouTube</a>.</p>
+    </section>
+
+    <!-- ===== SNAPSHOTS ===== -->
+    <!-- HOW TO ADD PHOTOS:
+         Replace each <div class="snap-ph">...</div> with:
+         <img src="img/your-photo.jpg" alt="describe the photo">
+         Add more <figure class="snap"> blocks to add more photos.
+         Put your images in an "img/" folder next to this file.
+    -->
+    <section class="bio-section rise" id="snapshots">
+      <span class="eyebrow">07 &middot; Snapshots</span>
+      <h2 class="bio-h">Life <em>in between</em></h2>
+
+      <div class="snap-grid">
+
+        <figure class="snap">
+          <div class="snap-ph">Add a photo</div>
+          <figcaption>Caption&hellip;</figcaption>
+        </figure>
+
+        <figure class="snap">
+          <div class="snap-ph">Add a photo</div>
+          <figcaption>Caption&hellip;</figcaption>
+        </figure>
+
+        <figure class="snap">
+          <div class="snap-ph">Add a photo</div>
+          <figcaption>Caption&hellip;</figcaption>
+        </figure>
+
+        <figure class="snap">
+          <div class="snap-ph">Add a photo</div>
+          <figcaption>Caption&hellip;</figcaption>
+        </figure>
+
+        <figure class="snap">
+          <div class="snap-ph">Add a photo</div>
+          <figcaption>Caption&hellip;</figcaption>
+        </figure>
+
+        <figure class="snap">
+          <div class="snap-ph">Add a photo</div>
+          <figcaption>Caption&hellip;</figcaption>
+        </figure>
+
+      </div>
     </section>
 
     <!-- ===== CONTACT ===== -->
