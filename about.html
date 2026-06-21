@@ -224,8 +224,8 @@
 
       <div class="bio-portrait-wrap">
         <figure class="bio-portrait rise">
-          <img class="p-light" src="willowportrait.png" alt="Halftone portrait of Willow Pichardo — light mode">
-          <img class="p-dark"  src="willowportraitdark.png" alt="Halftone portrait of Willow Pichardo — dark mode">
+          <img class="p-light" src="willow-portrait.png" alt="Halftone portrait of Willow Pichardo — light mode">
+          <img class="p-dark"  src="willow-portrait-dark.png" alt="Halftone portrait of Willow Pichardo — dark mode">
           <div class="bio-name-stamp" aria-hidden="true">
             <span class="nl nl-a">Willow</span>
             <span class="nl nl-b">V.</span>
@@ -341,29 +341,20 @@
         </div>
 
         <div class="tl-item">
-          <span class="tl-yr">2024</span>
-          <div class="tl-dot" aria-hidden="true"></div>
-          <div class="tl-body">
-            <div class="tl-title">Joined Prof. Gokirmak's fab lab</div>
-            <div class="tl-sub">Started working on thin-film characterization and semiconductor process experiments. First time using real fab equipment.</div>
-          </div>
-        </div>
-
-        <div class="tl-item">
-          <span class="tl-yr">2025</span>
-          <div class="tl-dot" aria-hidden="true"></div>
-          <div class="tl-body">
-            <div class="tl-title">Joined Prof. Wang's photonics lab</div>
-            <div class="tl-sub">Added integrated photonics research on top of fab work. Started implementing transfer-matrix models for microring resonators.</div>
-          </div>
-        </div>
-
-        <div class="tl-item">
           <span class="tl-yr">2025</span>
           <div class="tl-dot" aria-hidden="true"></div>
           <div class="tl-body">
             <div class="tl-title">TA, ECE 2001 Circuits I</div>
             <div class="tl-sub">Started teaching and built circuitspractice.org alongside the role to give students better practice infrastructure.</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <span class="tl-yr">Summer 2026</span>
+          <div class="tl-dot" aria-hidden="true"></div>
+          <div class="tl-body">
+            <div class="tl-title">Joined both research labs simultaneously</div>
+            <div class="tl-sub">Prof. Wang's integrated photonics lab and Prof. Gokirmak's semiconductor fab lab — started both at the same time. Transfer-matrix models in one window, reflectance spectra in the other.</div>
           </div>
         </div>
 
@@ -397,19 +388,39 @@
     </section>
 
     <!-- ===== CONTACT ===== -->
-    <section class="bio-section rise" id="contact">
-      <div class="bio-contact-strip">
-        <span class="eyebrow" style="background:var(--pink);color:var(--scrap)">Get in touch</span>
-        <h3>Say <em style="font-style:normal;color:var(--pink)">hello</em></h3>
-        <p style="font-size:.9rem;color:var(--teach-dim);margin-bottom:18px;max-width:50ch">Research, collaborations, questions about the projects, or something else entirely.</p>
-        <div class="bio-links">
-          <a class="bio-link" href="mailto:willowpichardo06@gmail.com">Email</a>
-          <a class="bio-link" href="https://www.linkedin.com/in/willow-pichardo-a209b2363/" target="_blank" rel="noopener">LinkedIn</a>
-          <a class="bio-link" href="https://github.com/Salix-Science" target="_blank" rel="noopener">GitHub</a>
-          <a class="bio-link" href="https://www.youtube.com/@SalixScience" target="_blank" rel="noopener">YouTube</a>
-          <a class="bio-link" href="https://circuitspractice.org" target="_blank" rel="noopener">circuitspractice.org</a>
-        </div>
+    <section class="band foot bio-section rise" id="contact">
+      <span class="eyebrow rise">Say hello</span>
+      <h2 class="band-title rise">Let's <em>talk</em></h2>
+      <p class="band-sub rise" style="margin:0 auto">Research, collaborations, or someone who needs a problem solved.</p>
+
+      <div class="links rise">
+        <button class="link" type="button" id="emailToggle" aria-expanded="false" aria-controls="emailForm">Email</button>
+        <a class="link" href="https://github.com/Salix-Science" target="_blank" rel="noopener">GitHub</a>
+        <a class="link" href="https://circuitspractice.org" target="_blank" rel="noopener">circuitspractice.org</a>
+        <a class="link" href="https://www.linkedin.com/in/willow-pichardo-a209b2363/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
+      <form id="emailForm" class="email-form" hidden>
+        <input type="hidden" name="access_key" value="b4fb7253-c1fd-4412-a8bb-616a40b1d05c">
+        <input type="hidden" name="from_name" value="willowpichardo.com">
+        <input type="checkbox" name="botcheck" class="ef-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="ef-row">
+          <label for="ef-email">Your email</label>
+          <input id="ef-email" type="email" name="email" required placeholder="you@example.com">
+        </div>
+        <div class="ef-row">
+          <label for="ef-subject">Subject</label>
+          <input id="ef-subject" type="text" name="subject" placeholder="What's this about?">
+        </div>
+        <div class="ef-row">
+          <label for="ef-message">Message</label>
+          <textarea id="ef-message" name="message" required placeholder="Say hello…"></textarea>
+        </div>
+        <button type="submit" class="ef-send">Send message</button>
+        <p id="emailStatus" class="ef-status" role="status" aria-live="polite"></p>
+      </form>
+      <div class="barcode" aria-hidden="true"></div>
+      <p class="colophon">Willow Valeria Pichardo &middot; Storrs, CT &middot; updated June 2026</p>
+      <span class="badge">Work like you're running out of time.</span>
     </section>
 
   </div><!-- /wrap -->
