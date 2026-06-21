@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SiO₂ Thickness Measurement — Willow</title>
+<meta name="description" content="Lab report: measuring silicon oxide thin-film thickness by Fresnel reflectance fitting with an OceanOptics HR2000+ spectrometer.">
+<script>
+  (function(){
+    try{
+      var s=localStorage.getItem('willow-theme');
+      var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', s||(d?'dark':'light'));
+    }catch(e){document.documentElement.setAttribute('data-theme','light');}
+  })();
+</script>
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* ---- math / formula display ---- */
+  .math-block {
+    font-family: var(--mono);
+    font-size: .88rem;
+    background: var(--scrap);
+    border: 2px solid var(--ink);
+    border-left: 4px solid var(--pink);
+    padding: 14px 18px;
+    margin: 1.2em 0;
+    overflow-x: auto;
+    box-shadow: 3px 4px 0 var(--shadow-soft);
+    transition: background-color .35s ease, border-color .35s ease;
+  }
+  .math-block p { margin: .3em 0; font-size: .88rem; color: var(--ink); }
+  .math-block .eq-label {
+    font-size: .62rem; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--muted); display: block; margin-bottom: .5em;
+  }
+  /* code snippet */
+  .code-block {
+    font-family: var(--mono);
+    font-size: .82rem;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 14px 16px;
+    margin: 1.2em 0;
+    overflow-x: auto;
+    box-shadow: 3px 4px 0 var(--shadow);
+    transition: background-color .35s ease, color .35s ease;
+  }
+  .code-block .kw  { color: #ff3d8b; }
+  .code-block .fn  { color: #7ecfff; }
+  .code-block .num { color: #f5c518; }
+  .code-block .cm  { color: #888; font-style: italic; }
+  /* inline code */
+  code {
+    font-family: var(--mono);
+    font-size: .85em;
+    background: color-mix(in srgb, var(--pink) 10%, transparent);
+    border: 1px solid color-mix(in srgb, var(--pink) 30%, transparent);
+    padding: .1em .35em;
+  }
+  /* result callout */
+  .result-box {
+    border: 3px solid var(--pink);
+    background: var(--scrap);
+    padding: 16px 20px;
+    margin: 1.4em 0;
+    box-shadow: 5px 6px 0 var(--shadow);
+    transition: background-color .35s ease, border-color .35s ease, box-shadow .35s ease;
+  }
+  .result-box .r-label {
+    font-size: .62rem; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--pink); font-weight: 700; display: block; margin-bottom: .4em;
+  }
+  .result-box .r-val {
+    font-family: var(--display); font-size: 1.6rem; line-height: 1.05;
+  }
+  .result-box .r-val span { color: var(--pink); }
+  .result-box .r-note {
+    font-size: .82rem; color: var(--muted); margin-top: .4em;
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Primary">
+  <a class="me" href="index.html">WILL<b>O</b>W</a>
+  <a class="backlink" href="index.html#writing">&larr; all writing</a>
+  <div class="modesel" role="group" aria-label="Color mode">
+    <button class="modebtn" type="button" data-mode="light" aria-label="Light mode" title="Light mode">&#9728;</button>
+    <button class="modebtn" type="button" data-mode="dark" aria-label="Dark mode" title="Dark mode">&#9790;</button>
+  </div>
+</nav>
+
+<main>
+  <header class="proj-hero wrap">
+    <a class="proj-back" href="index.html#writing">&larr; Back to all writing</a>
+    <div class="proj-status">
+      <span class="stamp stamp--ship">Published</span>
+      <span class="proj-kicker">Lab Report &middot; Gokirmak Lab</span>
+    </div>
+    <h1 class="proj-title">Spectrometer Data Analysis for Silicon Oxide Thickness Measurement</h1>
+    <p class="proj-spec">~1,360 words &middot; June 17, 2026</p>
+    <div class="chips">
+      <span class="chip">optics</span>
+      <span class="chip">python</span>
+      <span class="chip">thin film</span>
+      <span class="chip">semiconductor fab</span>
+    </div>
+  </header>
+
+  <div class="wrap proj-wrap">
+    <div class="proj-main">
+
+      <section class="proj-section">
+        <span class="eyebrow">Abstract</span>
+        <h2 class="proj-h2">Abstract</h2>
+        <p>Information regarding the thickness of Silicon Oxide on a wafer can be particularly helpful in understanding the performance of the semiconductor under different conditions. The thickness of the Oxide can determine its dielectric characteristics, anti-contamination properties, masking capabilities, and isolation potential. Controlled and measurable Oxide layers result in desirable characteristics and consistent performance. Measuring the thickness of these wafers is virtually impossible using linear measurement instruments, so it is critical to find a method of measurement that is both reliable and unobtrusive to the fragile nature of the Oxide layer.</p>
+        <p>When Silicon wafers develop an Oxide layer, they begin to exhibit thin film optical interference. This phenomenon &mdash; when light reflects both off the oxide and the underlying Silicon layer &mdash; results in an apparent color as a function of the thickness of the Oxide layer. Using a high resolution spectrum analyzer such as the Ocean Optics HR2000+, we are able to measure emitted wavelengths of light within .2&thinsp;nm, and mathematically should be able to calculate the thickness of the Silicon Oxide within a few nanometers error using least-squares optimization.</p>
+        <p>The other common optical method of calculating Silicon Oxide thickness is the Fast Fourier Transform. When the Oxide layer is thick, the spectra exhibits fringe cycles &mdash; repeating patterns of wavelengths that can be measured to determine stage, and thus thickness. However, our use case is initially with thin Silicon Oxide (1&ndash;200&thinsp;nm), which is too thin to produce a repeating fringe cycle. This makes the FFT a poor tool for this task; it is better left to least-squares optimization. As a result, the model will not work well for thicker oxide layers, where an FFT may be the preferred approach.</p>
+      </section>
+
+      <section class="proj-section">
+        <span class="eyebrow">01 &middot; Setup</span>
+        <h2 class="proj-h2">The Spectrometer</h2>
+        <p>The Ocean Optics HR2000+ in our configuration has its optical fiber and coupling fitted to a specialized 3D-printed part that places it precisely in the center of a microscope eyepiece tube. This lets us isolate the light entering the spectrometer to that emitted by our full-spectrum tungsten halogen light source, allowing intensity response across a wide range of wavelengths to be observed.</p>
+      </section>
+
+      <section class="proj-section">
+        <span class="eyebrow">02 &middot; Data reduction</span>
+        <h2 class="proj-h2">Normalizing Against the Reference</h2>
+        <p>To get the reflectance of the sample &mdash; which depends on both wavelength and SiO&#8322; thickness &mdash; we need to filter out a heavy, wavelength-dependent noise coefficient S(&lambda;) that alters the intensity received by the spectrometer. This coefficient depends on wavelength, fiber-optic coupling, light intensity, and other external factors that are virtually impossible to characterize directly. The solution is to take a reference measurement with the exact same setup on bare silicon prior to collecting data on the sample, then divide out the noise coefficient and normalize the sample&rsquo;s reflectance against the reference.</p>
+
+        <div class="math-block">
+          <span class="eq-label">Reflectance normalization</span>
+          <p>I<sub>sample</sub> = S(&lambda;) &middot; R<sub>sample</sub></p>
+          <p>I<sub>Si</sub> = S(&lambda;) &middot; R<sub>Si</sub></p>
+          <p>I<sub>sample</sub> / I<sub>Si</sub> = R<sub>sample</sub> / R<sub>Si</sub></p>
+          <p>(R<sub>sample</sub> / R<sub>Si</sub>) &middot; R<sub>Si</sub> = R<sub>sample</sub></p>
+        </div>
+
+        <p>Before dividing our samples, we also subtract dark measurements. These are taken in ambient light with the bulb on but the microscope closed, allowing the spectrometer to record its &ldquo;darkest&rdquo; baseline. Subtracting this from both the sample and the reference is like zeroing a scale before weighing &mdash; crucial to getting a clean result.</p>
+      </section>
+
+      <section class="proj-section">
+        <span class="eyebrow">03 &middot; Physics</span>
+        <h2 class="proj-h2">The Optical Model</h2>
+        <p>After procuring a sample reflectance graph that is (ideally) only a function of known wavelength and an unknown Silicon Oxide thickness, we can use wave-optics to produce a model that can represent any graph at any number of wavelengths and any SiO&#8322; thickness. We treat the Silicon sheet as semi-infinite &mdash; Silicon has high absorption and will always be large enough that light will not reflect off its back surface. This lets us model the SiO&#8322; as a thin film and apply Fresnel equations to describe the reflected and transmitted light.</p>
+        <p>By assuming an arbitrary incident beam intensity E<sub>0</sub>, we can find the total amplitude reflectance coefficient r<sub>total</sub> that will be picked up by the photodetectors. The power reflectance of the sample, as described by Fresnel, is |r<sub>total</sub>|&#178;. If we can generate an accurate model for r<sub>total</sub>, we can match our measured spectrometer data.</p>
+
+        <div class="math-block">
+          <span class="eq-label">Total amplitude reflectance (Fabry-P&eacute;rot sum)</span>
+          <p>r<sub>total</sub> = &Sigma; Beams = r<sub>12</sub> + t<sub>12</sub>&thinsp;r<sub>23</sub>&thinsp;t<sub>21</sub>&thinsp;e<sup>2i&delta;</sup> &middot; &Sigma;(r<sub>21</sub>&thinsp;r<sub>23</sub>&thinsp;e<sup>2i&delta;</sup>)<sup>n</sup></p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;= r<sub>12</sub> + t<sub>12</sub>&thinsp;r<sub>23</sub>&thinsp;t<sub>21</sub>&thinsp;e<sup>2i&delta;</sup> &middot; 1 / (1 &minus; r<sub>21</sub>&thinsp;r<sub>23</sub>&thinsp;e<sup>2i&delta;</sup>)</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;= (r<sub>12</sub> + r<sub>23</sub>&thinsp;e<sup>2i&delta;</sup>) / (1 + r<sub>12</sub>&thinsp;r<sub>23</sub>&thinsp;e<sup>2i&delta;</sup>)</p>
+          <p style="margin-top:.7em">&delta; = 2&pi;n<sub>2</sub>d / &lambda; &nbsp;&mdash;&nbsp; &delta; in terms of known &lambda; and unknown d (SiO&#8322; thickness)</p>
+          <p style="margin-top:.5em">Power reflectance = |r<sub>total</sub>|&#178; / (E<sub>0</sub> &times; r)<sup>2</sup></p>
+        </div>
+      </section>
+
+      <section class="proj-section">
+        <span class="eyebrow">04 &middot; Implementation</span>
+        <h2 class="proj-h2">The Program</h2>
+        <p>Spectrometer intensity data goes into an array indexed by wavelength. The model is then evaluated at each indexed wavelength and tries to minimize the error between itself and the measured data using a bounded scalar minimization. The bounds are values of <em>d</em>, the SiO&#8322; thickness. For each wavelength, the optimizer determines which value of <em>d</em> produces the least error and is therefore closest to the true thickness.</p>
+        <p>The model depends on the wavelength-dependent indices of refraction for three mediums. Air is straightforward &mdash; modeled as 1.0003. SiO&#8322; uses the Sellmeier equation with well-documented coefficients:</p>
+
+        <div class="math-block">
+          <span class="eq-label">Sellmeier equation for SiO&#8322;</span>
+          <p>n&#178; &minus; 1 = (0.6961663&lambda;&#178;) / (&lambda;&#178; &minus; 0.0684043&#178;) + (0.4079426&lambda;&#178;) / (&lambda;&#178; &minus; 0.1162414&#178;) + (0.8974794&lambda;&#178;) / (&lambda;&#178; &minus; 9.896161&#178;)</p>
+        </div>
+
+        <p>Silicon is more annoying because it has a complex index that accounts for its high absorption. Rather than carry complex arithmetic through the whole reflectance equation, I used a linear interpolation of 400 tabulated real-component values and 400 imaginary-component values, then added them. It&rsquo;s a close-enough approximation for high-resolution results, and more data points can always be added for finer precision.</p>
+        <p>The bounded minimization looks like this in practice:</p>
+
+        <div class="code-block"><span class="fn">finalcalcd</span> = optimize.<span class="fn">minimize_scalar</span>(cost, bounds=(<span class="num">1</span>, <span class="num">300</span>), method=<span class="kw">'bounded'</span>)
+<span class="kw">return</span> finalcalcd</div>
+
+        <p>The program is currently limited to the bounds typed into the code. If bounds are [1, 300], the model cannot return a thickness less than 1&thinsp;nm or greater than 300&thinsp;nm, even if those values would yield lower error. This matters because SiO&#8322; fringe patterns repeat, and the curves at different thickness orders can mimic one another. To avoid needing to manually adjust bounds for each sample, a future FFT pre-pass will coarsely determine which ~100&thinsp;nm range the thickness falls in, and then the Fresnel optimizer will refine within that range.</p>
+      </section>
+
+      <section class="proj-section">
+        <span class="eyebrow">05 &middot; Results</span>
+        <h2 class="proj-h2">Performance</h2>
+        <p>After multiple trials with different wafers, we&rsquo;ve seen both successful results and expected failures. We saw particular success with a random silicon wafer found in the lab labeled as ~100&thinsp;nm (fabrication quality unknown). The model found a very close curve to our intensity measurements and produced a small RMSE.</p>
+
+        <p>Without averaging samples first:</p>
+        <div class="result-box">
+          <span class="r-label">Single measurement (no averaging)</span>
+          <div class="r-val">86.83&thinsp;nm &nbsp;&middot;&nbsp; <span>RMSE 0.0341</span></div>
+          <p class="r-note">Model fit is visibly noisy from ~50&thinsp;ms integration time sensitivity to ambient light.</p>
+        </div>
+
+        <p>After averaging multiple samples before feeding into the model:</p>
+        <div class="result-box">
+          <span class="r-label">Averaged measurement</span>
+          <div class="r-val">86.99&thinsp;nm &nbsp;&middot;&nbsp; <span>RMSE 0.0225</span></div>
+          <p class="r-note">Cleaner fit. Averaging reduces ambient noise without changing the measured value meaningfully.</p>
+        </div>
+
+        <p>The drastic fluctuation in un-averaged measurements is a direct consequence of the light source intensity requiring very short integration times (50&thinsp;ms), making the raw data sensitive to ambient noise. Averaging before fitting gives the optimizer a smoother target and yields better overall fit quality.</p>
+      </section>
+
+      <section class="proj-section">
+        <span class="eyebrow">06 &middot; Conclusion</span>
+        <h2 class="proj-h2">Conclusion &amp; Next Steps</h2>
+        <p>While more testing is underway, the program looks promising as an unobtrusive way of measuring Oxide thickness without introducing contaminants or physically altering the wafer. Future improvements include an FFT pre-pass to enable coarse ranging across a wider thickness span, and parameterized material support so SiO&#8322; can be measured on wafers other than silicon &mdash; Silver is the first target. With a compendium of material index values, the same framework should extend to any substrate.</p>
+      </section>
+
+    </div>
+
+    <aside class="proj-meta">
+      <h2 class="meta-h">At a glance</h2>
+      <div class="meta-row"><span class="meta-k">Type</span><span class="meta-v">Lab Report</span></div>
+      <div class="meta-row"><span class="meta-k">Date</span><span class="meta-v">June 17, 2026</span></div>
+      <div class="meta-row"><span class="meta-k">Words</span><span class="meta-v">~1,360</span></div>
+      <div class="meta-row"><span class="meta-k">Venue</span><span class="meta-v">Gokirmak Lab &middot; UConn</span></div>
+      <div class="meta-row"><span class="meta-k">Tags</span><span class="meta-v">optics &middot; python &middot; thin film &middot; semiconductor fab</span></div>
+      <div class="meta-row"><span class="meta-k">Equipment</span><span class="meta-v">OceanOptics HR2000+ &middot; Mitutoyo microscope</span></div>
+      <div class="meta-row"><span class="meta-k">Result</span><span class="meta-v">86.99&thinsp;nm &middot; RMSE&nbsp;0.0225</span></div>
+      <div class="meta-row"><span class="meta-k">Links</span><span class="meta-v"><span class="meta-todo">add repo / PDF</span></span></div>
+    </aside>
+  </div>
+
+  <nav class="wrap proj-nav" aria-label="More writing">
+    <a class="pn pn-prev" href="writing-template.html"><span class="pn-dir">&larr; Previous</span><span class="pn-title">Previous piece</span></a>
+    <a class="pn pn-next" href="writing-template.html"><span class="pn-dir">Next &rarr;</span><span class="pn-title">Next piece</span></a>
+  </nav>
+
+  <footer class="proj-footer wrap">
+    <a class="proj-back" href="index.html#writing">&larr; Back to all writing</a>
+    <div style="margin-top:16px"><span class="badge">Carpe diem.</span></div>
+  </footer>
+</main>
+
+<button class="to-top" type="button" aria-label="Back to top" title="Back to top">&#8593;</button>
+<script src="app.js"></script>
+</body>
+</html>
