@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About — Willow Pichardo</title>
+<meta name="description" content="Willow Pichardo — EE student at UConn, two research labs, too many projects, aspiring to PhD.">
+<script>
+  (function(){
+    try{
+      var s=localStorage.getItem('willow-theme');
+      var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', s||(d?'dark':'light'));
+    }catch(e){document.documentElement.setAttribute('data-theme','light');}
+  })();
+</script>
+<link rel="stylesheet" href="styles.css">
+<style>
+/* ===== ABOUT PAGE EXTRAS ===== */
+
+/* Portrait block */
+.bio-portrait-wrap{
+  margin:0 0 38px;
+  display:grid;
+  grid-template-columns:1fr;
+  gap:28px;
+  align-items:start;
+}
+@media(min-width:720px){
+  .bio-portrait-wrap{grid-template-columns:280px 1fr}
+}
+.bio-portrait{
+  margin:0;
+  position:relative;
+}
+.bio-portrait img{
+  display:block;width:100%;height:auto;
+  border:3px solid var(--ink);
+  box-shadow:8px 9px 0 var(--shadow);
+  transform:rotate(-1.1deg);
+  transition:border-color .35s ease, box-shadow .35s ease;
+}
+.bio-portrait .p-dark{display:none}
+[data-theme="dark"] .bio-portrait .p-light{display:none}
+[data-theme="dark"] .bio-portrait .p-dark{display:block}
+
+/* Name stamp below portrait */
+.bio-name-stamp{
+  margin-top:12px;
+  display:flex;flex-wrap:wrap;gap:4px;
+  transform:rotate(-1.1deg);
+}
+.bio-name-stamp .nl{
+  font-family:var(--display);
+  font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;
+  padding:.3em .55em;border:2px solid var(--ink);
+  box-shadow:2px 2px 0 var(--shadow);
+}
+.bio-name-stamp .nl-a{background:var(--ink);color:var(--paper)}
+.bio-name-stamp .nl-b{background:var(--pink);color:var(--scrap);border-color:var(--pink)}
+.bio-name-stamp .nl-c{background:var(--scrap);color:var(--ink)}
+
+/* Bio prose column */
+.bio-col{display:grid;gap:26px;align-items:start}
+.bio-col p{font-size:1rem;max-width:60ch}
+.bio-col p + p{margin-top:.8em}
+
+/* Section divider labels (like project eyebrows but inline) */
+.bio-section{margin-bottom:42px}
+.bio-section .eyebrow{margin-bottom:10px}
+.bio-h{
+  font-family:var(--display);font-weight:400;text-transform:uppercase;
+  font-size:clamp(1.4rem,4.5vw,2rem);line-height:1.05;margin:.3em 0 .6em;
+}
+.bio-h em{font-style:normal;color:var(--pink)}
+
+/* Fact grid — ransom-note clippings for stats */
+.fact-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+  gap:14px;margin-top:22px;
+}
+.fact{
+  border:2px solid var(--ink);background:var(--scrap);
+  box-shadow:4px 5px 0 var(--shadow);padding:14px 14px 12px;
+  transition:background-color .35s ease, border-color .35s ease, box-shadow .35s ease;
+}
+.fact:nth-child(odd){transform:rotate(-.5deg)}
+.fact:nth-child(even){transform:rotate(.6deg)}
+.fact-n{
+  font-family:var(--display);font-weight:400;font-size:2rem;
+  line-height:1;color:var(--pink);display:block;
+}
+.fact-label{
+  display:block;font-size:.66rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--muted);margin-top:.2em;
+}
+
+/* Skills / stack pills */
+.stack{
+  display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;
+}
+.stack-pill{
+  font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;font-weight:700;
+  border:2px solid var(--ink);padding:.35em .7em;
+  background:var(--scrap);
+  transition:border-color .35s ease, background-color .35s ease;
+}
+.stack-pill:nth-child(4n+1){transform:rotate(-.8deg)}
+.stack-pill:nth-child(4n+2){transform:rotate(.5deg)}
+.stack-pill:nth-child(4n+3){transform:rotate(-.3deg)}
+.stack-pill:nth-child(4n+4){transform:rotate(.9deg)}
+.stack-pill--hot{background:var(--pink);color:var(--scrap);border-color:var(--pink)}
+
+/* Timeline */
+.timeline{margin-top:20px;display:grid;gap:0}
+.tl-item{
+  display:grid;grid-template-columns:90px 1fr;gap:16px;
+  padding-bottom:24px;position:relative;
+}
+.tl-item::before{
+  content:"";position:absolute;left:89px;top:8px;bottom:0;
+  border-left:2px dashed var(--line);
+}
+.tl-item:last-child::before{display:none}
+.tl-yr{
+  font-family:var(--mono);font-weight:700;font-size:.78rem;
+  letter-spacing:.08em;color:var(--pink);padding-top:2px;text-align:right;
+  padding-right:16px;
+}
+.tl-dot{
+  position:absolute;left:82px;top:6px;width:16px;height:16px;
+  border:2.5px solid var(--ink);background:var(--pink);
+  transform:rotate(45deg);
+  transition:background-color .35s ease, border-color .35s ease;
+}
+.tl-body{padding-left:16px}
+.tl-title{font-family:var(--display);font-weight:400;font-size:1rem;line-height:1.1;margin-bottom:.2em}
+.tl-sub{font-size:.82rem;color:var(--muted)}
+
+/* Sticky tape across top of the page hero */
+.about-tape{
+  position:absolute;width:110px;height:28px;
+  background:var(--tape);box-shadow:0 2px 3px rgba(0,0,0,.18);
+  transition:background-color .35s ease;
+}
+.about-tape--tl{top:-14px;left:18px;transform:rotate(-4deg)}
+.about-tape--tr{top:-14px;right:28px;transform:rotate(3.5deg)}
+
+/* Hero header for this page */
+.bio-hero{
+  padding:40px 0 0;position:relative;
+}
+.bio-hero-inner{
+  position:relative;border:3px solid var(--ink);background:var(--scrap);
+  box-shadow:8px 9px 0 var(--shadow);padding:28px 24px 24px;
+  transition:background-color .35s ease, border-color .35s ease, box-shadow .35s ease;
+}
+.bio-hero-kicker{
+  font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;
+  font-weight:700;color:var(--muted);margin-bottom:6px;display:block;
+}
+.bio-hero-title{
+  font-family:var(--display);font-weight:400;text-transform:uppercase;
+  font-size:clamp(2.2rem,7vw,4rem);line-height:.95;margin-bottom:.2em;
+}
+.bio-hero-title em{font-style:normal;color:var(--pink)}
+.bio-hero-sub{
+  font-size:.88rem;color:var(--muted);max-width:52ch;
+  border-left:3px solid var(--pink);padding-left:12px;margin-top:12px;
+}
+
+/* Contact strip at bottom */
+.bio-contact-strip{
+  background:var(--ink);color:var(--paper);
+  border:2px solid var(--ink);box-shadow:7px 8px 0 var(--pink);
+  padding:26px 24px;margin-top:14px;
+  transition:background-color .35s ease, border-color .35s ease, box-shadow .35s ease, color .35s ease;
+}
+.bio-contact-strip h3{
+  font-family:var(--display);font-weight:400;font-size:1.4rem;margin:.2em 0 .5em;
+}
+.bio-links{display:flex;flex-wrap:wrap;gap:10px}
+.bio-link{
+  font-family:var(--mono);font-weight:700;font-size:.74rem;letter-spacing:.08em;
+  text-transform:uppercase;text-decoration:none;
+  padding:.7em 1.1em;border:2px solid var(--paper);color:var(--paper);
+  background:transparent;
+  box-shadow:3px 3px 0 var(--pink);
+  transition:transform .12s, box-shadow .12s, background-color .15s, color .15s;
+}
+.bio-link:hover{background:var(--pink);color:var(--ink);border-color:var(--pink);transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--paper)}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Primary">
+  <a class="me" href="index.html">WILL<b>O</b>W</a>
+  <a class="backlink" href="index.html">&larr; home</a>
+  <div class="modesel" role="group" aria-label="Color mode">
+    <button class="modebtn" type="button" data-mode="light" aria-label="Light mode" title="Light mode">&#9728;</button>
+    <button class="modebtn" type="button" data-mode="dark" aria-label="Dark mode" title="Dark mode">&#9790;</button>
+  </div>
+</nav>
+
+<main>
+
+  <div class="wrap">
+
+    <!-- ===== HERO ===== -->
+    <header class="bio-hero">
+      <div class="bio-hero-inner rise">
+        <div class="about-tape about-tape--tl" aria-hidden="true"></div>
+        <div class="about-tape about-tape--tr" aria-hidden="true"></div>
+        <span class="bio-hero-kicker">EE &middot; UConn &middot; Storrs, CT &middot; she/her</span>
+        <h1 class="bio-hero-title">Willow <em>V.</em><br>Pichardo</h1>
+        <p class="bio-hero-sub">Junior electrical engineering student. Two labs. Eight open projects. One strong opinion that you can be a master of <em>some</em> things if you move fast enough.</p>
+      </div>
+    </header>
+
+    <!-- ===== PORTRAIT + INTRO ===== -->
+    <section class="band bio-section" id="intro">
+      <span class="eyebrow rise">01 &middot; The short version</span>
+
+      <div class="bio-portrait-wrap">
+        <figure class="bio-portrait rise">
+          <img class="p-light" src="willowportrait.png" alt="Halftone portrait of Willow Pichardo — light mode">
+          <img class="p-dark"  src="willowportraitdark.png" alt="Halftone portrait of Willow Pichardo — dark mode">
+          <div class="bio-name-stamp" aria-hidden="true">
+            <span class="nl nl-a">Willow</span>
+            <span class="nl nl-b">V.</span>
+            <span class="nl nl-c">Pichardo</span>
+          </div>
+        </figure>
+
+        <div class="bio-col">
+          <div class="rise">
+            <h2 class="bio-h">Who I <em>am</em></h2>
+            <p>I'm a junior EE student at the University of Connecticut, working in integrated photonics (Prof. Wang's lab) and semiconductor fabrication (Prof. Gokirmak's lab) at the same time, while TAing Circuits I and keeping way too many side projects alive.</p>
+            <p>My academic path is aimed at a PhD in EE — probably somewhere at the intersection of photonics and devices. I don't know exactly what the research question is yet, but I'm picking up the skills to find it.</p>
+            <p>Outside of the lab I care about pedagogy. I think the way introductory circuits is taught leaves students performing procedures they don't understand, and I'm trying to fix that, one practice problem at a time, through <a href="https://circuitspractice.org" target="_blank" rel="noopener" style="color:var(--pink);border-bottom:2px solid var(--pink);text-decoration:none;font-weight:700">circuitspractice.org</a>.</p>
+          </div>
+
+          <aside class="sticky-note rise">
+            <span class="lbl">For the record</span>
+            My professor worries I'll be a master of none. I think if I keep moving, I'll be a master of some. The unfinished projects are not a bug &mdash; they're proof of range.
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== BY THE NUMBERS ===== -->
+    <section class="bio-section rise" id="numbers">
+      <span class="eyebrow">02 &middot; By the numbers</span>
+      <div class="fact-grid">
+        <div class="fact">
+          <span class="fact-n">2</span>
+          <span class="fact-label">Research labs, simultaneously</span>
+        </div>
+        <div class="fact">
+          <span class="fact-n">8+</span>
+          <span class="fact-label">Active side projects (send help)</span>
+        </div>
+        <div class="fact">
+          <span class="fact-n">1</span>
+          <span class="fact-label">TA position, ECE 2001</span>
+        </div>
+        <div class="fact">
+          <span class="fact-n">90</span>
+          <span class="fact-label">nm SiO₂ measured to 9.7 mRMSE</span>
+        </div>
+        <div class="fact">
+          <span class="fact-n">~77%</span>
+          <span class="fact-label">Efficiency, Class AB amp near peak</span>
+        </div>
+        <div class="fact">
+          <span class="fact-n">∞</span>
+          <span class="fact-label">Things left to learn</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== RESEARCH ===== -->
+    <section class="bio-section rise" id="research">
+      <span class="eyebrow">03 &middot; Research</span>
+      <h2 class="bio-h">Where I <em>work</em></h2>
+
+      <div class="labs" style="margin-top:20px">
+        <article class="lab">
+          <span class="lab-kicker">Prof. Wang &middot; Integrated Photonics</span>
+          <h3 class="lab-title">Silicon photonics for AI interconnects</h3>
+          <p>Microring and microdisk resonators for dense wavelength-division multiplexing. I'm implementing Novick's transfer-matrix model in Python, working toward designing full DWDM systems in ANSYS Lumerical to study AI accelerator power bottlenecks. The goal is photonic interconnects that move data between chips without burning the datacenter down.</p>
+        </article>
+
+        <article class="lab" style="margin-top:26px">
+          <span class="lab-kicker">Prof. Gokirmak &middot; Semiconductor Fabrication</span>
+          <h3 class="lab-title">Thin-film characterization & device fab</h3>
+          <p>I built a Python reflectance spectrometer tool that fits Fresnel interference models to OceanOptics HR2000+ spectra and extracts SiO₂ thickness on silicon — measured 90.36 nm to an RMSE of 0.0097. I'm also working on a laser-doped p-n junction and a maskless lithography chamber, both on the lab equipment at UConn's Institute of Materials Science.</p>
+          <p style="margin-top:.8em">The fabrication work and the photonics work end up being the same thing in disguise: both are about controlling light-matter interaction at the nanometer scale, which is a sentence I will be saying for the rest of my career.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section class="bio-section rise" id="skills">
+      <span class="eyebrow">04 &middot; Skills & tools</span>
+      <h2 class="bio-h">What I <em>use</em></h2>
+      <p>I'm strongest in analog hardware and optical instrumentation, with Python doing most of the computation work. Comfortable across the stack from spice sim to PCB layout to web deploy.</p>
+
+      <div class="stack" style="margin-top:18px">
+        <span class="stack-pill stack-pill--hot">Python</span>
+        <span class="stack-pill stack-pill--hot">LTspice</span>
+        <span class="stack-pill stack-pill--hot">Analog circuit design</span>
+        <span class="stack-pill stack-pill--hot">Thin-film spectroscopy</span>
+        <span class="stack-pill">ANSYS Lumerical</span>
+        <span class="stack-pill">scipy / numpy</span>
+        <span class="stack-pill">KiCad</span>
+        <span class="stack-pill">Photolithography</span>
+        <span class="stack-pill">MQTT / Firebase</span>
+        <span class="stack-pill">HTML / CSS / JS</span>
+        <span class="stack-pill">Git / GitHub Pages</span>
+        <span class="stack-pill">OceanOptics spectrometry</span>
+        <span class="stack-pill">CoreXY motion systems</span>
+        <span class="stack-pill">DMD projection optics</span>
+      </div>
+    </section>
+
+    <!-- ===== TIMELINE ===== -->
+    <section class="bio-section rise" id="timeline">
+      <span class="eyebrow">05 &middot; Timeline</span>
+      <h2 class="bio-h">How I got <em>here</em></h2>
+
+      <div class="timeline">
+        <div class="tl-item">
+          <span class="tl-yr">2023</span>
+          <div class="tl-dot" aria-hidden="true"></div>
+          <div class="tl-body">
+            <div class="tl-title">Started EE at UConn</div>
+            <div class="tl-sub">Enrolled at University of Connecticut, Storrs. Immediately wanted to be in a lab.</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <span class="tl-yr">2024</span>
+          <div class="tl-dot" aria-hidden="true"></div>
+          <div class="tl-body">
+            <div class="tl-title">Joined Prof. Gokirmak's fab lab</div>
+            <div class="tl-sub">Started working on thin-film characterization and semiconductor process experiments. First time using real fab equipment.</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <span class="tl-yr">2025</span>
+          <div class="tl-dot" aria-hidden="true"></div>
+          <div class="tl-body">
+            <div class="tl-title">Joined Prof. Wang's photonics lab</div>
+            <div class="tl-sub">Added integrated photonics research on top of fab work. Started implementing transfer-matrix models for microring resonators.</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <span class="tl-yr">2025</span>
+          <div class="tl-dot" aria-hidden="true"></div>
+          <div class="tl-body">
+            <div class="tl-title">TA, ECE 2001 Circuits I</div>
+            <div class="tl-sub">Started teaching and built circuitspractice.org alongside the role to give students better practice infrastructure.</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <span class="tl-yr">2026</span>
+          <div class="tl-dot" aria-hidden="true"></div>
+          <div class="tl-body">
+            <div class="tl-title">Completed ECE 3201 &middot; Class AB amp</div>
+            <div class="tl-sub">Final project: a Class AB power amplifier based on Rod Elliot's P217, hand-tuned with measured transistor Vbe values. ~77% efficiency near peak load.</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <span class="tl-yr">→</span>
+          <div class="tl-dot" aria-hidden="true"></div>
+          <div class="tl-body">
+            <div class="tl-title">PhD applications &middot; ???</div>
+            <div class="tl-sub">Aiming for a PhD in EE, somewhere photonics and devices intersect. The question is still sharpening.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TEACHING ===== -->
+    <section class="bio-section rise" id="teaching">
+      <span class="eyebrow">06 &middot; Teaching</span>
+      <h2 class="bio-h">Why I <em>teach</em></h2>
+      <p style="max-width:60ch">I think a lot of intro circuits instruction teaches students to execute procedures they don't understand. They can apply KVL correctly and have no idea what a voltage actually is. That bothers me.</p>
+      <p style="max-width:60ch;margin-top:.8em">My approach: build intuition first, formalism second. That means repeatable practice sets designed around understanding, not rote application, with enough worked examples that a student can trace exactly where their reasoning went wrong.</p>
+      <p style="max-width:60ch;margin-top:.8em">All of it lives free at <a href="https://circuitspractice.org" target="_blank" rel="noopener" style="color:var(--pink);border-bottom:2px solid var(--pink);text-decoration:none;font-weight:700">circuitspractice.org</a> and on <a href="https://www.youtube.com/@SalixScience" target="_blank" rel="noopener" style="color:var(--pink);border-bottom:2px solid var(--pink);text-decoration:none;font-weight:700">YouTube</a>.</p>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="bio-section rise" id="contact">
+      <div class="bio-contact-strip">
+        <span class="eyebrow" style="background:var(--pink);color:var(--scrap)">Get in touch</span>
+        <h3>Say <em style="font-style:normal;color:var(--pink)">hello</em></h3>
+        <p style="font-size:.9rem;color:var(--teach-dim);margin-bottom:18px;max-width:50ch">Research, collaborations, questions about the projects, or something else entirely.</p>
+        <div class="bio-links">
+          <a class="bio-link" href="mailto:willowpichardo06@gmail.com">Email</a>
+          <a class="bio-link" href="https://www.linkedin.com/in/willow-pichardo-a209b2363/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="bio-link" href="https://github.com/Salix-Science" target="_blank" rel="noopener">GitHub</a>
+          <a class="bio-link" href="https://www.youtube.com/@SalixScience" target="_blank" rel="noopener">YouTube</a>
+          <a class="bio-link" href="https://circuitspractice.org" target="_blank" rel="noopener">circuitspractice.org</a>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /wrap -->
+
+  <footer class="proj-footer wrap">
+    <a class="proj-back" href="index.html">&larr; Back to home</a>
+    <div style="margin-top:16px"><span class="badge">Work like you're running out of time.</span></div>
+  </footer>
+
+</main>
+
+<button class="to-top" type="button" aria-label="Back to top" title="Back to top">&#8593;</button>
+<script src="app.js"></script>
+</body>
+</html>
