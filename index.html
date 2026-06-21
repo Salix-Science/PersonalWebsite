@@ -133,36 +133,51 @@
           <h3 class="lab-title">Measuring films by their color</h3>
           <p>I built a python program to measure SiO&#8322; thickness on silicon with an OceanOptics HR2000+. Report in progress.</p>
           <figure>
-            <svg viewBox="0 0 360 172" role="img" aria-label="Measured reflectance (blue noisy trace) versus Fresnel thin-film fit (red dashed), 90.36 nm SiO2 on silicon, RMSE 0.0097">
-              <!-- axes -->
-              <line x1="38" y1="14" x2="38" y2="148" stroke="currentColor" stroke-width="2"/>
-              <line x1="38" y1="148" x2="348" y2="148" stroke="currentColor" stroke-width="2"/>
-              <!-- axis labels -->
-              <text x="6" y="18" font-family="Space Mono,monospace" font-size="10" fill="currentColor">R</text>
-              <text x="330" y="162" font-family="Space Mono,monospace" font-size="10" fill="currentColor">&#955; (nm)</text>
-              <!-- y tick labels -->
-              <text x="4" y="152" font-family="Space Mono,monospace" font-size="8" fill="currentColor">0</text>
-              <text x="4" y="112" font-family="Space Mono,monospace" font-size="8" fill="currentColor">.2</text>
-              <text x="4" y="72" font-family="Space Mono,monospace" font-size="8" fill="currentColor">.4</text>
-              <text x="4" y="32" font-family="Space Mono,monospace" font-size="8" fill="currentColor">.6</text>
-              <!-- x tick labels -->
-              <text x="36" y="160" font-family="Space Mono,monospace" font-size="8" fill="currentColor">400</text>
-              <text x="110" y="160" font-family="Space Mono,monospace" font-size="8" fill="currentColor">550</text>
-              <text x="188" y="160" font-family="Space Mono,monospace" font-size="8" fill="currentColor">700</text>
-              <text x="266" y="160" font-family="Space Mono,monospace" font-size="8" fill="currentColor">850</text>
-              <!-- Red dashed Fresnel fit: smooth curve with subtle oscillation matching 90nm SiO2 -->
-              <path d="M38 52 C55 48,70 45,88 50 S118 72,138 78 S168 74,188 66 S218 52,238 56 S268 72,288 76 S318 70,338 64 S348 60,348 58"
-                    fill="none" stroke="#e92a7c" stroke-width="2" stroke-dasharray="6 3"/>
-              <!-- Blue noisy measured trace: same general shape but with noise -->
-              <path d="M38 50 L42 47 L46 51 L50 48 L54 46 L58 49 L62 52 L66 50 L70 47 L74 49 L78 53 L82 55 L86 52 L90 54 L94 58 L98 62 L102 67 L106 72 L110 75 L114 77 L118 79 L122 77 L126 75 L130 76 L134 78 L138 79 L142 77 L146 75 L150 73 L154 71 L158 70 L162 68 L166 66 L170 65 L174 64 L178 63 L182 63 L186 64 L190 65 L194 63 L198 61 L202 58 L206 56 L210 55 L214 54 L218 54 L222 55 L226 57 L230 59 L234 61 L238 62 L242 64 L246 67 L250 70 L254 72 L258 74 L262 75 L266 76 L270 76 L274 75 L278 74 L282 73 L286 72 L290 71 L294 70 L298 68 L302 66 L306 65 L310 64 L314 63 L318 63 L322 62 L326 61 L330 61 L334 60 L338 60 L342 59 L346 59 L348 58"
-                    fill="none" stroke="#4a90d9" stroke-width="1.5" opacity="0.85"/>
-              <!-- legend -->
-              <line x1="44" y1="22" x2="62" y2="22" stroke="#4a90d9" stroke-width="1.5" opacity="0.85"/>
-              <text x="65" y="26" font-family="Space Mono,monospace" font-size="8" fill="currentColor">measured</text>
-              <line x1="138" y1="22" x2="156" y2="22" stroke="#e92a7c" stroke-width="2" stroke-dasharray="6 3"/>
-              <text x="159" y="26" font-family="Space Mono,monospace" font-size="8" fill="currentColor">Fresnel fit</text>
+            <svg viewBox="0 0 360 172" role="img" aria-label="Measured reflectance (blue noisy trace) vs Fresnel thin-film fit (red dashed), 90.36 nm SiO2 on silicon, RMSE 0.0097">
+              <!-- Axes -->
+              <line x1="44" y1="18" x2="44" y2="148" stroke="currentColor" stroke-width="1.5"/>
+              <line x1="44" y1="148" x2="344" y2="148" stroke="currentColor" stroke-width="1.5"/>
+              <!-- Y axis ticks and labels -->
+              <line x1="40" y1="48" x2="44" y2="48" stroke="currentColor" stroke-width="1"/>
+              <line x1="40" y1="98" x2="44" y2="98" stroke="currentColor" stroke-width="1"/>
+              <line x1="40" y1="148" x2="44" y2="148" stroke="currentColor" stroke-width="1"/>
+              <text x="4" y="52" font-family="Space Mono,monospace" font-size="9" fill="currentColor">0.30</text>
+              <text x="4" y="102" font-family="Space Mono,monospace" font-size="9" fill="currentColor">0.20</text>
+              <text x="4" y="152" font-family="Space Mono,monospace" font-size="9" fill="currentColor">0.10</text>
+              <!-- X axis ticks and labels -->
+              <line x1="44" y1="148" x2="44" y2="152" stroke="currentColor" stroke-width="1"/>
+              <line x1="144" y1="148" x2="144" y2="152" stroke="currentColor" stroke-width="1"/>
+              <line x1="244" y1="148" x2="244" y2="152" stroke="currentColor" stroke-width="1"/>
+              <line x1="344" y1="148" x2="344" y2="152" stroke="currentColor" stroke-width="1"/>
+              <text x="34" y="162" font-family="Space Mono,monospace" font-size="9" fill="currentColor">400</text>
+              <text x="134" y="162" font-family="Space Mono,monospace" font-size="9" fill="currentColor">500</text>
+              <text x="234" y="162" font-family="Space Mono,monospace" font-size="9" fill="currentColor">600</text>
+              <text x="334" y="162" font-family="Space Mono,monospace" font-size="9" fill="currentColor">700</text>
+              <!-- Axis labels -->
+              <text x="6" y="88" font-family="Space Mono,monospace" font-size="9" fill="currentColor" transform="rotate(-90,6,88)">R</text>
+              <text x="180" y="172" font-family="Space Mono,monospace" font-size="9" fill="currentColor" text-anchor="middle">&#955; (nm)</text>
+              <!-- Red dashed Fresnel fit: smooth monotone decreasing -->
+              <path d="M44,46 C74,62 104,86 144,114 S214,134 294,142 S334,143 344,144"
+                    fill="none" stroke="#e92a7c" stroke-width="2" stroke-dasharray="5,3"/>
+              <!-- Blue noisy measured trace: similar shape but with noise, spiky near 400-440nm -->
+              <polyline fill="none" stroke="#3a7bd5" stroke-width="1.5"
+                points="44,38 47,52 49,34 51,48 53,31 55,44 57,36 59,50 
+                        61,42 63,54 65,47 67,55 69,49 71,57 73,51 75,61
+                        77,56 79,63 81,59 84,66 87,62 90,71 93,68 96,74 
+                        100,75 104,79 108,82 112,85 116,87 120,90 
+                        125,93 130,96 135,99 140,102 145,105 
+                        150,107 156,110 162,112 168,114 174,116 
+                        180,118 186,120 192,121 198,122 204,124
+                        210,125 218,126 226,127 234,128 242,129
+                        250,130 258,131 266,131 274,132 282,133
+                        290,133 298,134 306,135 314,135 322,135 330,136 338,136 344,136"/>
+              <!-- Legend -->
+              <line x1="168" y1="26" x2="188" y2="26" stroke="#3a7bd5" stroke-width="1.5"/>
+              <text x="191" y="30" font-family="Space Mono,monospace" font-size="8" fill="currentColor">measured</text>
+              <line x1="168" y1="38" x2="188" y2="38" stroke="#e92a7c" stroke-width="1.5" stroke-dasharray="4,2"/>
+              <text x="191" y="42" font-family="Space Mono,monospace" font-size="8" fill="currentColor">Fresnel fit</text>
             </svg>
-            <figcaption>90.36 nm &middot; RMSE 0.0097 &mdash; measured vs. Fresnel fit after dark subtraction</figcaption>
+            <figcaption>90.36 nm &middot; RMSE 0.0097 — measured vs. Fresnel fit after dark subtraction</figcaption>
             <p style="margin-top:8px"><a class="card-open" href="project-sio2-thickness.html">Full write-up &rarr;</a></p>
           </figure>
         </article>
