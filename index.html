@@ -42,6 +42,7 @@
     <a class="tab" href="#research">research</a>
     <a class="tab" href="#work">work</a>
     <a class="tab" href="#teaching">teaching</a>
+    <a class="tab" href="#writing">writing</a>
     <a class="tab" href="#contact">contact</a>
   </div>
   <div class="modesel" role="group" aria-label="Color mode">
@@ -263,6 +264,153 @@
     </div>
   </section>
 
+  <!-- ===== WRITING ===== -->
+  <section class="band" id="writing">
+    <div class="wrap">
+      <span class="eyebrow rise">Words</span>
+      <h2 class="band-title rise">The <em>writing</em></h2>
+      <p class="band-sub rise">Poems, stories, essays. Some from high school, some from now.</p>
+
+      <div class="writing-filters rise" role="group" aria-label="Filter writing by type" style="display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 20px">
+        <button class="wf-btn active" data-filter="all" aria-pressed="true">All</button>
+        <button class="wf-btn" data-filter="poem" aria-pressed="false">Poem</button>
+        <button class="wf-btn" data-filter="story" aria-pressed="false">Story</button>
+        <button class="wf-btn" data-filter="essay" aria-pressed="false">Essay</button>
+        <button class="wf-btn" data-filter="lab-report" aria-pressed="false">Lab Report</button>
+      </div>
+
+      <div class="grid" id="writingGrid">
+
+        <!-- NEW: Years Ago -->
+        <article class="card rise writing-card" data-type="poem">
+          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+            <span class="stamp stamp--live" style="transform:rotate(-2deg)">✦ New</span>
+            <span class="stamp stamp--ship">Poem</span>
+          </div>
+          <h3 class="card-title" style="margin-top:10px">Years Ago</h3>
+          <p class="card-spec">June 2026</p>
+          <p class="card-body">On the journal, the mountain, and why now is the right time to start leaving better markings.</p>
+          <div class="chips"><span class="chip">personal</span><span class="chip">resilience</span></div>
+          <a class="card-open" href="writing-years-ago.html">Read &rarr;</a>
+        </article>
+
+        <!-- Lab Report: SiO2 Thickness -->
+        <article class="card rise writing-card" data-type="lab-report">
+          <span class="stamp stamp--ship">Lab Report</span>
+          <h3 class="card-title" style="margin-top:10px">SiO₂ Thin-Film Thickness</h3>
+          <p class="card-spec">Spring 2026</p>
+          <p class="card-body">Measuring oxide thickness on silicon via Fresnel reflectance fitting with an OceanOptics HR2000+. Results: 86.99–90.36 nm, RMSE 0.0097–0.0225.</p>
+          <div class="chips"><span class="chip">lab report</span><span class="chip">optics</span><span class="chip">python</span></div>
+          <a class="card-open" href="writing-sio2-thickness.html">Read &rarr;</a>
+        </article>
+
+        <!-- Poem: Walls Crumble -->
+        <article class="card rise writing-card" data-type="poem">
+          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+            <span class="stamp stamp--ship">Poem</span>
+            <span class="stamp" style="color:var(--red);border-color:var(--red);border-style:solid">⚠ Graphic</span>
+          </div>
+          <h3 class="card-title" style="margin-top:10px">Walls Crumble</h3>
+          <p class="card-spec">High school</p>
+          <p class="card-body">A poem about a city coming apart at the seams. Contains references to gun violence.</p>
+          <div class="chips"><span class="chip">poem</span><span class="chip">urban</span></div>
+          <a class="card-open" href="writing-walls-crumble.html">Read &rarr;</a>
+        </article>
+
+        <!-- Poem: Right Idea -->
+        <article class="card rise writing-card" data-type="poem">
+          <span class="stamp stamp--ship">Poem</span>
+          <h3 class="card-title" style="margin-top:10px">Right Idea</h3>
+          <p class="card-spec">High school</p>
+          <p class="card-body">On ambition, misdirection, and getting there eventually.</p>
+          <div class="chips"><span class="chip">poem</span></div>
+          <a class="card-open" href="writing-right-idea.html">Read &rarr;</a>
+        </article>
+
+        <!-- Story: Monster Slums -->
+        <article class="card rise writing-card" data-type="story">
+          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+            <span class="stamp stamp--ship">Story</span>
+            <span class="stamp" style="color:var(--red);border-color:var(--red);border-style:solid">⚠ Graphic</span>
+          </div>
+          <h3 class="card-title" style="margin-top:10px">Monster Slums</h3>
+          <p class="card-spec">High school</p>
+          <p class="card-body">A short story set in a world where monsters live alongside people in poverty. Contains gun violence and death.</p>
+          <div class="chips"><span class="chip">story</span><span class="chip">speculative</span></div>
+          <a class="card-open" href="writing-monster-slums.html">Read &rarr;</a>
+        </article>
+
+        <!-- Poem: Moving On -->
+        <article class="card rise writing-card" data-type="poem">
+          <span class="stamp stamp--ship">Poem</span>
+          <h3 class="card-title" style="margin-top:10px">Moving On</h3>
+          <p class="card-spec">High school</p>
+          <p class="card-body">Leaving something behind. Or trying to.</p>
+          <div class="chips"><span class="chip">poem</span></div>
+          <a class="card-open" href="writing-moving-on.html">Read &rarr;</a>
+        </article>
+
+        <!-- Poem: Floating Away -->
+        <article class="card rise writing-card" data-type="poem">
+          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+            <span class="stamp stamp--ship">Poem</span>
+            <span class="stamp" style="color:var(--red);border-color:var(--red);border-style:solid">⚠ Heavy</span>
+          </div>
+          <h3 class="card-title" style="margin-top:10px">Floating Away</h3>
+          <p class="card-spec">High school</p>
+          <p class="card-body">On dissociation and emotional pain. Read with care.</p>
+          <div class="chips"><span class="chip">poem</span></div>
+          <a class="card-open" href="writing-floating-away.html">Read &rarr;</a>
+        </article>
+
+        <!-- Poem: Think Too Much -->
+        <article class="card rise writing-card" data-type="poem">
+          <span class="stamp stamp--ship">Poem</span>
+          <h3 class="card-title" style="margin-top:10px">Think Too Much</h3>
+          <p class="card-spec">High school</p>
+          <p class="card-body">Overthinking as a way of life. Relatable content.</p>
+          <div class="chips"><span class="chip">poem</span></div>
+          <a class="card-open" href="writing-think-too-much.html">Read &rarr;</a>
+        </article>
+
+        <!-- Sonnet: Hidden Devil -->
+        <article class="card rise writing-card" data-type="poem">
+          <span class="stamp stamp--ship">Sonnet</span>
+          <h3 class="card-title" style="margin-top:10px">Hidden Devil</h3>
+          <p class="card-spec">May 2025</p>
+          <p class="card-body">A Shakespearean sonnet about deception dressed as virtue.</p>
+          <div class="chips"><span class="chip">poem</span><span class="chip">sonnet</span></div>
+          <a class="card-open" href="writing-hidden-devil.html">Read &rarr;</a>
+        </article>
+
+        <!-- Essay: Common Sense -->
+        <article class="card rise writing-card" data-type="essay">
+          <span class="stamp stamp--ship">Essay</span>
+          <h3 class="card-title" style="margin-top:10px">Common Sense</h3>
+          <p class="card-spec">Feb 2024</p>
+          <p class="card-body">An argument about what common sense actually is and why it isn't.</p>
+          <div class="chips"><span class="chip">essay</span></div>
+          <a class="card-open" href="writing-common-sense.html">Read &rarr;</a>
+        </article>
+
+        <!-- Narrative poem: Against the Cold -->
+        <article class="card rise writing-card" data-type="poem">
+          <span class="stamp stamp--ship">Narrative poem</span>
+          <h3 class="card-title" style="margin-top:10px">Against the Cold</h3>
+          <p class="card-spec">Feb 2024</p>
+          <p class="card-body">A narrative poem about endurance in winter. The cold as metaphor; also just cold.</p>
+          <div class="chips"><span class="chip">poem</span></div>
+          <a class="card-open" href="writing-against-cold.html">Read &rarr;</a>
+        </article>
+
+      </div>
+
+      <div id="writingMore" style="text-align:center;margin-top:24px" hidden>
+        <button class="btn" id="writingMoreBtn" type="button">Load more &darr;</button>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== CONTACT ===== -->
   <section class="band foot" id="contact">
     <div class="wrap">
@@ -303,7 +451,59 @@
 
 </main>
 
+<style>
+  .wf-btn{
+    font-family:var(--mono);font-weight:700;font-size:.72rem;letter-spacing:.1em;
+    text-transform:uppercase;cursor:pointer;padding:.45em .85em;
+    border:2px solid var(--ink);background:var(--scrap);color:var(--ink);
+    transition:background-color .15s,color .15s,border-color .15s;
+  }
+  .wf-btn:hover{color:var(--pink);border-color:var(--pink)}
+  .wf-btn.active{background:var(--ink);color:var(--paper)}
+  [data-theme="dark"] .wf-btn.active{background:var(--ink);color:var(--paper)}
+</style>
 <button class="to-top" type="button" aria-label="Back to top" title="Back to top">&#8593;</button>
 <script src="app.js"></script>
+<script>
+(function(){
+  var PAGE = 6;
+  var grid = document.getElementById('writingGrid');
+  var moreWrap = document.getElementById('writingMore');
+  var moreBtn  = document.getElementById('writingMoreBtn');
+  if(!grid) return;
+  var activeFilter = 'all';
+  var allCards = Array.prototype.slice.call(grid.querySelectorAll('.writing-card'));
+  function getVisible(){
+    return allCards.filter(function(c){
+      return activeFilter === 'all' || c.dataset.type === activeFilter;
+    });
+  }
+  var shown = {};
+  function shownFor(f){ return shown[f] || PAGE; }
+  function render(showCount){
+    var visible = getVisible();
+    allCards.forEach(function(c){ c.setAttribute('hidden',''); });
+    visible.forEach(function(c,i){ if(i < showCount) c.removeAttribute('hidden'); });
+    if(visible.length > showCount){ moreWrap.removeAttribute('hidden'); }
+    else { moreWrap.setAttribute('hidden',''); }
+  }
+  var filterBtns = Array.prototype.slice.call(document.querySelectorAll('.wf-btn'));
+  filterBtns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      filterBtns.forEach(function(b){ b.classList.remove('active'); b.setAttribute('aria-pressed','false'); });
+      btn.classList.add('active'); btn.setAttribute('aria-pressed','true');
+      activeFilter = btn.dataset.filter;
+      render(shownFor(activeFilter));
+    });
+  });
+  if(moreBtn){
+    moreBtn.addEventListener('click', function(){
+      shown[activeFilter] = shownFor(activeFilter) + PAGE;
+      render(shownFor(activeFilter));
+    });
+  }
+  render(shownFor('all'));
+})();
+</script>
 </body>
 </html>
