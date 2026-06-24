@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Years Ago — Willow</title>
+<meta name="description" content="A poem about suffering, resilience, and leaving markings for the trail ahead.">
+<script>
+  (function(){
+    try{
+      var s=localStorage.getItem('willow-theme');
+      var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', s||(d?'dark':'light'));
+    }catch(e){document.documentElement.setAttribute('data-theme','light');}
+  })();
+</script>
+<link rel="stylesheet" href="styles.css">
+<style>
+  .poem-body{
+    font-family:var(--serif);font-size:1.08rem;line-height:1.9;
+    max-width:52ch;white-space:pre-line;
+  }
+  .poem-body p{margin-bottom:1.6em}
+  .poem-body p:last-child{margin-bottom:0}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Primary">
+  <a class="me" href="index.html">WILL<b>O</b>W</a>
+  <a class="backlink" href="index.html#writing">&larr; all writing</a>
+  <div class="modesel" role="group" aria-label="Color mode">
+    <button class="modebtn" type="button" data-mode="light" aria-label="Light mode" title="Light mode">&#9728;</button>
+    <button class="modebtn" type="button" data-mode="dark" aria-label="Dark mode" title="Dark mode">&#9790;</button>
+  </div>
+</nav>
+
+<main>
+  <header class="proj-hero wrap">
+    <a class="proj-back" href="index.html#writing">&larr; Back to all writing</a>
+    <div class="proj-status">
+      <span class="stamp stamp--ship">Poem</span>
+      <span class="proj-kicker">Original &middot; June 2026</span>
+    </div>
+    <h1 class="proj-title">Years Ago</h1>
+    <p class="proj-spec">resilience &middot; the trail &middot; what writing is for</p>
+    <div class="chips"><span class="chip">poem</span><span class="chip">personal</span></div>
+  </header>
+
+  <div class="wrap proj-wrap">
+    <div class="proj-main">
+
+      <section class="proj-section">
+        <div class="poem-body">
+          <p>Years ago, the scorching sun crept over the mountain and burned me with its eternal presence.
+Sapped of energy and at the expense of progress, I desiccated in the blazing sun, and wrote of precisely how miserable the journey was.
+A skill discovered by curiosity, refined by tears, my entries a symbol of suffering.</p>
+          <p>What draws me, now, to that wretched journal despite the strides I've made?</p>
+          <p>Maybe because I shudder, looking down while climbing the great mountain, realizing how far only now I'll fall. Maybe because I miss those who no longer take the trek. Or maybe because this is what I've always done, marking the choss and blazing the trail.</p>
+          <p>I have left so many markings of danger and failure that my blazed trail may as well be snowed over. Though, if I had to pick a place to start, to start leaving symbols of advancement, hope for the future, I would rather start now.</p>
+          <p>The radiant sun illuminates my path, showing me the world otherwise obscured by night.
+I grasp at the steep slopes, that misunderstood orb squeezed beneath my fingers.
+A skill discovered by curiosity, refined by tears, now a symbol of resilience.
+Years later here I am, and now the trail can truly begin.</p>
+        </div>
+      </section>
+
+    </div>
+
+    <aside class="proj-meta">
+      <h2 class="meta-h">At a glance</h2>
+      <div class="meta-row"><span class="meta-k">Type</span><span class="meta-v">Poem</span></div>
+      <div class="meta-row"><span class="meta-k">Date</span><span class="meta-v">June 2026</span></div>
+      <div class="meta-row"><span class="meta-k">Theme</span><span class="meta-v">resilience &middot; writing &middot; the climb</span></div>
+    </aside>
+  </div>
+
+  <footer class="proj-footer wrap">
+    <a class="proj-back" href="index.html#writing">&larr; Back to all writing</a>
+    <div style="margin-top:16px"><span class="badge">Work like you're running out of time.</span></div>
+  </footer>
+</main>
+
+<button class="to-top" type="button" aria-label="Back to top" title="Back to top">&#8593;</button>
+<script src="app.js"></script>
+</body>
+</html>
