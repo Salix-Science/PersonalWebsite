@@ -25,9 +25,6 @@
     --hl:rgba(233,42,124,.4);
     --dot:rgba(23,20,17,.06);
     --nav-bg:rgba(241,237,226,.93);
-    --teach-dim:#e9e4d8;
-    --teach-bg:#171411;
-    --teach-fg:#f1ede2;
     --nav-h:58px;
     --display:"Archivo Black","Arial Black",Impact,sans-serif;
     --mono:"Space Mono",ui-monospace,"Courier New",monospace;
@@ -226,6 +223,7 @@
     box-shadow:5px 6px 0 var(--shadow);position:relative;display:flex;flex-direction:column;
     transition:transform .14s, box-shadow .2s, background-color .35s ease, border-color .35s ease, color .35s ease;
   }
+  .card[hidden]{display:none}
   .card:nth-child(odd){transform:rotate(-.4deg)}
   .card:nth-child(even){transform:rotate(.4deg)}
   .card:hover{transform:translateY(-4px) rotate(0deg);box-shadow:7px 9px 0 var(--shadow)}
@@ -258,15 +256,15 @@
 
   /* ============ TEACHING ============ */
   .teach{
-    background:var(--teach-bg);color:var(--teach-fg);border:2px solid var(--teach-bg);
+    background:var(--scrap);color:var(--ink);border:2px solid var(--ink);
     box-shadow:7px 8px 0 var(--pink);padding:30px 24px;margin-top:30px;position:relative;
-    transition:box-shadow .35s ease;
+    transition:background-color .35s ease, border-color .35s ease, box-shadow .35s ease, color .35s ease;
   }
-  .teach .eyebrow{background:var(--pink);color:var(--teach-fg)}
+  .teach .eyebrow{background:var(--pink);color:var(--scrap)}
   .teach h3{font-family:var(--display);font-weight:400;font-size:1.5rem;margin:.5em 0 .4em;line-height:1.05}
-  .teach p{font-size:.95rem;max-width:62ch;color:var(--teach-dim)}
+  .teach p{font-size:.95rem;max-width:62ch;color:var(--muted-strong)}
   .teach a{color:var(--pink);text-decoration:none;border-bottom:2px solid var(--pink);font-weight:700}
-  .teach a:hover{background:var(--pink);color:var(--teach-bg)}
+  .teach a:hover{background:var(--pink);color:var(--ink)}
 
   /* ============ CONTACT / FOOT ============ */
   .foot{padding:64px 0 80px;text-align:center}
