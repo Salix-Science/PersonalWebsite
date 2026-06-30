@@ -26,6 +26,8 @@
     --dot:rgba(23,20,17,.06);
     --nav-bg:rgba(241,237,226,.93);
     --teach-dim:#e9e4d8;
+    --teach-bg:#171411;
+    --teach-fg:#f1ede2;
     --nav-h:58px;
     --display:"Archivo Black","Arial Black",Impact,sans-serif;
     --mono:"Space Mono",ui-monospace,"Courier New",monospace;
@@ -48,7 +50,6 @@
     --hl:rgba(255,61,139,.35);
     --dot:rgba(236,230,216,.075);
     --nav-bg:rgba(18,15,12,.92);
-    --teach-dim:#3f3a33;
   }
 
   *{box-sizing:border-box;margin:0;padding:0}
@@ -257,15 +258,15 @@
 
   /* ============ TEACHING ============ */
   .teach{
-    background:var(--ink);color:var(--paper);border:2px solid var(--ink);
+    background:var(--teach-bg);color:var(--teach-fg);border:2px solid var(--teach-bg);
     box-shadow:7px 8px 0 var(--pink);padding:30px 24px;margin-top:30px;position:relative;
-    transition:background-color .35s ease, border-color .35s ease, box-shadow .35s ease, color .35s ease;
+    transition:box-shadow .35s ease;
   }
-  .teach .eyebrow{background:var(--pink);color:var(--scrap)}
+  .teach .eyebrow{background:var(--pink);color:var(--teach-fg)}
   .teach h3{font-family:var(--display);font-weight:400;font-size:1.5rem;margin:.5em 0 .4em;line-height:1.05}
   .teach p{font-size:.95rem;max-width:62ch;color:var(--teach-dim)}
   .teach a{color:var(--pink);text-decoration:none;border-bottom:2px solid var(--pink);font-weight:700}
-  .teach a:hover{background:var(--pink);color:var(--ink)}
+  .teach a:hover{background:var(--pink);color:var(--teach-bg)}
 
   /* ============ CONTACT / FOOT ============ */
   .foot{padding:64px 0 80px;text-align:center}
